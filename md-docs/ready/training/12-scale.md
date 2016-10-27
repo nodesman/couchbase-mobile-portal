@@ -29,10 +29,10 @@ There will be 3 Sync Gateway nodes but the reverse proxy is forwarding the load 
 
 1. Log on VM5 (sync-gateway).
 1. `cd deploy`
-1. Run the Sync Gateway install script passing the IP of VM1 where Couchbase Server is running.
+1. Run the Sync Gateway install latest script passing the IP of VM1 where Couchbase Server is running.
 
     ```bash
-    sudo ./install_sync_gateway.sh VM1
+    sudo ./install_latest_sync_gateway.sh VM1
     ```
 
 1. Log on VM4 (nginx).
