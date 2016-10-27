@@ -12,7 +12,7 @@ In this lesson you'll learn how to install upgrades for Sync Gateway with zero d
 
 Three instances with the following:
 
-- Ubuntu >= 12.04, =< 14.04
+- CentOS 7
 - RAM >= 2GB
 
 #### Getting Started
