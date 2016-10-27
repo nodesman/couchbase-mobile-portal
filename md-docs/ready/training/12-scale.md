@@ -42,13 +42,11 @@ There will be 3 Sync Gateway nodes but the reverse proxy is forwarding the load 
     sudo ./configure_nginx.sh VM2 VM3 VM5
     ```
 
-1. Monitor the NGINX operations in real-time.
+1. Send a curl request to http://localhost:8000. This will return information about the running sync_gateway behind the reverse proxy.
 
     ```bash
-    tail -f /var/log/nginx/access_log
+    curl localhost:8000
     ```
-
-1. Send a `/{db}/_all_docs` request with the **user1/password** credentials to http://VM4_IP:8000. The Sync Gateway logs will print this operation.
 
     ![](https://cl.ly/392N2E2K0J0T/image76.gif)
 
