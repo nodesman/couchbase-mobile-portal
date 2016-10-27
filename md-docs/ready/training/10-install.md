@@ -77,7 +77,7 @@ In production, the configuration file should look similar to the one used in dev
 }
 ```
 
-The `install_sync_gateway.sh` script downloads and installs Sync Gateway 1.3. Then it restarts the `sync_gateway` service with the configuration file of the todo application.
+The `install_sync_gateway.sh` script downloads and installs Sync Gateway 1.3. Then it restarts the `sync_gateway` service with the configuration file (`deploy/sync-gateway-config.json`) of the todo application.
 
 
 ### Try it out 
