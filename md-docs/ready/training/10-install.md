@@ -131,9 +131,11 @@ With two Sync Gateway nodes you can now configure the reverse proxy and update t
 
 <block class="dockercloud">
 
+# Docker Cloud
+
 In this lesson you'll learn how to deploy Couchbase Server and Sync Gateway on Docker Cloud behind a load balancer.
 
-## Luanch node cluster
+## Launch node cluster
 
 Launch a node cluster with the following settings:
 
