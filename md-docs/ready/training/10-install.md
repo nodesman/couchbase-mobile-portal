@@ -273,6 +273,10 @@ In the **Ports** section, use the following values:
 
 ![](img/docker_cloud_configure_sg_service_ports.png)
 
+In the **Links** section, choose **couchbaseserver** and hit the **Plus** button
+
+![](img/docker_cloud_sg_service_links.png)
+
 Click the **Create and Deploy** button.
 
 ## Verify Sync Gateway
