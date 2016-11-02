@@ -8,14 +8,26 @@ In this lesson you’ll learn how to integrate Couchbase Mobile with external sy
 
 [//]: # "COMMON ACROSS LESSONS"
 
+<block class="ios" />
+
 #### Requirements
 
 - Xcode 8 (Swift 3)
-- Node.js 0.6.6 or higher
 
 #### Getting Started
 
 Download the project below.
+
+<block class="net" />
+
+#### Requirements
+
+- Visual Studio 2015+ (Windows) or Xamarin Studio 6+ (OS X)
+
+#### Getting Started
+
+- Clone this repo and open the `dotnet\Training.sln` project
+- (optional) Update to the latest version of the Couchbase.Lite / Couchbase.Lite.Storage.SQLCipher nuget package, if not already added
 
 <block class="ios" />
 
@@ -42,7 +54,7 @@ Throughout this lesson, you will navigate in different files of the Xcode projec
 
 [//]: # "COMMON ACROSS LESSONS"
 
-<block class="ios rn" />
+<block class="all" />
 
 ## Changes stream
 
@@ -63,13 +75,13 @@ $ curl -H 'Content-Type: application/json' -vX GET 'http://localhost:4985/todo/_
 }
 ```
 
+    > **Note:** The curl executable for Windows can be found [on this page](https://curl.haxx.se/download.html)
+
 The **since** parameter in the querystring is used to specify which sequence to start from. In this case the response contains changes starting at `seq: 3` because the `since=3` parameter was sent in the querystring.
 
 Deleting a document creates a new revision with the `deleted: true` property and no user properties. This is required in order to propagate the deletion to other devices. In the example above the change with sequence 4 (`seq: 4`) is a deletion.
 
 #### Try it out
-
-<block class="ios rn" />
 
 1. Download Sync Gateway and start it with the configuration file in the root directory of the accompanying project.
 
@@ -77,14 +89,35 @@ Deleting a document creates a new revision with the `deleted: true` property and
     ~/Downloads/couchbase-sync-gateway/bin/sync_gateway sync-gateway-config.json
     ```
 
+<block class="ios" />
+
 2. Open **AppDelegate.swift** and set the following constants to `true`.
 
     ```swift
     let kLoginFlowEnabled = true
     let kSyncEnabled = true
     ```
+    
+<block class="net" />
 
-3. Run the application in Xcode, login with the **user1/pass** credentials and add a new list. It should appear as a new document on the Admin UI of Sync Gateway on [http://localhost:4985/_admin/db/todo](http://localhost:4985/_admin/db/todo).
+2. Open **CoreApp.cs** and change the `CreateHint()` method as follows:
+
+   ```c#
+   var retVal = new CoreAppStartHint {
+      LoginEnabled = true, // This line needs to be changed
+      EncryptionEnabled = false,
+      SyncEnabled = true, // This line needs to be changed
+      UsePrebuiltDB = false,
+      ConflictResolution = false,
+      Username = "todo"
+  };
+
+  return retVal;
+  ```
+
+<block class="all" />
+
+3. Run the application, login with the **user1/pass** credentials and add a new list. It should appear as a new document on the Admin UI of Sync Gateway on [http://localhost:4985/_admin/db/todo](http://localhost:4985/_admin/db/todo).
 
 4. To access the changes stream (also called the changes feed). Open a browser tab at [http://localhost:4985/todo/_changes](http://localhost:4985/todo/_changes).
 

@@ -6,11 +6,15 @@ permalink: ready/training/test/functional-testing/index.html
 
 In this lesson you'll learn how to perform functional tests on your Couchbase Mobile application. You'll test the Sync Function to make sure it conforms to the business rules of the application.
 
+<block class="ios" />
+
 <div class="buttons-unit downloads">
   <a href="https://cl.ly/2A2D3q3R2d1g/xcode-project.zip" class="button" id="project">
     <img src="img/download-xcode.png">
   </a>
 </div>
+
+<block class="all" />
 
 ## Introduction
 
@@ -76,6 +80,8 @@ if (!oldDoc) {
 
     {"error":"Forbidden","reason":"task is not provided."}
     ```
+    
+    > **Note:** The curl executable for Windows can be found [on this page](https://curl.haxx.se/download.html)
 
     The operation is rejected in all 3 requests with a **403 Forbidden** error because the schema is not valid. The test has passed.
 
