@@ -240,7 +240,7 @@ sectionid: docs
         var foundHash = false;
         if (window.location.hash !== '' && window.location.hash !== 'content') { // content is default
           var platform = window.location.hash.slice(1);
-          if (['ios-training', 'rn-training'].indexOf(platform) > -1) {
+          if (['ios', 'wpf'].indexOf(platform) > -1) {
             display('platform', platform);
             foundHash = true;
           }
