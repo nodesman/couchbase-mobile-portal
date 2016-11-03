@@ -325,6 +325,8 @@ Shown below is a list document created with two conflicting revisions. After del
 
 <img src="https://cl.ly/0V2I0h1T1j24/image47.gif" class="center-image" />
 
+> **Note:** During development, the method `Save(bool)` is used to intentionally create a conflict. You can press Ctrl+C to create a list conflict. The code is located in the `TestConflict()` method of **TaskListsModel.cs**.
+
 <block class="xam" />
 
 **iOS**
@@ -462,6 +464,11 @@ For task documents, you will follow the same steps as previously except this tim
 <block class="ios" />
 
 > **Note:** To see the same result, open any list and shake the device (**^⌘Z** on the simulator) to create a task conflict. The code is located in the `motionEnded(_:with:)` method of **TasksViewController.swift**.
+
+<block class="wpf" />
+
+> **Note:** To see the same result, open any list and press Ctrl+C to create a task conflict.  The code is located in the
+`TestConflict()` method of **TasksModel.cs**
 
 <block class="all" />
 
