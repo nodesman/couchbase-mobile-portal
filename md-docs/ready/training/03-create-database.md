@@ -154,8 +154,6 @@ Here you're using the `openDatabaseNamed` method where the database is the user 
 
 ### Try it out
 
-<block class="all" />
-
 1. Build and run.
 2. Create a new list on the application's 'Task lists' screen.
 3. The task list is persisted to the database.
@@ -292,8 +290,6 @@ The prebuilt database is installed using the database replacement API only if th
 1. Open **Application.java** and set the `mUsePrebuiltDb` constant to true.
 2. Build and run (don't forget to delete the app first).
 3. A Groceries list will now be visible on the Lists screen. Click on it to see the tasks.
-
-
 
 <block class="all" />
 
