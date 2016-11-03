@@ -455,11 +455,11 @@ For task documents, you will follow the same steps as previously except this tim
 
 <block class="ios" />
 
+<img src="https://cl.ly/0P0w2k0s1a2z/image67.gif" class="portrait" />
+
 <block class="wpf" />
 
 <img src="./img/image67w.gif" class="center-image" />
-
-<img src="https://cl.ly/0P0w2k0s1a2z/image67.gif" class="portrait" />
 
 <block class="ios" />
 
