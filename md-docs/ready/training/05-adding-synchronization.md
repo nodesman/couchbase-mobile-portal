@@ -378,7 +378,7 @@ Shown below is a list document created with two conflicting revisions. After del
 
 <block class="wpf" />
 
-<img src="https://cl.ly/0V2I0h1T1j24/image47.gif" class="center-image" />
+<img src="https://cl.ly/0V2I0h1T1j24/image47w.gif" class="center-image" />
 
 > **Note:** During development, the method `Save(bool)` is used to intentionally create a conflict. You can press Ctrl+C to create a list conflict. The code is located in the `TestConflict()` method of **TaskListsModel.cs**.
 
