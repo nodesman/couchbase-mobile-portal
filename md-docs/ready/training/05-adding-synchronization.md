@@ -505,7 +505,7 @@ Database.RunInTransaction(() =>
 
 <block class="wpf" />
 
-<img class="portrait" src="https://cl.ly/0o1z380g2w2w/image48w.gif"  />
+<img class="center-image" src="https://cl.ly/0o1z380g2w2w/image48w.gif"  />
 
 <block class="xam" />
 
