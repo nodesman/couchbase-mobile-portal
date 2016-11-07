@@ -69,7 +69,7 @@ Download the project below.
 
 <block class="all" />
 
-> **Tip:** To make things a bit more exciting, you may want to use the pre-built database containing a list of Groceries. Refer to the [Create a Database](/documentation/mobile/current/develop/training/using-the-database/index.html) lesson to learn how to use it.
+> **Tip:** To make things a bit more exciting, you may want to use the pre-built database containing a list of Groceries. Refer to the [Create a Database](/documentation/mobile/current/training/develop/using-the-database/index.html) lesson to learn how to use it.
 
 ## Install Sync Gateway
 
@@ -94,7 +94,7 @@ During development, you can set the **server** property to **walrus:** (also kno
 
 By default, Sync Gateway doesn't allow unauthenticated requests to be processed for security reasons. So you're enabling the **GUEST** user which represents all the unauthenticated clients that will be synchronizing with your Sync Gateway instance.
 
-> **Note:** User authentication is covered in more detail in the [Adding Security](/documentation/mobile/current/develop/training/adding-security/index.html) lesson.
+> **Note:** User authentication is covered in more detail in the [Adding Security](/documentation/mobile/current/training/develop/adding-security/index.html) lesson.
 
 Sync Gateway is always listening on two ports:
 
