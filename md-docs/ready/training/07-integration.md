@@ -132,7 +132,7 @@ Deleting a document creates a new revision with the `deleted: true` property and
     PS> & 'C:\Program Files (x86)\Couchbase\sync_gateway.exe' sync-gateway-config.json
     ```
 
-> **Note:** The Sync Gateway service might be running on Windows which will prevent this command from succeeding with the message 'FATAL: Failed to start HTTP server on 127.0.0.1:4985: listen tcp 127.0.0.1:4985: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.'  To get around this, stop the 'Couchbase Sync Gateway' service in 'services.msc'.
+    > **Note:** The Sync Gateway service might be running on Windows which will prevent this command from succeeding with the message 'FATAL: Failed to start HTTP server on 127.0.0.1:4985: listen tcp 127.0.0.1:4985: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.'  To get around this, stop the 'Couchbase Sync Gateway' service in 'services.msc'.
 
 2. Open **CoreApp.cs** and change the `CreateHint()` method as follows:
 
@@ -154,6 +154,25 @@ Deleting a document creates a new revision with the `deleted: true` property and
 4. To access the changes stream (also called the changes feed). Open a browser tab at [http://localhost:4985/todo/_changes](http://localhost:4985/todo/_changes).
 
     ![](img/image54.png)
+
+<block class="android" />
+
+1. Download Sync Gateway and start it with the configuration file in the root directory of the accompanying project.
+
+    ```bash
+    ~/Downloads/couchbase-sync-gateway/bin/sync_gateway sync-gateway-config.json
+    ```
+
+2. Open **Application.java** and set the following constants to `true`.
+
+    ```swift
+    let mLoginFlowEnabled = true
+    let mSyncEnabled = true
+    ```
+
+3. Run the application, login with the **user1/pass** credentials and add a new list. It should appear as a new document on the Admin UI of Sync Gateway on [http://localhost:4985/_admin/db/todo](http://localhost:4985/_admin/db/todo).
+
+4. To access the changes stream (also called the changes feed). Open a browser tab at [http://localhost:4985/todo/_changes](http://localhost:4985/todo/_changes).
 
 <block class="all" />
 
@@ -284,11 +303,11 @@ This code checks that the change is not a deletion and that the document type is
 
 <block class="ios" />
 
-    <img src="https://cl.ly/060e3a0p3717/image56.gif" />
+  <img src="https://cl.ly/060e3a0p3717/image56.gif" />
 
 <block class="wpf" />
 
-    <img src="https://cl.ly/3z3Q2v1n0n0d/image56w.gif" />
+  <img src="https://cl.ly/3z3Q2v1n0n0d/image56w.gif" />
 
 <block class="all" />
 
