@@ -767,7 +767,7 @@ Notice that for 'task' documents, the `nWayMergeConflicts()` method is called to
 2. Build and run.
 3. Create a task conflict using the shake gesture and this time the row contains the updated text **and** is marked as completed.
 
-    ![](img/image03a.png)
+    <image src="img/image03a.png" class="portrait" />
 
 <block class="all" />
 

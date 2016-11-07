@@ -290,13 +290,45 @@ Each document type will have different access control rules associated with it. 
 
 ```javascript
 function(doc, oldDoc){
-  /* Validate */
+  /* Type validation */
   if (isCreate()) {
     // Don't allow creating a document without a type.
     validateNotEmpty("type", doc.type);
   } else if (isUpdate()) {
     // Don't allow changing the type of any document.
     validateReadOnly("type", doc.type, oldDoc.type);
+  }
+
+  if (getType() == "task-list") {
+    /* Write Access */
+    var owner = doc._deleted ? oldDoc.owner : doc.owner;
+    try {
+      // Moderators can create/update lists for other users.
+      requireRole("moderator");
+    } catch (e) {
+      // Users can create/update lists for themselves.
+      requireUser(owner);
+    }
+    /* Validation */
+    if (!isDelete()) {
+      // Validate required fields.
+      validateNotEmpty("name", doc.name);
+      validateNotEmpty("owner", doc.owner);
+
+      if (isUpdate()) {
+        // Don’t allow task-list ownership to be changed.
+        validateReadOnly("owner", doc.owner, oldDoc.owner);
+      }
+    }
+    /* Routing */
+    // Add doc to task-list's channel.
+    channel("task-list." + doc._id);
+    channel("moderators");
+    /* Read Access */
+    // Grant task-list owner access to the task-list, its tasks, and its users.
+    access(doc.owner, "task-list." + doc._id);
+    access(doc.owner, "task-list." + doc._id + ".users");
+    access("role:moderator", "task-list." + doc._id);
   }
 
   function isCreate() {
@@ -318,6 +350,14 @@ function(doc, oldDoc){
       throw({forbidden: name + " is read-only."});
     }
   }
+
+  function getType() {
+    return (isDelete() ? oldDoc.type : doc.type);
+  }
+
+  function isDelete() {
+    return (doc._deleted == true);
+  }
 }
 ```
 
@@ -327,7 +367,7 @@ As shown above, you can define inner functions to encapsulate logic used through
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
 2. Copy the code snippet above in the Sync Function text area.
-3. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem. So if you restart Sync Gateway you will have to start again from the beginning.
+3. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem.
 4. Add two documents through the REST API. One with the `type` property and the second document without it. Notice that the user credentials (**user1/pass**) are passed in the URL.
 
     ```bash
@@ -353,57 +393,33 @@ As shown above, you can define inner functions to encapsulate logic used through
 
 Once you know the type of a document, the next step is to check the write permissions.
 
-The following code ensures the user creating the list document matches with the `owner` property. If not then it checks if the user is a moderator.
+The following code ensures the user creating the list document matches with the `owner` property or is a moderator.
 
 ```javascript
-function (doc, oldDoc) {
-  
-  // } else if (isUpdate()) {
-  //  validateReadOnly("type", doc.type, oldDoc.type);
-  // }
-  // ^^^^^ Existing code
-  
-  if (getType() == "task-list") {
-    /* Control Write Access */
-    var owner = doc._deleted ? oldDoc.owner : doc.owner;
-    try {
-      // Users can create/update lists for themselves.
-      requireUser(owner);
-    } catch (e) {
-      // Moderators can create/update lists for other users.
-      requireRole("moderator");
-    }
-  }
-
-  function getType() {
-    return (isDelete() ? oldDoc.type : doc.type);
-  }
-
-  function isDelete() {
-    return (doc._deleted == true);
-  }
-
-  // function isCreate() {
-  //  return ((oldDoc == null || oldDoc._deleted) && doc._deleted != true);
-  // }
-  // ^^^^^ Existing code
-
+/* Write Access */
+var owner = doc._deleted ? oldDoc.owner : doc.owner;
+try {
+  // Moderators can create/update lists for other users.
+  requireRole("moderator");
+} catch (e) {
+  // Users can create/update lists for themselves.
+  requireUser(owner);
 }
 ```
 
 When a document is deleted the user properties are removed and the `_deleted: true` property is added as metadata. In this case, the sync function must retrieve the type from oldDoc. In the code above, the `getType` inner function encapsulates this logic.
 
-Similarly, the owner field is taken from oldDoc if doc is a deletion revision. The **requireUser** and **requireRole** functions are functionalities built in Sync Gateway.
+Similarly, the owner field is taken from oldDoc if doc is a deletion revision. The `requireUser` and `requireRole` functions are functionalities built in Sync Gateway.
 
 #### Try it out
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
-1. Copy the changes above in the Sync Function text area.
-2. Click the **Deploy To Server** button. It will restart Sync Gateway with the updated sync function.
-3. Add two documents through the REST API. The request is sent as a moderator user (**mod/pass**). One document is a list for user1 and another is a list for user2.
+1. Copy the changes above in the Sync Function text area to replace the `/* Write access */` block.
+2. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem.
+3. Add two documents through the REST API. The request is sent as a user (**user1/pass**). One document is a list for user1 and another is a list for user2.
 
     ```bash
-    curl -vX POST 'http://mod:pass@localhost:4984/todo/_bulk_docs' \
+    curl -vX POST 'http://user1:pass@localhost:4984/todo/_bulk_docs' \
           -H 'Content-Type: application/json' \
           -d '{"docs": [{"type": "task-list", "owner": "user1"}, {"type": "task-list", "owner": "user2"}]}'
     ```
@@ -412,39 +428,28 @@ Similarly, the owner field is taken from oldDoc if doc is a deletion revision. T
 
     ```bash
     [
-      {"id":"9fb56dacc4f7f971c3a62ab849a9ae3a","rev":"1-39539a8ec6ddd252d6aafe1f7e3efd9a"},
-      {"id":"e111e2232706b0e385e2168239edede2","rev":"1-23cb8ee7690e682054aef6dfa45afda0"}
+      {"id":"8339356c8bb6d8b32477e931ce04c5c9","rev":"1-39539a8ec6ddd252d6aafe1f7e3efd9a"},
+      {"error":"forbidden","reason":"wrong user","status":403}
     ]
     ```
 
-    Both documents are successfully persisted because the user sending the request has the moderator role.
+    The list with user2 as the owner is rejected.
 
-### Validating Changes
+### Validation
 
 After write permissions, you must ensure the document has the expected schema. There are different types of validation such as checking for the presence of a field or enforcing read-only permission on parts of a document. The code below performs various schema validation operations.
 
 ```javascript
-function (doc, oldDoc) {
-  ...
-  if (getType() == "task-list") {
-    ...
-    /* Validate */
-    if (!isDelete()) {
-        // Validate required fields.
-        validateNotEmpty("name", doc.name);
-        validateNotEmpty("owner", doc.owner);
+/* Validation */
+if (!isDelete()) {
+  // Validate required fields.
+  validateNotEmpty("name", doc.name);
+  validateNotEmpty("owner", doc.owner);
 
-        if (isCreate()) {
-          // Validate that the _id is prefixed by owner.
-          // validatePrefix("_id", doc._id, "owner", doc.owner + ".");
-        } else {
-          // Don’t allow task-list ownership to be changed.
-          validateReadOnly("owner", doc.owner, oldDoc.owner);
-        }
-    }
-    ...
+  if (isUpdate()) {
+    // Don’t allow task-list ownership to be changed.
+    validateReadOnly("owner", doc.owner, oldDoc.owner);
   }
-  ...
 }
 ```
 
@@ -453,8 +458,8 @@ function (doc, oldDoc) {
 #### Try it out
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
-2. Copy the changes above in the Sync Function text area.
-3. Click the **Deploy To Server** button. It will restart Sync Gateway with the updated sync function.
+2. Copy the changes above in the Sync Function text area to replace the `/* Validation */` block.
+3. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem.
 
 > **Challenge:** Persist documents using curl until it gets persisted and Sync Gateway returns a **201 Created** status code.
 
@@ -463,25 +468,17 @@ function (doc, oldDoc) {
 Once you have determined that the schema is valid you can route the document to channels. A channel is a namespace for documents specifically designed for access control. The code below routes the document to its own list channel.
 
 ```javascript
-function (doc, oldDoc) {
-  ...
-  if (getType() == "task-list") {
-    ...
-    /* Route */
-    // Add doc to task-list's channel.
-    channel("task-list." + doc._id);
-    channel("moderators");
-    ...
-  }
-  ...
-}
+/* Routing */
+// Add doc to task-list's channel.
+channel("task-list." + doc._id);
+channel("moderators");
 ```
 
 #### Try it out
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
-2. Copy the changes above in the Sync Function text area.
-3. Click the **Deploy To Server** button. It will restart Sync Gateway with the upated sync function.
+2. Copy the changes above in the Sync Function text area to replace the `/* Routing */` block.
+3. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem.
 4. Both documents are saved and mapped to the corresponding channels in the Admin UI. The video below shows you how to navigate through the different channels.
 
     <video src="https://cl.ly/3i2w062z1w1F/movie2.mp4" controls="true"></video>
@@ -491,19 +488,11 @@ function (doc, oldDoc) {
 The last step in writing access control rules for a document type is to allow read access to channels. The following code grants the owner and users that are moderators access to the list's channel.
 
 ```javascript
-function (doc, oldDoc) {
-  ...
-  if (getType() == "task-list") {
-    ...
-    /* Grant Read Access */
-    // Grant task-list owner access to the task-list, its tasks, and its users.
-    access(doc.owner, "task-list." + doc._id);
-    access(doc.owner, "task-list." + doc._id + ".users");
-    access("role:moderator", "task-list." + doc._id);
-    ...
-  }
-  ...
-}
+/* Read Access */
+// Grant task-list owner access to the task-list, its tasks, and its users.
+access(doc.owner, "task-list." + doc._id);
+access(doc.owner, "task-list." + doc._id + ".users");
+access("role:moderator", "task-list." + doc._id);
 ```
 
 #### Try it out
