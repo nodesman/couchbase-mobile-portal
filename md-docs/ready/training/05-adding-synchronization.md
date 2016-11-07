@@ -19,7 +19,7 @@ In this lesson you’ll be introduced to Sync Gateway, our secure web gateway. Y
 Download the project below.
 
 <div class="buttons-unit downloads">
-  <a href="https://cl.ly/2A2D3q3R2d1g/xcode-project.zip" class="button" id="project">
+  <a href="https://cl.ly/293t073Z3735/project.zip" class="button" id="project">
     <img src="img/download-xcode.png">
   </a>
 </div>
