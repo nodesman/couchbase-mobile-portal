@@ -105,13 +105,12 @@ Users are created with a name/password on Sync Gateway which can then be used on
     ```bash
     $ /path/to/sync_gateway sync-gateway-config.json
     ```
-
 	
-	```powershell
-	PS> & 'C:\Program Files (x86)\Couchbase\sync_gateway.exe' sync-gateway-config.json
-	```
+    ```powershell
+    PS> & 'C:\Program Files (x86)\Couchbase\sync_gateway.exe' sync-gateway-config.json
+    ```
 
-> **Note:** The Sync Gateway service might be running on Windows which will prevent this command from succeeding with the message 'FATAL: Failed to start HTTP server on 127.0.0.1:4985: listen tcp 127.0.0.1:4985: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.'  To get around this, stop the 'Couchbase Sync Gateway' service in 'services.msc'.
+    > **Note:** The Sync Gateway service might be running on Windows which will prevent this command from succeeding with the message 'FATAL: Failed to start HTTP server on 127.0.0.1:4985: listen tcp 127.0.0.1:4985: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.'  To get around this, stop the 'Couchbase Sync Gateway' service in 'services.msc'.
 
 4. Two users are now visible at [http://localhost:4985/_admin/db/todo/users](http://localhost:4985/_admin/db/todo/users).
 
@@ -217,9 +216,6 @@ The `CBLAuthenticator` class has static methods for each authentication method s
 
     ![](img/image35.png)
 
-> **Note:** You can remove the local database and check if the pull replication retrieves the documents now present on Sync Gateway. On macOS, use the [SimPholders](https://simpholders.com/) utility app to quickly find the data directory of the application and delete the database called **user1**. Then restart the app and you'll notice that the "Today" list isn't displayed. That is, the list document wasn't replicated from Sync Gateway to Couchbase Lite. Indeed, the document is not routed to a channel that the user has access to. **Channel** and **access** are new terms so don't worry, we'll cover what they mean in the next section.
-<video src="https://d3vv6lp55qjaqc.cloudfront.net/items/1s1G3C1i2a0G2P3o0G0m/movie1.mp4" controls="true" poster="https://cl.ly/1W2T3w463S0f/image72.png"></video>
-
 <block class="net" />
 
 1. Change `LoginEnabled = false` to `LoginEnabled = true` in the `CreateHint()` method in **CoreApp.cs**
@@ -300,43 +296,27 @@ function(doc, oldDoc){
   }
 
   if (getType() == "task-list") {
-    /* Write Access */
-    var owner = doc._deleted ? oldDoc.owner : doc.owner;
-    try {
-      // Moderators can create/update lists for other users.
-      requireRole("moderator");
-    } catch (e) {
-      // Users can create/update lists for themselves.
-      requireUser(owner);
-    }
+    /* Write access */
     /* Validation */
-    if (!isDelete()) {
-      // Validate required fields.
-      validateNotEmpty("name", doc.name);
-      validateNotEmpty("owner", doc.owner);
-
-      if (isUpdate()) {
-        // Don’t allow task-list ownership to be changed.
-        validateReadOnly("owner", doc.owner, oldDoc.owner);
-      }
-    }
     /* Routing */
-    // Add doc to task-list's channel.
-    channel("task-list." + doc._id);
-    channel("moderators");
     /* Read Access */
-    // Grant task-list owner access to the task-list, its tasks, and its users.
-    access(doc.owner, "task-list." + doc._id);
-    access(doc.owner, "task-list." + doc._id + ".users");
-    access("role:moderator", "task-list." + doc._id);
+  }
+
+  function getType() {
+    return (isDelete() ? oldDoc.type : doc.type);
   }
 
   function isCreate() {
-    return ((oldDoc == null || oldDoc._deleted) && doc._deleted != true);
+    // Checking false for the Admin UI to work
+    return ((oldDoc == false) || (oldDoc == null || oldDoc._deleted) && !isDelete());
   }
 
   function isUpdate() {
-    return (!isCreate(oldDoc) && !isDelete(doc));
+    return (!isCreate() && !isDelete());
+  }
+
+  function isDelete() {
+    return (doc._deleted == true);
   }
 
   function validateNotEmpty(key, value) {
@@ -351,12 +331,13 @@ function(doc, oldDoc){
     }
   }
 
-  function getType() {
-    return (isDelete() ? oldDoc.type : doc.type);
-  }
-
-  function isDelete() {
-    return (doc._deleted == true);
+  // Checks whether the provided value starts with the specified prefix
+  function hasPrefix(value, prefix) {
+    if (value && prefix) {
+      return value.substring(0, prefix.length) == prefix
+    } else {
+      return false
+    }
   }
 }
 ```
@@ -446,7 +427,12 @@ if (!isDelete()) {
   validateNotEmpty("name", doc.name);
   validateNotEmpty("owner", doc.owner);
 
-  if (isUpdate()) {
+  if (isCreate()) {
+    // Validate that the _id is prefixed by owner.
+    if (!hasPrefix(doc._id, doc.owner + ".")) {
+        throw({forbidden: "task-list id must be prefixed by list owner"});
+    }
+  } else {
     // Don’t allow task-list ownership to be changed.
     validateReadOnly("owner", doc.owner, oldDoc.owner);
   }
@@ -478,10 +464,10 @@ channel("moderators");
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
 2. Copy the changes above in the Sync Function text area to replace the `/* Routing */` block.
-3. Click the **Deploy To Server** button. It will update Sync Gateway with the new config but it doesn't persist the changes to the filesystem.
-4. Both documents are saved and mapped to the corresponding channels in the Admin UI. The video below shows you how to navigate through the different channels.
+3. Click the **Live Preview Mode** button. This mode doesn't restart Sync Gateway but will use the updated Sync Function for testing purposes. Click the **random** button to pick a document at random and run it through the sync function again. It re-calculates the routing to channels and access grants. This time, the owner (user1) has access to its own list's channel.
+4. Both documents are saved and mapped to the corresponding channels in the Admin UI.
 
-    <video src="https://cl.ly/3i2w062z1w1F/movie2.mp4" controls="true"></video>
+    ![](img/image88.png)
 
 ### Read Access
 
@@ -490,16 +476,16 @@ The last step in writing access control rules for a document type is to allow re
 ```javascript
 /* Read Access */
 // Grant task-list owner access to the task-list, its tasks, and its users.
-access(doc.owner, "task-list." + doc._id);
-access(doc.owner, "task-list." + doc._id + ".users");
+access(owner, "task-list." + doc._id);
+access(owner, "task-list." + doc._id + ".users");
 access("role:moderator", "task-list." + doc._id);
 ```
 
 #### Try it out
 
 1. Open the Sync menu on the Admin UI [http://localhost:4985/_admin/db/todo/sync](http://localhost:4985/_admin/db/todo/sync).
-2. Copy the changes above in the Sync Function text area.
-3. Click the **Live Preview Mode** button. This mode doesn't restart Sync Gateway but will use the updated Sync Function for testing purposes. Click the **random** button to pick a document at random and run it through the sync function again. It re-calculates the routing to channels and access grants. This time, the owner (user1) and moderator (user2) both access to the list's channel.
+2. Copy the changes above in the Sync Function text area to replace the `/* Read access */` block.
+3. Click the **Live Preview Mode** button. This mode doesn't restart Sync Gateway but will use the updated Sync Function for testing purposes. Click the **random** button to pick a document at random and run it through the sync function again. It re-calculates the routing to channels and access grants. This time, the owner (user1) has access to its own list's channel.
 
     ![](img/image38.png)
 

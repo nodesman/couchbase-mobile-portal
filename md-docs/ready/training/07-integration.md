@@ -155,6 +155,8 @@ Deleting a document creates a new revision with the `deleted: true` property and
 
     ![](img/image54.png)
 
+<block class="all" />
+
 ### Subscribing to changes
 
 In this section you will write a script to subscribe to changes continuously. This becomes particularly useful for integrating Couchbase Mobile with other systems.
@@ -219,7 +221,7 @@ Notice that the `get_db_changes` method is used with `since: <seq>` and `feed: l
 
 <block class="wpf" />
 
-  ![](./img/image55w.gif)
+  ![](https://cl.ly/0R1q0U1G2i0K/image55w.gif)
 
 <block class="all" />
 
@@ -282,11 +284,11 @@ This code checks that the change is not a deletion and that the document type is
 
 <block class="ios" />
 
-  ![](https://cl.ly/060e3a0p3717/image56.gif)
+    <img src="https://cl.ly/060e3a0p3717/image56.gif" />
 
 <block class="wpf" />
 
-  ![](./img/image56w.gif)
+    <img src="https://cl.ly/3z3Q2v1n0n0d/image56w.gif" />
 
 <block class="all" />
 

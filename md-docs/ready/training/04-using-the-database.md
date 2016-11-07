@@ -322,7 +322,7 @@ try {
 
 <block class="all" />
 
-> **Challenge:** Add a document change listener to detect when the document gets deleted. The [document change notification](/1.3/develop/guides/couchbase-lite/native-api/document/index.html#document-change-notifications) documentation will be helpful for this challenge.
+> **Challenge:** Add a document change listener to detect when the document gets deleted. The [document change notification](/documentation/mobile/1.3/develop/guides/couchbase-lite/native-api/document/index.html#document-change-notifications) documentation will be helpful for this challenge.
 
 ### Try it out
 
@@ -487,8 +487,6 @@ query.start();
 
 <block class="all" />
 
-> **Challenge:** Update the map function to emit the document ID as the key. Don't forget to bump the view version whenever you change the map function. The list view should now display the document ID on each row.
-
 ### Try it out
 
 1. Build and run.
@@ -505,6 +503,10 @@ query.start();
 <block class="android" />
 
 <img src="https://cl.ly/44433I102l3q/image66a.gif" class="portrait" />
+
+<block class="all" />
+
+> **Challenge:** Update the map function to emit the document ID as the key. Don't forget to bump the view version whenever you change the map function. The list view should now display the document ID on each row.
 
 ## Aggregating Data
 
