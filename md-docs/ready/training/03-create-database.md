@@ -44,7 +44,7 @@ Open **Todo.xcworkspace** in Xcode. Then build & run the project.
 Download the project below.
 
 <div class="buttons-unit downloads">
-  <a href="#" class="button" id="project">
+  <a href="https://cl.ly/293t073Z3735/project.zip" class="button" id="project">
     <img src="img/download-vs.png">
   </a>
 </div>
@@ -60,7 +60,7 @@ Download the project below.
 Download the project below.
 
 <div class="buttons-unit downloads">
-  <a href="https://cl.ly/2A2D3q3R2d1g/xcode-project.zip" class="button" id="project">
+  <a href="https://cl.ly/293t073Z3735/project.zip" class="button" id="project">
     <img src="img/download-android.png">
   </a>
 </div>
