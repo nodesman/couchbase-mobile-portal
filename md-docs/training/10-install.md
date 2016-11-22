@@ -1,7 +1,8 @@
 ---
 id: install
 title: Install
-permalink: ready/training/deploy/install/index.html
+prev: 07-integration.html
+next: 11-upgrade.html
 ---
 
 In this lesson you'll learn how to install Sync Gateway and Couchbase Server, our NoSQL database server.

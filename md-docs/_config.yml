@@ -9,20 +9,15 @@ github_username:  jekyll
 
 defaults:
 - scope:
-    path: ''
-    type: post
-  value:
-    layout: post
-- scope:
     path: docs
     type: page
   values:
     layout: docs
 - scope:
-    path: ready
+    path: training
     type: page
   values:
-    layout: ready
+    layout: training
 
 # Build settings
 #markdown: kramdown

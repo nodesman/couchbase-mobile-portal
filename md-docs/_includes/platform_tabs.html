@@ -1,0 +1,43 @@
+<!-- Platform tabs -->
+<!-- TODO: Make visible when ready to show multi-platform training -->
+<div class="toggler">
+  <style>
+    .toggler a {
+      display: inline-block;
+      padding: 10px 5px;
+      margin: 2px;
+      border: 1px solid #05A5D1;
+      border-radius: 3px;
+      text-decoration: none !important;
+    }
+    .display-platform-ios .toggler .button-ios,
+    .display-platform-android .toggler .button-android,
+    .display-platform-rn .toggler .button-rn,
+    .display-platform-wpf .toggler .button-wpf,
+    .display-platform-xam .toggler .button-xam {
+      background-color: #05A5D1;
+      color: white !important;
+    }
+
+    block { display: none; }
+
+    .display-platform-ios .ios,
+    .display-platform-android .android,
+    .display-platform-rn .rn,
+    .display-platform-net .net,
+    .display-platform-wpf .wpf,
+    .display-platform-xam .xam,
+    .display-platform-all .all {
+      display: block;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+  <div id="platform-tabs" class="hide">
+    <a href="javascript:void(0);" class="button-ios" onclick="display('platform', 'ios')">iOS</a>
+    <a href="javascript:void(0);" class="button-android" onclick="display('platform', 'android')">Android</a>
+    <a href="javascript:void(0);" class="button-wpf" onclick="display('platform', 'wpf')">WPF</a>
+  </div>
+</div>

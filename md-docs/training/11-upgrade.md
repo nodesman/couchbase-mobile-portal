@@ -1,7 +1,8 @@
 ---
 id: upgrade
 title: Upgrade
-permalink: ready/training/deploy/upgrade/index.html
+prev: 10-install.html
+next: 12-scale.html
 ---
 
 In this lesson you'll learn how to install upgrades for Sync Gateway with zero downtime.

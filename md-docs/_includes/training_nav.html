@@ -1,0 +1,14 @@
+{% for section in site.data.training_nav %}
+  <div>
+    <h2>
+      <a href="#">{{ section.title }}</a>
+    </h2>
+  </div>
+  <ol>
+    {% for item in section.items %}
+      <li>
+        <a href="/training/{{ item.path }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ol>
+{% endfor %}

@@ -1,0 +1,337 @@
+@font-face {
+  font-family: Portal-Light;
+  src: url(fonts/Kievit/Kievit-Light.otf) format("opentype");
+}
+
+@font-face {
+  font-family: Portal-Regular;
+  src: url(fonts/Kievit/Kievit-Regular.otf) format("opentype");
+}
+
+body {
+  margin: 0;
+}
+
+/* ----------------- */
+/* - Secondary Nav - */
+/* ----------------- */
+
+#managed-secondary-nav {
+  width: 240px;
+  float: left;
+  clear: left;
+  margin: 24px 0 24px 24px;
+  padding-right: 24px;
+  font: 16px Portal-Light;
+  box-sizing: border-box;
+
+  border-right: 1px solid #e6e6e6;
+  min-height: calc(100% - 24px - 24px);
+}
+
+#managed-secondary-nav a {
+  color: #0c97fa;
+  text-decoration: none;
+}
+
+#managed-secondary-nav a[href]:hover {
+  color: #0b83d9;
+  text-decoration: none;
+}
+
+#managed-secondary-nav a.active {
+  color: #0c97fa;
+}
+
+#managed-secondary-nav a[disabled] {
+  color: #bbb;
+}
+
+#managed-secondary-nav header .back {
+  background: url("images/secondary-nav/back.svg") left center/16px no-repeat;
+  padding-left: 20px;
+}
+
+#managed-secondary-nav > div {
+  margin-top: 24px;
+}
+
+#managed-secondary-nav h2 {
+  font: 18px Portal-Regular;
+  margin: 0 0 6px 0;
+}
+
+#managed-secondary-nav h2 a {
+  color: black;
+}
+
+#managed-secondary-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#managed-secondary-nav ol {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+#managed-secondary-nav ul > li::first-of-type,
+#managed-secondary-nav ol > li::first-of-type {
+  margin-top: 6px;
+}
+
+#managed-secondary-nav ul > li > a,
+#managed-secondary-nav ol > li > a {
+  color: black;
+  display: inline-block;
+}
+
+#managed-secondary-nav ul > li:not(:last-of-type) > a,
+#managed-secondary-nav ol > li:not(:last-of-type) > a {
+  padding-bottom: 6px;
+}
+
+#managed-secondary-nav ol:not([type]) {
+  list-style: none;
+}
+
+#managed-secondary-nav ol:not([type]) > li > a {
+  padding-left: 20px;
+  background: white 0 -91px/200% 200px no-repeat;
+}
+
+#managed-secondary-nav ol:not([type]) > li > a {
+  background-image: url("images/train/train-stop-nth.svg");
+}
+
+#managed-secondary-nav ol:not([type]) > li:first-child > a {
+  background-image: url("images/train/train-stop-first.svg");
+}
+
+#managed-secondary-nav ol:not([type]) > li:last-child > a {
+  background-image: url("images/train/train-stop-last.svg");
+}
+
+#managed-secondary-nav ol:not([type]) > li:only-child > a {
+  background-image: url("images/train/train-stop.svg");
+}
+
+#managed-secondary-nav ol:not([type]) a:visited {
+  background-color: #0c97fa;
+}
+
+#managed-secondary-nav select {
+  color: black;
+  background: #f2f2f2 url("images/select/arrows.svg") no-repeat calc(100% - 8px) 50%/8px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 24px 8px 8px;
+
+  font: 16px Portal-Light;
+  width: 100%;
+  display: block;
+}
+
+#managed-secondary-nav select:focus {
+  background-color: #b7daf3;
+  outline: none;
+}
+
+/* ------- */
+/* - TOC - */
+/* ------- */
+
+#managed-toc {
+  width: 280px;
+  float: right;
+  clear: right;
+  padding: 24px 0 24px 0;
+  font: 16px Portal-Light;
+  box-sizing: border-box;
+}
+
+#managed-toc > * {
+  padding: 16px;
+  border: 1px solid #e6e6e6;
+}
+
+#managed-toc > *:not(:last-child) {
+  border-bottom: 0;
+}
+
+#managed-toc a {
+  color: #0c97fa;
+  text-decoration: none;
+}
+
+#managed-toc a:hover[href] {
+  color: #0b83d9;
+  text-decoration: none;
+}
+
+#managed-toc header a {
+  color: black;
+  text-decoration: none;
+}
+
+#managed-toc header a:hover[href] {
+  color: #0b83d9;
+  text-decoration: none;
+}
+
+#managed-toc a[disabled] {
+  color: #bbb;
+}
+
+#managed-toc header a:only-child {
+  text-align: center;
+  display: block;
+}
+
+#managed-toc header a.previous::before {
+  content: "\2039\00a0";
+}
+
+#managed-toc header a.next::after {
+  content: "\00a0\203A";
+}
+
+#managed-toc header a.next:not(:only-child) {
+  float: right;
+}
+
+#managed-toc h2 {
+  margin: 0 0 8px 0;
+  font: 18px Portal-Light;
+}
+
+#managed-toc ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#managed-toc ol {
+  list-style-position: inside;
+  margin: 0;
+  padding: 0;
+}
+
+#managed-toc ul > li:before {
+  content: "\203A\00a0";
+}
+
+#managed-toc ul > li::first-of-type,
+#managed-toc ol > li::first-of-type {
+  margin-top: 6px;
+}
+
+#managed-toc ul > li > a,
+#managed-toc ol > li > a {
+  color: black;
+  display: inline-block;
+}
+
+#managed-toc ul > li:not(:last-of-type) > a,
+#managed-toc ol > li:not(:last-of-type) > a {
+  padding-bottom: 6px;
+}
+
+#managed-toc ol:not([type]) {
+  list-style: none;
+}
+
+#managed-toc ol:not([type]) > li > a {
+  padding-left: 20px;
+  background: white 0 -91px/200% 200px no-repeat;
+}
+
+#managed-toc ol:not([type]) > li > a {
+  background-image: url("images/train/train-stop-nth.svg");
+}
+
+#managed-toc ol:not([type]) > li:first-child > a {
+  background-image: url("images/train/train-stop-first.svg");
+}
+
+#managed-toc ol:not([type]) > li:last-child > a {
+  background-image: url("images/train/train-stop-last.svg");
+}
+
+#managed-toc ol:not([type]) > li:only-child > a {
+  background-image: url("images/train/train-stop.svg");
+}
+
+#managed-toc ol:not([type]) a:visited {
+  background-color: #0c97fa;
+}
+
+#managed-toc select {
+  color: black;
+  background: #f2f2f2 url("images/select/arrows.svg") no-repeat calc(100% - 8px) 50%/8px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 4px;
+  padding: 8px 24px 8px 8px;
+
+  font: 16px Portal-Light;
+  width: 100%;
+  display: block;
+}
+
+#managed-toc select:focus {
+  background-color: #b7daf3;
+  outline: none;
+}
+
+#managed-toc a.button {
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #0c97fa;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25);
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 40px;
+  display: inline-block;
+}
+
+#managed-toc a.button:hover[href] {
+  color: rgba(255, 255, 255, 1.0);
+  box-shadow: 0 4px 7px 0 rgba(0, 0, 0, .25);
+}
+
+#managed-toc .hint {
+  color: #808080;
+  display: block;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+#managed-toc iframe {
+  border-width: 0px;
+}
+
+@media only screen and (max-width: 960px) {
+  #managed-secondary-nav {
+    display: none;
+  }
+
+  #managed-toc {
+    width: 304px;
+    padding: 24px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #managed-toc {
+    float: none;
+    width: 100%;
+  }
+}

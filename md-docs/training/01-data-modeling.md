@@ -1,7 +1,7 @@
 ---
 id: data-modeling
 title: Data Modeling
-permalink: ready/training/design/data-modeling/index.html
+next: 02-security.html
 ---
 
 In this lesson you will learn how to model the data for an application and the relationships between the different models.

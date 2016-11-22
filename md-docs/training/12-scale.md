@@ -1,7 +1,7 @@
 ---
 id: scale
 title: Scale
-permalink: ready/training/deploy/scale/index.html
+prev: 11-upgrade.html
 ---
 
 In this lesson you'll learn how to scale Sync Gateway and Couchbase Server in real-time with zero downtime.

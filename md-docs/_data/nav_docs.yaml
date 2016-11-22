@@ -1,34 +1,30 @@
-- title: Getting Started
-  items:
-  - id: tutorial
-    title: Tutorial
-    subitems:
-    - id: using-the-database
-      title: Using the Database
-    - id: adding-synchronization
-      title: Adding Synchronization
-    - id: adding-security
-      title: Adding Security
 - title: Installation
   items:
     - id: ios
       title: iOS
+      path: /ready/installation/ios/index.html
     - id: android
       title: Android
+      path: /ready/installation/android/index.html
     - id: net
       title: .NET
+      path: /ready/installation/net/index.html
     - id: java
       title: Java
+      path: /ready/installation/java/index.html
     - id: phonegap
       title: PhoneGap
+      path: /ready/installation/phonegap/index.html
     - id: xamarin
       title: Xamarin
+      path: /ready/installation/xamarin/index.html
     - id: sg
       title: Sync Gateway
-- title: Developer Preview
+      path: /ready/installation/sync-gateway/index.html
+- title: Training
   items:
-  - id: openid-connect
-    title: OpenID Connect
+    - title: Training
+      path: /ready/training/index.html
 - title: Guides
   items:
   - title: Couchbase Lite
@@ -66,20 +62,3 @@
     - title: Accessing Couchbase Server views
     - title: OS Level tuning
     - title: Resolving conflicts
-- title: API References
-  items:
-    - title: Native API
-      subitems:
-      - title: Manager
-      - title: Database
-      - title: Document
-      - title: Revision
-      - title: Attachment
-      - title: View
-      - title: Query
-      - title: Replication
-    - title: REST API
-      subitems:
-      - title: Couchbase Lite
-      - title: Sync Gateway (Public)
-      - title: Sync Gateway (Admin)

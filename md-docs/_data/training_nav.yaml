@@ -1,0 +1,26 @@
+- title: Design
+  items:
+    - title: Data Modeling
+      path: 01-data-modeling.html
+    - title: Access Control
+      path: 02-security.html
+- title: Develop
+  items:
+    - title: Create a Database
+      path: 03-create-database.html
+    - title: Using the Database
+      path: 04-using-the-database.html
+    - title: Adding Sync
+      path: 05-adding-synchronization.html
+    - title: Adding Security
+      path: 06-adding-security.html
+    - title: Integration
+      path: 07-integration.html
+- title: Deploy
+  items:
+    - title: Install
+      path: 10-install.html
+    - title: Upgrade
+      path: 11-upgrade.html
+    - title: Scale
+      path: 12-scale.html

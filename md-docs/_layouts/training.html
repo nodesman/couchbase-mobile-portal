@@ -1,0 +1,219 @@
+---
+layout: default
+sectionid: training
+---
+
+<nav id="managed-secondary-nav">
+  <header>
+    <nav>
+      <a class="back" href="#">Training</a>
+    </nav>
+  </header>
+  {% include training_nav.html %}
+</nav>
+<style>
+  /* HACK: To override the AuthX styles (navs, lists) */
+  .documentationContent ul, .inner-content ul {
+    list-style-type: disc !important;
+  }
+
+  /* Override AuthX styles */
+  .body ul ul {
+    list-style-type: circle !important;
+    margin: 0 !important;
+  }
+  .body ul {
+    padding-left: 40px !important;
+    margin: 1em 0 !important;
+  }
+
+  /* Hack for tips and notes styles (applying AuthX styles to blockquotes) */
+  blockquote {
+    overflow: hidden !important;
+    border: 1px solid #0081a5 !important;
+    border-radius: 0.4em !important;
+    border-left: 0.7em solid #0081a5 !important;
+    padding: .5em !important;
+    margin: 1em 0px !important;
+    font-size: 14px !important;
+    line-height: 1.35em !important;
+  }
+
+  blockquote p {
+    margin: 0 !important;
+  }
+
+  /* Edit on GitHub button */
+  .edit-page-link {
+    float: right;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    margin-top: 17px
+  }
+  .body > h1 {
+    display: inline-block;
+  }
+
+  /* Styling images (sizing images in-lined with writing) */
+  .center-image {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .portrait {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .landscape {
+    width: 100%;
+  }
+
+  /* Training styles */
+  .buttons-unit {
+    margin-top: 60px;
+    text-align: center
+  }
+
+  .buttons-unit a {
+    color: #61dafb
+  }
+
+  .button {
+    font-size: 24px !important;
+    color: #fafafa !important;
+    border: none !important;
+    text-transform: none !important;
+    padding: 10px 30px !important;
+  }
+
+  .red {
+    color: #e4212a !important;
+    border: 1px solid #e4212a !important;
+    font-family: "Avenir Next" !important;
+    font-weight: 400 !important;
+  }
+
+  .buttons-unit .button:active {
+    background: #c5695c
+  }
+
+  .buttons-unit.downloads {
+    margin: 30px auto;
+    width: 300px;
+  }
+
+  /* Video styles for training */
+  video {
+    width: 100%;
+  }
+
+  /* Hide header links */
+  h1:hover .hash-link, h2:hover .hash-link, h3:hover .hash-link, h4:hover .hash-link, h5:hover .hash-link, h6:hover .hash-link {
+    visibility: visible !important;
+  }
+  .hash-link {
+    color: #aaa !important;
+    display: inline-block !important;
+    visibility: hidden !important;
+    padding-left: 5px !important;
+    text-decoration: none !important;
+  }
+  .hash-link > svg {
+    transform: rotate(-30deg) !important;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  body {
+    font-family: Portal-Regular;
+  }
+</style>
+<div style="width: calc(100% - 550px); display: inline-block;">
+  {{ content }}
+</div>
+<nav id="managed-toc">
+  <header>
+    <nav>
+      {% if page.prev %}
+        <a href="/training/{{ page.prev }}">Previous</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="/training/{{ page.next }}">Next</a>
+      {% endif %}
+    </nav>
+  </header>
+  <div>
+    
+    {% include platform_tabs.html %}
+    
+  </div>
+  <div>
+    <h2>Try it out</h2>
+    <a class="button" href="https://cl.ly/293t073Z3735/project.zip" target="_blank">Download the Project</a>
+  </div>
+</nav>
+
+<!-- Logic for platform tabs -->
+<script>
+  // Only show on Develop pages
+  var blocks = document.getElementsByClassName('ios');
+  if (blocks.length > 0) {
+    var platformTabs = document.getElementById('platform-tabs');
+    platformTabs.className = "show";
+  }
+  // Convert <div>...<span><block /></span>...</div>
+  // Into <div>...<block />...</div>
+  var blocks = document.getElementsByTagName('block');
+  for (var i = 0; i < blocks.length; ++i) {
+    var block = blocks[i];
+    var span = blocks[i].parentNode;
+    var container = span.parentNode;
+    container.insertBefore(block, span);
+    container.removeChild(span);
+  }
+  // Convert <div>...<block />content<block />...</div>
+  // Into <div>...<block>content</block><block />...</div>
+  blocks = document.getElementsByTagName('block');
+  for (var i = 0; i < blocks.length; ++i) {
+    var block = blocks[i];
+    while (block.nextSibling && block.nextSibling.tagName !== 'BLOCK') {
+      block.appendChild(block.nextSibling);
+    }
+  }
+  function display(type, value) {
+    var container = document.getElementsByTagName('block')[0].parentNode.parentNode;
+    container.className = 'display-' + type + '-' + value;
+    if (value == 'wpf' || value == 'xam') {
+      container.className += ' display-platform-net';
+    }
+    container.className += ' display-platform-all';
+  }
+
+  // If we are coming to the page with a hash in it (i.e. from a search, for example), try to get
+  // us as close as possible to the correct platform and dev os using the hashtag and block walk up.
+  var foundHash = false;
+  if (window.location.hash !== '' && window.location.hash !== 'content') { // content is default
+    var platform = window.location.hash.slice(1);
+    if (['ios', 'android', 'wpf'].indexOf(platform) > -1) {
+      display('platform', platform);
+      foundHash = true;
+    }
+  }
+  if (!foundHash) {
+    display('platform', 'ios');
+  }
+</script>
