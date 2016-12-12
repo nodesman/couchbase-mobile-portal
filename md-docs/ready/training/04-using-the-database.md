@@ -145,7 +145,7 @@ document.putProperties(properties);
 
 <block class="all" />
 
-Here you're creating an unsaved document instance with a pre-defined **document ID** (i.e. the **_id** property in the document’s JSON body) using the `documentWithID` method. The ID follows the form `{username}.{uuid}` where username is the name of the user logged in. Alternatively, you could also use the `createDocument` method to let the database generate a random **ID** for you.
+Here you're creating an unsaved document instance with a pre-defined **document ID** (i.e. the **_id** property in the document’s JSON body) using the {% st documentWithID(id: String), GetDocument(String id), getDocument(String id) %} method. The ID follows the form `{username}.{uuid}` where username is the name of the user logged in. Alternatively, you could also use the {% st createDocument(), CreateDocument(), createDocument() %} method to let the database generate a random **ID** for you.
 
 ### Try it out
 
@@ -188,7 +188,7 @@ Here you're creating an unsaved document instance with a pre-defined **document 
 
 ## Update a Document
 
-To update a document, you must retrieve it from the database, modify the desired properties and write them back to the database. The `update` method does this operation for you in the form of a callback. The code below updates a list's name property.
+To update a document, you must retrieve it from the database, modify the desired properties and write them back to the database. The {% st update(callback: ((CBLUnsavedRevision) -> Void)), update(UnsavedRevision revision), Update(UnsavedRevision revision) %} method does this operation for you in the form of a callback. The code below updates a list's name property.
 
 <block class="ios" />
 

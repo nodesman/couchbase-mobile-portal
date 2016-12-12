@@ -162,7 +162,15 @@ sectionid: docs
           .display-platform-xam .xam,
           .display-platform-all .all {
             display: block;
-          }</style>
+          }
+          /* Must change the display mode for striped method names.
+           This works with the StripingTag Jekyll plugin. */
+          .display-platform-ios .ios.inline,
+          .display-platform-android .android.inline,
+          .display-platform-net .net.inline {
+            display: inline;
+          }
+          </style>
         <div id="platform-tabs" class="hide">
           <span>Platform:</span>
           <a href="javascript:void(0);" class="button-ios" onclick="display('platform', 'ios')">iOS</a>
@@ -212,24 +220,31 @@ sectionid: docs
         // Into <div>...<block />...</div>
         var blocks = document.getElementsByTagName('block');
         for (var i = 0; i < blocks.length; ++i) {
-          var block = blocks[i];
-          var span = blocks[i].parentNode;
-          var container = span.parentNode;
-          container.insertBefore(block, span);
-          container.removeChild(span);
+          // Ignore blocks that have the inline class name.
+          if (blocks[i].className.indexOf('inline') == -1) {
+            var block = blocks[i];
+            var span = blocks[i].parentNode;
+            var container = span.parentNode;
+            container.insertBefore(block, span);
+            container.removeChild(span);
+          }
         }
         // Convert <div>...<block />content<block />...</div>
         // Into <div>...<block>content</block><block />...</div>
         blocks = document.getElementsByTagName('block');
         for (var i = 0; i < blocks.length; ++i) {
-          var block = blocks[i];
-          while (block.nextSibling && block.nextSibling.tagName !== 'BLOCK') {
-            block.appendChild(block.nextSibling);
+          // Ignore blocks that have the inline class name.
+          if (blocks[i].className.indexOf('inline') == -1) {
+            var block = blocks[i];
+            while (block.nextSibling && block.nextSibling.tagName !== 'BLOCK') {
+              block.appendChild(block.nextSibling);
+            } 
           }
         }
         function display(type, value) {
-          var container = document.getElementsByTagName('block')[0].parentNode;
-          container.className = 'display-' + type + '-' + value;
+          // Place the display-platform-* class on div.inner-content
+          var container = document.getElementsByClassName('inner-content')[0];
+          container.className = 'inner-content display-' + type + '-' + value;
           if (value == 'wpf' || value == 'xam') {
             container.className += ' display-platform-net';
           }
