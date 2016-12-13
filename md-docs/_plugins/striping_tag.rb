@@ -10,9 +10,9 @@ class StripingTag < Liquid::Tag
   	c = input_split[1].strip
   	java = input_split[2].strip
   	
-    output = "<block class=\"ios inline\"> #{swift} </block>"
-    output += "<block class=\"net inline\"> #{c} </block>"
-    output += "<block class=\"android inline\"> #{java} </block>"
+    output = "<block class=\"ios inline\"><code> #{swift} </code></block>"
+    output += "<block class=\"net inline\"><code> #{c} </code></block>"
+    output += "<block class=\"android inline\"><code> #{java} </code></block>"
     return output
   end
   
