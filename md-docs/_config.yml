@@ -40,3 +40,5 @@ redcarpet:
 
 exclude:
   - "*.screenflow"
+
+platform: c

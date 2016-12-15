@@ -4,11 +4,24 @@ title: Manager
 permalink: ready/guides/couchbase-lite/native-api/manager/index.html
 ---
 
+{{ site.platform }}
+
+{% if site.platform == "c" %}
+Your MacBook Pro is going to make you so happy!
+{% elsif site.audience == "pc" %}
+Thanks for supporting the dying PC industry.
+{% else %}
+Congratulations on the purchase of your new computer.
+{% endif %}
+
 A `Manager` is the top-level object that manages a collection of Couchbase Lite `Database` instances. You need to create a `Manager` instance before you can work with Couchbase Lite objects in your Application.
 
 ## Creating a manager
 
 You create a Manager object by calling a constructor or initializer on the Manager class.
+
+
+{% if site.platform == "c" %}
 
 <div class="tabs"></div>
 
@@ -26,6 +39,8 @@ if manager == nil {
 }
 ```
 
+{% elsif site.audience == "pc" %}
+
 ```java+
 JavaContext context = new JavaContext();
 manager = new Manager(context, Manager.DEFAULT_OPTIONS);
@@ -36,9 +51,13 @@ AndroidContext androidContext = new AndroidContext(getApplicationContext());
 manager = new Manager(androidContext, Manager.DEFAULT_OPTIONS);
 ```
 
+{% else %}
+
 ```c+
 var manager = Manager.SharedInstance;
 ```
+
+{% endif %}
 
 ## Dude, where's my database file?
 
