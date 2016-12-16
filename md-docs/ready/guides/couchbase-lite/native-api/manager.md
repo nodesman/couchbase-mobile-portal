@@ -10,33 +10,31 @@ A `Manager` is the top-level object that manages a collection of Couchbase Lite 
 
 You create a Manager object by calling a constructor or initializer on the Manager class.
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 CBLManager *manager = [CBLManager sharedInstance];
 if (!manager) {
 		NSLog(@"Cannot create Manager instance");
 }
 ```
 
-```swift+
+```swift
 let manager = CBLManager.sharedInstance()
 if manager == nil {
 	NSLog("Cannot create Manager Instance")
 }
 ```
 
-```java+
+```java
 JavaContext context = new JavaContext();
 manager = new Manager(context, Manager.DEFAULT_OPTIONS);
 ```
 
-```android+
+```java
 AndroidContext androidContext = new AndroidContext(getApplicationContext());
 manager = new Manager(androidContext, Manager.DEFAULT_OPTIONS);
 ```
 
-```c+
+```c
 var manager = Manager.SharedInstance;
 ```
 
@@ -44,7 +42,7 @@ var manager = Manager.SharedInstance;
 
 The Manager creates a directory in the filesystem and stores databases inside it. Normally, you don't need to care where that is -- your application shouldn't be directly accessing those files. But sometimes it does matter.
 
-- Android: The directory is the location returned by the Android Context object's `getFilesDir()`.
+{% if site.platform == "ios" %}
 - iOS: `Application Support/CouchbaseLite/`
 - macOS: `~/Library/Application Support/com.example.YourAppBundleID/CouchbaseLite/`
 
@@ -52,12 +50,16 @@ The Manager creates a directory in the filesystem and stores databases inside it
 
 On iOS or Mac OS you can change the location of the databases by instantiating the Manager via a constructor/initializer that takes a path as a parameter. This directory will be created if it doesn't already exist. (Of course you should be consistent about what path to use, since if you change the path the application won't be able to find any already-existing databases.)
 
+{% else %}
+
+- Android: The directory is the location returned by the Android Context object's `getFilesDir()`.
+
+{% endif %}
+
 On Android, you can subclass `com.couchbase.lite.android.AndroidContext` and override its `getFilesDir` method to 
 return the desired directory.
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 NSString* dir = WhereIWantCBLStuffToGo();
 NSError* error;
 self.manager = [[CBLManager alloc] initWithDirectory: dir
@@ -68,7 +70,7 @@ if (!manager) {
 }
 ```
 
-```swift+
+```swift
 let dir = WhereIWantCBLStuffToGo()
 var error: NSError?
 self.manager = CBLManager(directory: dir, options: nil, error: &error)
@@ -77,19 +79,19 @@ if manager == nil {
 }
 ```
 
-```java+
+```java
 // Not Manager constructor to specify the directory.
 // Instead you should subclass JavaContext and override
 // the getFilesDir method.
 ```
 
-```android+
+```java
 // Not Manager constructor to specify the directory.
 // Instead you should subclass AndroidContext and override
 // the getFilesDir method.
 ```
 
-```c+
+```c
 var options = new ManagerOptions();
 options.ReadOnly = true;
 Manager manager = new Manager(Directory.CreateDirectory(dbPath), options);
@@ -101,9 +103,7 @@ You can customize the global logging settings for Couchbase Lite via the `Manage
 
 The available tags are:
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 In Objective-C tag groups is disabled by default.
 
 BLIP
@@ -132,7 +132,7 @@ ViewVerbose
 WS
 ```
 
-```swift+
+```swift
 In Swift tag groups is disabled by default.
 
 BLIP
@@ -161,7 +161,7 @@ ViewVerbose
 WS
 ```
 
-```java+android+
+```java
 In Java tag groups are enabled at level WARN by default.
 
 Log tags
@@ -187,7 +187,7 @@ Log.WARN
 Log.ERROR
 ```
 
-```c+
+```c
 Log tags
 
 Log.Domains.Database
@@ -214,21 +214,19 @@ Log.LogLevel.Information
 
 The following code snippet enables logging for the **Sync** tag.
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 CBLManager enableLogging: @"Sync"];
 ```
 
-```swift+
+```swift
 CBLManager.enableLogging("Sync")
 ```
 
-```java+android+
+```java
 Manager.enableLogging("Sync", Log.VERBOSE);
 ```
 
-```c+
+```c
 Log.Domains.Sync.Level = Log.LogLevel.Verbose
 ```
 
@@ -250,9 +248,7 @@ In general, it’s best to do only very limited things using this API, otherwise
 
 Here’s an example that deletes a number of documents given an array of IDs:
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 // "myDB" is the CBLDatabase object in use on the main thread.
 CBLManager* mgr = myDB.manager;
 NSString* name = myDB.name;
@@ -263,7 +259,7 @@ NSString* name = myDB.name;
 }];
 ```
 
-```swift+
+```swift
 // "myDB" is the CBLDatabase object in use on the main thread.
 let mgr = myDB.manager
 let name = myDB.name
@@ -275,11 +271,11 @@ mgr.backgroundTellDatabaseNamed(name, to: { (bgdb: CBLDatabase!) -> Void in
 })
 ```
 
-```java+android+
+```java
 No code example is currently available.
 ```
 
-```c+
+```c
 No code example is currently available.
 ```
 
@@ -287,9 +283,7 @@ No code example is currently available.
 
 If you want to do lots of Couchbase Lite processing in the background in Objective-C, the best way to do it is to start your own background thread and use a new `Manager` instance on it.
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 - (BOOL)application:(UIApplication *)application
         didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -313,7 +307,7 @@ If you want to do lots of Couchbase Lite processing in the background in Objecti
 }
 ```
 
-```swift+
+```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
   let manager = CBLManager.sharedInstance()
   var error: NSError?
@@ -328,19 +322,17 @@ func runBackground(bgMgr: CBLManager) {
 }
 ```
 
-```java+android+
+```java
 No code example is currently available.
 ```
 
-```c+
+```c
 No code example is currently available.
 ```
 
 If you don't plan to use Couchbase Lite on the main thread at all, the setup is even easier. Just have the background thread create a new instance of CBLManager from scratch and use that:
 
-<div class="tabs"></div>
-
-```objective-c+
+```objectivec
 - (BOOL)application:(UIApplication *)application
         didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -360,7 +352,7 @@ If you don't plan to use Couchbase Lite on the main thread at all, the setup is 
 }
 ```
 
-```swift+
+```swift
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
   // We're not going to use Couchbase Lite at all on the main thread;
   // instead we start a background thread to run it on:
@@ -375,10 +367,10 @@ func runBackground {
 }
 ```
 
-```java+android+
+```java
 No code example is currently available.
 ```
 
-```c+
+```c
 No code example is currently available.
 ```

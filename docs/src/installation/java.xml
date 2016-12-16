@@ -3,8 +3,8 @@
         xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../docs.xsd"
-        id="net">
-  <title>.NET</title>
+        id="installation">
+  <title>Installation</title>
   <description></description>
   <introduction></introduction>
 </article>

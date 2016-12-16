@@ -1,7 +1,7 @@
 ---
 id: ios
 title: iOS
-permalink: ready/installation/ios/index.html
+permalink: ready/swift/installation/index.html
 ---
 
 ## Requirements

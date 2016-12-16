@@ -22,7 +22,8 @@
         <aside class="col one-fifth section-nav left-rail"></aside>
         <div class="col four-fifths article">
           <div class="body">
-            <link rel="stylesheet" type="text/css" href="/css/styles.css">
+            <!--<link rel="stylesheet" type="text/css" href="/css/styles.css">-->
+            <link rel="stylesheet" type="text/css" href="https://cl.ly/3v1S0s2t3F1q/styles.css"/>
             <a class="edit-page-link" href="https://github.com/couchbaselabs/couchbase-mobile-portal/tree/master/md-docs/{{ page.path }}" target="_blank">Edit on GitHub</a>
 
             <div class="inner-content">
@@ -92,14 +93,14 @@
                     block.appendChild(block.nextSibling);
                   }
                 }
-                function display(type, value) {
-                  var container = document.getElementsByTagName('block')[0].parentNode;
-                  container.className = 'display-' + type + '-' + value;
-                  if (value == 'wpf' || value == 'xam') {
-                    container.className += ' display-platform-net';
-                  }
-                  container.className += ' display-platform-all';
-                }
+//                function display(type, value) {
+//                  var container = document.getElementsByTagName('block')[0].parentNode;
+//                  container.className = 'display-' + type + '-' + value;
+//                  if (value == 'wpf' || value == 'xam') {
+//                    container.className += ' display-platform-net';
+//                  }
+//                  container.className += ' display-platform-all';
+//                }
 
                 // If we are coming to the page with a hash in it (i.e. from a search, for example), try to get
                 // us as close as possible to the correct platform and dev os using the hashtag and block walk up.
@@ -111,9 +112,9 @@
                     foundHash = true;
                   }
                 }
-                if (!foundHash) {
-                  display('platform', 'ios');
-                }
+//                if (!foundHash) {
+//                  display('platform', 'ios');
+//                }
               </script>
               <!-- Segment.io analytics -->
               <script type="text/javascript">
@@ -186,22 +187,44 @@
             </div>
 
             <script>
-              /**
-               * HACK: To keep the code tabs while using markdown. Insert <div class="tab"></div> in the markdown and this script
-               * finds and replaces all instances with a tab bar.
-               */
-              var tab_bar_html = "</div><a href='javascript:setLanguage(\"swift\")' class=\"tab stripe-active swift\">Swift</a> <a href='javascript:setLanguage(\"objective-c\")' class=\"tab stripe-active objective-c selected\">Objective-C</a> <a href='javascript:setLanguage(\"android\")' class=\"tab stripe-active android\">Android</a> <a href='javascript:setLanguage(\"java\")' class=\"tab stripe-active java\">Java</a> <a href='javascript:setLanguage(\"c\")' class=\"tab stripe-active c\">C#</a>"
-              var tab_bars = document.getElementsByClassName('tabs');
-              var i = tab_bars.length - 1;
-              while (i >= 0) {
-                var parent = tab_bars.item(i).parentNode;
-                var element = document.createElement('div');
-                element.className = 'tab-bar';
-                element.innerHTML = tab_bar_html;
-                parent.replaceChild(element, tab_bars.item(i));
-                i--;
-              }
 
+              function clone(obj) {
+                if (obj === null || typeof(obj) !== 'object' || 'isActiveClone' in obj)
+                  return obj;
+
+                if (obj instanceof Date)
+                  var temp = new obj.constructor(); //or new Date(obj);
+                else
+                  var temp = obj.constructor();
+
+                for (var key in obj) {
+                  if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                    obj['isActiveClone'] = null;
+                    temp[key] = clone(obj[key]);
+                    delete obj['isActiveClone'];
+                  }
+                }
+
+                return temp;
+              }
+              
+              function filterLanguages(language) {
+                console.log(language)
+                var highlights = document.getElementsByClassName('highlight');
+                for (var i = 0; i < highlights.length; i++)  {
+                  var pre = highlights[i].firstElementChild;
+                  var code = pre.firstElementChild;
+                  if (code.className.indexOf(language) == -1) {
+                    pre.style.display = "none";
+                  } else {
+                    console.log('show')
+                    pre.style.display = "block";
+                  }
+                }
+              }
+              console.log("{{ site.languages }}")
+              filterLanguages("{{ site.languages }}");
+              
               /**
                * HACK: To keep the markdown tables styles after ingestion we need to wrap the ouput in <div class="table"></div>
                */

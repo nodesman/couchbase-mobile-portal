@@ -2,9 +2,9 @@
 <article
         xmlns:xi="http://www.w3.org/2001/XInclude"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="../../docs.xsd"
-        id="ios">
-  <title>iOS</title>
+        xsi:noNamespaceSchemaLocation="../docs.xsd"
+        id="installation">
+  <title>Installation</title>
   <description></description>
   <introduction></introduction>
 </article>
