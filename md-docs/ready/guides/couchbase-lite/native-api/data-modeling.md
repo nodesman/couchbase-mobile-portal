@@ -51,7 +51,7 @@ The NSArray property type often needs special handling, to ensure that the items
 
 To prevent this, you can specify that the items of the array property must be of a particular class. Each item will then be converted from JSON according to the property-type rules for that class, described in the previous section. To specify the type, implement a class method with a name of the form propertynameItemClass, as in this example:
 
-```objetivec
+```objectivec
 @interface Star : CBLModel
 @property (copy) NSArray* observationDates;  // items are NSDates
 @end
