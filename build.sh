@@ -5,7 +5,7 @@ rm -rf tmp
 mkdir tmp
 
 echo "Building..."
-jekyll build --source "md-docs/" --destination "${TMP}" --config "md-docs/_config.yml","md-docs/_config.${1}.yml"
+jekyll build --source "md-docs/" --destination "${TMP}" --config "md-docs/_config.yml","md-docs/_config.${1}.yml","md-docs/_config_prod.yml"
 java -jar site/gtor/saxon9.jar -xi -l:on -s:site/src/site-hippo.xml -xsl:site/gtor/hippo.xslt output-directory="${TMP}/"
 
 cd md-docs
