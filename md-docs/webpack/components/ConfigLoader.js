@@ -14,7 +14,7 @@ export default class ConfigLoader extends Component {
     };
   }
   componentWillMount() {
-    fetch('http://localhost:9000/tmp/sg.json')
+    fetch(window.configurl)
       .then(function(response) {
         return response.json();
       }).then(function(json) {

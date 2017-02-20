@@ -8,6 +8,11 @@ echo "Building..."
 jekyll build --source "md-docs/" --destination "${TMP}" --config "md-docs/_config.yml","md-docs/_config.${1}.yml"
 java -jar site/gtor/saxon9.jar -xi -l:on -s:site/src/site-hippo.xml -xsl:site/gtor/hippo.xslt output-directory="${TMP}/"
 
+cd md-docs
+webpack
+cd ..
+mv md-docs/_site/assets/ tmp/assets/
+
 if [[ ${2} = "upload" ]]; then
 	echo "Zipping..."	
 	ditto -c -k --sequesterRsrc --keepParent "${TMP}" "tmp.zip"
