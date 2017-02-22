@@ -19,3 +19,10 @@ The code below shows you how to:
 
 <p data-height="300" data-theme-id="27686" data-slug-hash="zNLqyL" data-default-tab="js,result" data-user="Jamiltz" data-embed-version="2" data-pen-title="Get docs by keys" class="codepen">See the Pen <a href="http://codepen.io/Jamiltz/pen/zNLqyL/">Get docs by keys</a> by Jamiltz (<a href="http://codepen.io/Jamiltz">@Jamiltz</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+## User session
+
+{% include sg-codepen.html %}
+
+<p data-height="300" data-theme-id="27686" data-slug-hash="LWPzvr" data-default-tab="js,result" data-user="Jamiltz" data-embed-version="2" data-pen-title="Guide: Sync Gateway session" class="codepen">See the Pen <a href="http://codepen.io/Jamiltz/pen/LWPzvr/">Guide: Sync Gateway session</a> by Jamiltz (<a href="http://codepen.io/Jamiltz">@Jamiltz</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
