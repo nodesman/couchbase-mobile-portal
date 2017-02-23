@@ -1,12 +1,13 @@
+type: object
 properties:
   adminInterface:
     description: Port or TCP network address (IP address and the port) that the Admin REST API listens on.
     type: string
-    default: '127.0.0.1:4985'
+    default: ':4985'
   adminUI:
     description: URL of the Sync Gateway Admin Console HTML page.
     type: string
-    default: 'localhost:4985/_admin/'
+    default: ':4985/_admin/'
   compressResponses:
     description: Whether to compress HTTP responses. Set to false to disable compression of HTTP responses.
     type: boolean
@@ -20,19 +21,19 @@ properties:
     properties:
       Origin:
         type: array
+        description: Comma-separated list of allowed origins; use an asterisk (*) to allow access from everywhere.
         items:
           type: string
-          description: Comma-separated list of allowed origins; use an asterisk (*) to allow access from everywhere.
       LoginOrigin:
         type: array
+        description: Comma-separated list of allowed login origins.
         items:
           type: string
-          description: Comma-separated list of allowed login origins.
       Headers:
         type: array
+        description: Comma-separated list of allowed HTTP headers.
         items:
           type: string
-          description: Comma-separated list of allowed HTTP headers.
       MaxAge:
         type: integer
         description: Value for the Access-Control-Max-Age header. This is the the number of seconds that the response to a CORS preflight request can be cached before sending another preflight request.
@@ -118,9 +119,59 @@ properties:
             type: string
             description: Feed type DCP or TAP.
             default: TAP
+          oidc:
+            type: object
+            description: OIDC providers.
+            properties:
+              default_provider:
+                type: string
+                description: Provider to use for OIDC requests that don't specify a provider. If only one provider is specified in the providers map, it is used as the default provider. If multiple providers are defined and default_provider is not specified, requests to /db/_oidc must specify the provider parameter.
+              providers:
+                type: object
+                properties:
+                  foo_provider:
+                    type: object
+                    properties:
+                      issuer:
+                        type: string
+                        description: The OpenID Connect Provider issuer.
+                      client_id:
+                        type: string
+                        description: The client ID defined in the provider for Sync Gateway.
+                      validation_key:
+                        type: string
+                        description: Client secret associated with the client. Required for auth code flow.
+                      signing_method:
+                        type: string
+                        description: Optional. Signing method used for validation key (provides additional security).
+                      callback_url:
+                        type: string
+                        description: Optional. The callback URL to be invoked after the end-user obtains a client token. When not provided, Sync Gateway will generate it based on the incoming request.
+                      register:
+                        type: string
+                        description: Optional. Whether Sync Gateway should automatically create users for successfully authenticated users that don't have an already existing user in Sync Gateway.
+                      disable_session:
+                        type: string
+                        description: Optional. By default, Sync Gateway will create a new session for the user upon successful OIDC authentication, and set that session in the usual way on the _oidc_callback and _oidc_refresh responses. If disable_session is set to true, the session is not created (clients must use the ID token for subsequent authentications).
+                      scope:
+                        type: string
+                        description: Optional. By default, Sync Gateway uses the scope "openid email" when calling the OP's authorize endpoint. If the scope property is defined in the config (as a map of string values), it will override this scope.
+                      include_access:
+                        type: string
+                        description: Optional. When true, the oidccallback response will include the access_token, expires_at and token_type properties returned by the OP.
+                      user_prefix:
+                        type: string
+                        description: Optional. Specifies the prefix for Sync Gateway usernames for the provider. When not specified, defaults to issuer.
+                      discovery_url:
+                        type: string
+                        description: Optional. Discovery URL used to obtain the OpenID Connect provider configuration. If not specified, the default discovery endpoint of [issuer]/.well-known/openid-configuration will be used.
+                      disable_cfg_validation:
+                        type: string
+                        description: Optional. Disables strict validation of the OpenID Connect configuration.
           offline:
             type: string
             description: Whether the database if kept offline when Sync Gateway starts. Specifying the value true results in the database being kept offline. The default (if the property is omitted) is to bring the database online when Sync Gateway starts. For more information, see Taking databases offline and bringing them online.
+            default: 'false'
           password:
             type: string
             description: Bucket password for authenticating to Couchbase Server. There is no default.
@@ -137,15 +188,16 @@ properties:
             default: 1000
           roles:
             type: object
-            description: Admin roles
+            description: Initial roles.
             properties:
               foo_role:
                 type: object
+                description: The role name.
                 properties:
                   admin_channels:
                     type: array
+                    description: The list of channels this role is automatically granted access to when Sync Gateway starts.
                     items:
-                      description: Channel name.
                       type: string
           server:
             type: string
@@ -153,27 +205,30 @@ properties:
           sync:
             type: string
             description: Sync function, which defines which users can read, update, or delete which documents. The default is a default sync function. For more information, see the section Sync function API.
+            default: function(doc, oldDoc) {channel(doc.username, doc.channels)};
           username:
             type: string
             description: Bucket username for authenticating to Couchbase Server. There is no default.
           users:
             type: object
+            description: Initial user accounts.
             properties:
               foo_user:
                 type: object
+                description: The user's name.
                 properties:
                   password:
                     type: string
                     description: The user's password.
                   admin_channels:
                     type: array
+                    description: The list of channels this user is automatically granted access to when Sync Gateway starts.
                     items:
-                      description: Channel name.
                       type: string
                   admin_roles:
                     type: array
+                    description: The list of roles this user is automatically assigned to when Sync Gateway starts.
                     items:
-                      description: Role name.
                       type: string
                   disabled:
                     type: boolean
@@ -183,7 +238,7 @@ properties:
     type: object
     properties:
       register:
-        description: 'Whether the Facebook Login server will register new user accounts (true or false)'
+        description: Whether the Facebook Login server will register new user accounts.
         type: boolean
         default: 'false'
   interface:
@@ -195,6 +250,21 @@ properties:
     type: array
     items:
       type: string
+      enum:
+        - Access:
+            description: Anytime an access() call is made in the sync function.
+        - Attach:
+            description: Attachment processing.
+        - Auth:
+            description: Sync Gateway interactions with the bucket (verbose logging).
+        - Bucket
+        - Cache
+        - Changes
+        - CRUD
+        - DCP
+        - Events
+        - Feed
+        - HTTP
     default: '["*"]'
   logFilePath:
     description: Absolute or relative path on the filesystem to the log file. A relative path is from the directory that contains the Sync Gateway executable file.
@@ -207,6 +277,7 @@ properties:
   maxCouchbaseOverflow:
     description: Maximum number of overflow sockets to open.
     type: integer
+    default: 0
   maxFileDescriptors:
     description: Maximum number of open file descriptors.
     type: integer
@@ -217,6 +288,7 @@ properties:
   maxIncomingConnections:
     description: Maximum number of incoming HTTP connections to accept.
     type: integer
+    default: 0
   pretty:
     description: Whether to pretty-print JSON responses.
     type: boolean
@@ -224,6 +296,27 @@ properties:
   profileInterface:
     description: TCP network address (IP address and the port) that the Go profile API listens on. You can obtain go profiling information from the interface. You can omit the IP address.
     type: string
+  replications:
+    type: array
+    items:
+      type: object
+      properties:
+        replication_id:
+          type: string
+        source:
+          type: string
+        target:
+          type: string
+        continuous:
+          type: boolean
+        changes_feed_limit:
+          type: string
+        filter:
+          type: string
+        query_params:
+          type: array
+          items:
+            type: string
   serverReadTimeout:
     description: Maximum duration in seconds before timing out the read of an HTTP(S) request.
     type: integer
