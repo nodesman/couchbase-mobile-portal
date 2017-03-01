@@ -8,6 +8,19 @@ properties:
     description: URL of the Sync Gateway Admin Console HTML page.
     type: string
     default: ':4985/_admin/'
+  cluster_config:
+    type: object
+    description: The configuration to specify where the data bucket resides.
+    properties:
+      server:
+        type: string
+        description: The hostname of the Couchbase Server cluster.
+      bucket:
+        type: string
+        description: The bucket name where the data is stored (i.e the one specified in the database configuration.)
+      data_dir:
+        type: string
+        description: Path to the data directory.
   compressResponses:
     description: Whether to compress HTTP responses. Set to false to disable compression of HTTP responses.
     type: boolean
@@ -55,6 +68,18 @@ properties:
           bucket:
             type: string
             description: Bucket name on Couchbase Server or a Walrus bucket. The default is the database name.
+          channel_index:
+            type: object
+            properties:
+              writer:
+                type: boolean
+                description: Whether the channel index node can write to the bucket.
+              server:
+                type: string
+                description: Hostname to the Couchbase Server cluster.
+              bucket:
+                type: string
+                description: Bucket name for channel indexing. A common name is "channel_index".
           cache:
             type: object
             description: Database cache configuration.
@@ -280,6 +305,81 @@ properties:
     description: Absolute or relative path on the filesystem to the log file. A relative path is from the directory that contains the Sync Gateway executable file.
     type: string
     default: 'stderr'
+  logging:
+    description: The logging object.
+    type: object
+    properties:
+      default:
+        type: object
+        properties:
+          logFilePath:
+            description: Absolute or relative path on the filesystem to the log file. A relative path is from the directory that contains the Sync Gateway executable file.
+            type: string
+            default: 'stderr'
+          logKeys:
+            description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys. See Log keys. The default is HTTP.
+            type: array
+            items:
+              type: string
+              enum:
+                - Access:
+                    description: Anytime an access() call is made in the sync function.
+                - Attach:
+                    description: Attachment processing.
+                - Auth:
+                    description: Authentication.
+                - Bucket:
+                    description: Sync Gateway interactions with the bucket (verbose logging).
+                - Cache:
+                    description: Interactions with Sync Gateway's in-memory channel cache.
+                - Changes:
+                    description: Processing of _changes requests.
+                - CRUD:
+                    description: Updates made by Sync Gateway to documents.
+                - DCP:
+                    description: DCP-feed processing (verbose logging).
+                - Events:
+                    description: Event processing (webhooks).
+                - Feed:
+                    description: Server-feed processing.
+                - HTTP:
+                    description: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
+            default: '["HTTP"]'
+          logLevel:
+            description: The level of logging.
+            type: array
+            items:
+              type: string
+              enum:
+                - debug:
+                    description: ''
+                - info:
+                    description: ''
+                - error:
+                    description: ''
+                - panic:
+                    description: ''
+                - fatal:
+                    description: ''
+            default: '["???"]'
+          rotation:
+            description: The log file may be rotated by defining a "rotation" sub document. See details in the table below.
+            type: object
+            properties:
+              maxsize:
+                type: integer
+                description: The maximum size in MB of the log file before it gets rotated.
+                default: 100
+              maxage:
+                type: integer
+                description: The maximum number of days to retain old log files.
+              maxbackups:
+                type: integer
+                description: The maximum number of old log files to retain.
+              localtime:
+                type: boolean
+                description: If true, it uses the computer's local time to format the backup timestamp.
+                default: 'UTC'
   maxCouchbaseConnections:
     description: Maximum number of sockets to open to a Couchbase Server node.
     type: integer
