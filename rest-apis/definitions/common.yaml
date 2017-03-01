@@ -165,6 +165,9 @@ LogTags:
     HTTP:
       type: boolean
       description: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
+    HTTP++:
+      type: boolean
+      description: Logs all request and response bodies. This tag is particularly helpful in debugging issues related to access control and document schemas.
 PurgeBody:
   type: object
   description: Document ID
