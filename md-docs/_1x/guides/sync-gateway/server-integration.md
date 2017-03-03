@@ -158,6 +158,17 @@ You can configure Sync Gateway to log information about event handling, by inclu
 
 ## Changes Worker Pattern
 
+The scenario below shows an example of subscribing to the changes feed (click on the image to open it in a new tab).
+
+- Creates a database.
+- Subscribe for change notifications using the `/{db}/_changes` endpoint.
+- Insert documents and notice the sequence number incrementing.
+
+{% include sg-codepen.html %}
+<a href="http://codepen.io/Jamiltz/pen/zZqMMx?editors=1111">
+![](../img/codepen-changes-feed.gif)
+</a>
+
 This article describes how to use the changes worker pattern to integrate Sync Gateway with other backend processes. The changes worker pattern treats documents as state machines and uses a changes feed to obtain information about when documents change. This integration permits applications to implement business logic that reacts to changes in documents.
 
 If you connect to a changes feed of some channels, you'll get lines of JSON for each matching change.
