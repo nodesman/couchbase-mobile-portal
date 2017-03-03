@@ -6,7 +6,23 @@ An introductory guide to the Couchbase Lite APIs. The Couchbase Lite Listener ex
 
 The Listener API handles data as JSON documents, and uses the same concepts such as revisions, documents, replications, views and queries.
 
-## View query
+## Query
+
+### Pagination
+
+The code below shows you how to:
+
+- Create a database.
+- Add 10 documents.
+- Register a simple query.
+- Use the `startkey` and `limit` parameters.
+
+{% include java-codepen.html %}
+<a href="http://codepen.io/Jamiltz/pen/ZeWPeV?editors=1011">
+	![](img/codepen-pagination.gif)
+</a>
+
+### Query documents by keys
 
 The code below shows you how to:
 
@@ -16,9 +32,9 @@ The code below shows you how to:
 - Query the view.
 
 {% include java-codepen.html %}
-
-<p data-height="300" data-theme-id="27686" data-slug-hash="zNLqyL" data-default-tab="js,result" data-user="Jamiltz" data-embed-version="2" data-pen-title="Get docs by keys" class="codepen">See the Pen <a href="http://codepen.io/Jamiltz/pen/zNLqyL/">Get docs by keys</a> by Jamiltz (<a href="http://codepen.io/Jamiltz">@Jamiltz</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<a href="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011">
+	![](img/codepen-view-query.gif)
+</a>
 
 ## User session
 
