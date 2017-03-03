@@ -80,67 +80,17 @@ With this method, you can embed the username and password in the replication URL
 
 ## App Server for User Registration
 
-In the previous section, the user credentials (**john/pass**) were hardcoded in the configuration file. If you intend to have a sign up screen on your application then users must be created dynamically. For this reason, Sync Gateway users can also be created on the Admin REST API (port 4985 by default). This port is not accessible from the clients directly however.
+In the previous section, the user credentials (**john/pass**) were hardcoded in the configuration file. If you intend to have a sign up screen in your application then users must be created dynamically. Users can be created on the Admin REST API [/{db}/_user](../../../references/sync-gateway/admin-rest-api/index.html#!/user/post_db_user) endpoint. However, the Admin REST API is not accessible from the clients directly.
 
-To allow users to sign up, it is recommended to have an app server sitting alongside Sync Gateway that performs the user validation, creates a new user on the Sync Gateway admin port and then returns the response to the application.
+To allow users to sign up, we recommend to use an app server sitting alongside Sync Gateway that performs the user validation, creates a new user on the Sync Gateway Admin REST API and then returns the response to the application.
 
-The following example will use the Sync Gateway Swagger spec and Node.js client to perform this operation. However, you may use the server-side language of your choice since it's a simple HTTP request.
+The code below shows you how to:
 
-Install the following dependencies.
+- Create a user through the Admin REST API.
+- Log in as this user through the Public REST API.
+- Log in with incorrect credentials.
 
-```bash
-npm install swagger-client express body-parser
-```
-
-Open a new file called `app.js` with the following.
-
-```javascript
-var Swagger = require('swagger-client')
-  , express = require('express')
-  , bodyParser = require('body-parser');
-
-var client = new Swagger({
-  url: 'http://developer.couchbase.com/mobile/swagger/sync-gateway-admin/spec.json',
-  usePromise: true
-})
-  .then(function (res) {
-    client = res;
-  });
-
-var app = express();
-app.use(bodyParser.json());
-
-app.post('/signup', function (req, res) {
-  client.user.post_db_user({db: 'todo', body: {name: req.body.name, password: req.body.password}})
-    .then(function (userRes) {
-      res.status(userRes);
-      res.send(userRes);
-    })
-    .catch(function (err) {
-      res.status(err.status);
-      res.send(err);
-    });
-});
-
-app.listen(3000, function () {
-  console.log('App listening at http://localhost:3000');
-});
-```
-
-Here, you're using the `post_db_user` method to create the user and the Node.js express module to create a route and return the response from Sync Gateway on the admin port. Start the app server from the command line.
-
-```bash
-node app.js
-```
-
-Create a user using curl.
-
-```bash
-curl -H 'Content-Type: application/json' -X POST 'http://localhost:3000/signup' \
-     -d '{"name": "john", "password": "pass"}'
-```
-
-You can now send this request from your mobile and web clients and display a message according to the response status:
-
-- `201`: The user was successfully created
-- `409`: A user with this name already exists
+{% include sg-cors-login-codepen.html %}
+<a href="http://codepen.io/Jamiltz/pen/LWPzvr?editors=1011">
+	![](https://cl.ly/3f0F1b1z080t/codepen-signup-login.gif)
+</a>

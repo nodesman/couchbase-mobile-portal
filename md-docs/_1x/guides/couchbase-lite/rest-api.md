@@ -2,9 +2,9 @@
 title: REST API
 ---
 
-An introductory guide to the Couchbase Lite APIs. The Couchbase Lite Listener exposes the same functionality as the native SDKs through a common RESTful API. You can perform the same operations on the database by making API calls.
+The Couchbase Lite Listener exposes the same functionality as the native API through a common RESTful API. You can perform the same operations on the database by making HTTP calls.
 
-The Listener API handles data as JSON documents, and uses the same concepts such as revisions, documents, replications, views and queries.
+The Listener API handles data as JSON documents, and uses the same concepts such as revisions, documents, replications, views and queries. This page lists a few common operations, you open it on Codepen and edit the code for each one.
 
 ## Query
 
@@ -35,10 +35,3 @@ The code below shows you how to:
 <a href="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011">
 	![](https://cl.ly/1H391k2t3F3D/codepen-view-query.gif)
 </a>
-
-## User session
-
-{% include sg-codepen.html %}
-
-<p data-height="300" data-theme-id="27686" data-slug-hash="LWPzvr" data-default-tab="js,result" data-user="Jamiltz" data-embed-version="2" data-pen-title="Guide: Sync Gateway session" class="codepen">See the Pen <a href="http://codepen.io/Jamiltz/pen/LWPzvr/">Guide: Sync Gateway session</a> by Jamiltz (<a href="http://codepen.io/Jamiltz">@Jamiltz</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
