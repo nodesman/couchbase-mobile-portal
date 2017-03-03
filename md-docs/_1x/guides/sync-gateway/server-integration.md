@@ -166,7 +166,7 @@ The scenario below shows an example of subscribing to the changes feed (click on
 
 {% include sg-codepen.html %}
 <a href="http://codepen.io/Jamiltz/pen/zZqMMx?editors=1111">
-![](../img/codepen-changes-feed.gif)
+![](https://cl.ly/143K2y1z1b2N/codepen-changes-feed.gif)
 </a>
 
 This article describes how to use the changes worker pattern to integrate Sync Gateway with other backend processes. The changes worker pattern treats documents as state machines and uses a changes feed to obtain information about when documents change. This integration permits applications to implement business logic that reacts to changes in documents.
