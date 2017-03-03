@@ -2,7 +2,7 @@
 title: REST API
 ---
 
-An introductory guide to the Couchbase Lite APIs. The Couchbase Lite Listener exposes the same functionality as the native SDKs through a common RESTful API. You can perform the same operations on the database by making API calles.
+An introductory guide to the Couchbase Lite APIs. The Couchbase Lite Listener exposes the same functionality as the native SDKs through a common RESTful API. You can perform the same operations on the database by making API calls.
 
 The Listener API handles data as JSON documents, and uses the same concepts such as revisions, documents, replications, views and queries.
 
@@ -19,7 +19,7 @@ The code below shows you how to:
 
 {% include java-codepen.html %}
 <a href="http://codepen.io/Jamiltz/pen/ZeWPeV?editors=1011">
-	![](img/codepen-pagination.gif)
+	![](https://cl.ly/1D2y0u2G1E44/codepen-pagination.gif)
 </a>
 
 ### Query documents by keys
@@ -33,7 +33,7 @@ The code below shows you how to:
 
 {% include java-codepen.html %}
 <a href="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011">
-	![](img/codepen-view-query.gif)
+	![](https://cl.ly/1H391k2t3F3D/codepen-view-query.gif)
 </a>
 
 ## User session
