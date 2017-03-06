@@ -354,16 +354,16 @@ properties:
               type: string
               enum:
                 - debug:
-                    description: ''
+                    description: 'Print all debug messages. With this level of logging, logs are usually voluminous. This log level is usually disabled in production.'
                 - info:
-                    description: ''
+                    description: 'Pint all information messages.'
                 - error:
-                    description: ''
+                    description: 'Print all errors. If an application is running smoothly it should not generate any error level logs.'
                 - panic:
-                    description: ''
+                    description: 'Logs a message, then panics.'
                 - fatal:
-                    description: ''
-            default: '["???"]'
+                    description: 'Logs a message, then calls os.Exit(1).'
+            default: '["info"]'
           rotation:
             description: The log file may be rotated by defining a "rotation" sub document. See details in the table below.
             type: object
