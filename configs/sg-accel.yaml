@@ -8,8 +8,8 @@ properties:
     properties:
       num_shards:
         type: integer
-        description: todo
-        default: todo
+        description: Represents the maximum number of concurrent Sync Gateway Accelerator nodes that can be supported by the index. It is only necessary to override the default value for large Sync Gateway Accelerator clusters. Higher num_shards values can result in a more fragmented index, as entries in the index are grouped by shard. A higher num_shards value results in more work for index reads that scan all shards (in large backfill scenarios for example).
+        default: 16
   cluster_config:
     type: object
     description: The configuration to specify where the data bucket resides.
