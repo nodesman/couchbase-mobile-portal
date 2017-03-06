@@ -317,7 +317,7 @@ properties:
             type: string
             default: 'stderr'
           logKeys:
-            description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys. See Log keys. The default is HTTP.
+            description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
             type: array
             items:
               type: string
