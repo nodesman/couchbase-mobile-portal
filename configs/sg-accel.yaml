@@ -22,7 +22,7 @@ properties:
         description: The bucket name where the data is stored (i.e the one specified in the database configuration.)
       data_dir:
         type: string
-        description: Path to the data directory.
+        description: The directory to store the Sync Gateway Accelerator internal files. Those files can be ignored from back-ups and Sync Gateway Accelerator will re-create them on start-up if they get deleted.
   couchbaseKeepaliveInterval:
     description: TCP keep-alive interval in seconds between Sync Gateway and Couchbase Server.
     type: integer
