@@ -71,9 +71,6 @@ properties:
           channel_index:
             type: object
             properties:
-              writer:
-                type: boolean
-                description: Whether the channel index node can write to the bucket.
               server:
                 type: string
                 description: Hostname to the Couchbase Server cluster.
