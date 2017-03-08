@@ -243,7 +243,7 @@ properties:
         default: 'false'
   interface:
     description: Public REST API port.
-    type: boolean
+    type: string
     default: ':4984'
   log:
     description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
