@@ -8,19 +8,6 @@ properties:
     description: URL of the Sync Gateway Admin Console HTML page.
     type: string
     default: ':4985/_admin/'
-  cluster_config:
-    type: object
-    description: The configuration to specify where the data bucket resides.
-    properties:
-      server:
-        type: string
-        description: The hostname of the Couchbase Server cluster.
-      bucket:
-        type: string
-        description: The bucket name where the data is stored (i.e the one specified in the database configuration.)
-      data_dir:
-        type: string
-        description: Path to the data directory.
   compressResponses:
     description: Whether to compress HTTP responses. Set to false to disable compression of HTTP responses.
     type: boolean
