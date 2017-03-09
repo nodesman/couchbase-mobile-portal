@@ -17,10 +17,20 @@ The code below shows you how to:
 - Register a simple query.
 - Use the `startkey` and `limit` parameters.
 
-{% include java-codepen.html %}
-<a href="http://codepen.io/Jamiltz/pen/ZeWPeV?editors=1011">
-	![](https://cl.ly/1D2y0u2G1E44/codepen-pagination.gif)
-</a>
+```javascript
+client.query.get_db_design_ddoc_view_view({
+	view: 'byMenu',
+	ddoc: 'main',
+	db: db,
+	startkey: document.getElementById('startkey').value,
+	limit: document.getElementById('limit').value
+})
+	.then(function (res) {
+		console.log("View query returned " + res.obj.rows.length + " docs");
+	})
+	.catch(function (err) {console.log(err);});
+```
+{% include java-codepen.html preview="https://cl.ly/1D2y0u2G1E44/codepen-pagination.gif" codepen="http://codepen.io/Jamiltz/pen/ZeWPeV?editors=1011" %}
 
 ### Query documents by keys
 
@@ -31,7 +41,16 @@ The code below shows you how to:
 - Add documents.
 - Query the view.
 
-{% include java-codepen.html %}
-<a href="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011">
-	![](https://cl.ly/1H391k2t3F3D/codepen-view-query.gif)
-</a>
+```javascript
+client.query.post_db_design_ddoc_view_view({
+	view: 'byMenu',
+	ddoc: 'main',
+	db: db,
+	body: {keys: [1]}
+})
+	.then(function (res) {
+		console.log("View query returned " + res.obj.rows.length + " docs");
+	})
+	.catch(function (err) {console.log(err);});
+```
+{% include java-codepen.html preview="https://cl.ly/1H391k2t3F3D/codepen-view-query.gif" codepen="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011" %}
