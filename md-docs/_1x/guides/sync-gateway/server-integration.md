@@ -164,10 +164,20 @@ The scenario below shows an example of subscribing to the changes feed (click on
 - Subscribe for change notifications using the `/{db}/_changes` endpoint.
 - Insert documents and notice the sequence number incrementing.
 
-{% include sg-codepen.html %}
-<a href="http://codepen.io/Jamiltz/pen/zZqMMx?editors=1111">
-![](https://cl.ly/143K2y1z1b2N/codepen-changes-feed.gif)
-</a>
+```javascript
+function subscribeToChangesFeed(seq) {
+  client.database.get_db_changes({db: db, feed: 'longpoll', since: seq})
+    .then(function (res) {
+      var data = res.obj;
+      subscribeToChangesFeed(data.last_seq);
+      document.getElementById('seq').innerText = data.last_seq;
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+};
+```
+{% include sg-codepen.html preview="https://cl.ly/143K2y1z1b2N/codepen-changes-feed.gif" codepen="http://codepen.io/Jamiltz/pen/zZqMMx?editors=1111" %}
 
 This article describes how to use the changes worker pattern to integrate Sync Gateway with other backend processes. The changes worker pattern treats documents as state machines and uses a changes feed to obtain information about when documents change. This integration permits applications to implement business logic that reacts to changes in documents.
 

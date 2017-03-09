@@ -90,7 +90,22 @@ The code below shows you how to:
 - Log in as this user through the Public REST API.
 - Log in with incorrect credentials.
 
-{% include sg-cors-login-codepen.html %}
-<a href="http://codepen.io/Jamiltz/pen/LWPzvr?editors=1011">
-	![](https://cl.ly/3f0F1b1z080t/codepen-signup-login.gif)
-</a>
+```javascript
+var name = document.getElementById('name').value;
+var password = document.getElementById('password').value;
+client.session.post_db_session({db: db, SessionBody: {name: name, password: password}})
+	.then(function (res) {
+		if (res.status == 200) {
+			console.log('Session created. Response object :: ' + JSON.stringify(res.obj));
+			document.getElementById('status').innerText = 'Logged in';
+		};
+	})
+	.catch(function (err) {
+		if (err.status == 401) {
+			document.getElementById('status').innerText = 'Invalid credentials';
+		} else {
+			console.log(err);
+		}
+	});
+```
+{% include sg-cors-login-codepen.html codepen="http://codepen.io/Jamiltz/pen/LWPzvr?editors=1011" preview="https://cl.ly/3f0F1b1z080t/codepen-signup-login.gif" %}
