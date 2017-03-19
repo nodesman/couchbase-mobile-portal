@@ -134,3 +134,29 @@ of the databases that the instance serves. To the right of the gray dashed line,
 6. When a database is offline, you can resync the database. During the resynchronization, the database status is 
 ReSyncing.
 7. When a database is offline, you can load configuration properties for the database, without stopping and re-starting the Sync Gateway instance. The new configuration properties are applied when the database is brought online.
+
+## Example
+
+The code below shows you how to:
+
+- Take the database offline.
+- Update the configuration file while the database is offline.
+- Bring the database back online.
+
+```javascript
+client.database.get_db_config({db: db})
+	.then(function (res) {
+		var config = res.obj;
+		config.sync = `function(doc, oldDoc){throw({forbidden:'Hello World'});}`;
+		config.users.foo = {password: 'bar'};
+		return client.database.put_db_config({db: db, body: config});
+	})
+	.then(function (res) {
+		console.log("SG config updated for sync_gateway database.");
+		return client.database.post_db_offline({db: db});
+	})
+	.then(function (res) {
+		return client.database.post_db_online({db: db});
+	});
+```
+{% include sg-codepen.html codepen="http://codepen.io/Jamiltz/pen/QdrjOY?editors=1011" preview="https://cl.ly/2W162Y3T0X2T/61d6f71099da0d3818e3a04101259b88db758fbc.gif" %}
