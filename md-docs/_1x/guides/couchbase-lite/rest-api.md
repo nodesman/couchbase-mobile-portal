@@ -54,3 +54,29 @@ client.query.post_db_design_ddoc_view_view({
 	.catch(function (err) {console.log(err);});
 ```
 {% include java-codepen.html preview="https://cl.ly/1H391k2t3F3D/codepen-view-query.gif" codepen="http://codepen.io/Jamiltz/pen/zNLqyL?editors=1011" %}
+
+### Data aggregation
+
+The following view code shows you how to:
+
+- Create a database.
+- Insert documents in bulk.
+- Query the number of documents whose `type` property is equal to `task`.
+
+```javascript
+var views = {
+  views: {
+    byMenu: {
+      map: function(doc) {
+        if (doc.type && (doc.type === 'task')) {
+          emit(doc._id, null);
+        }
+      }.toString(),
+      reduce: function(keys, values) {
+        return values.length;
+      }.toString()
+    }
+  }
+};
+```
+{% include java-codepen.html preview="https://cl.ly/313E3P2R2E2j/grouping-query.gif" codepen="http://codepen.io/Jamiltz/pen/LWQRYE?editors=1011" %}
