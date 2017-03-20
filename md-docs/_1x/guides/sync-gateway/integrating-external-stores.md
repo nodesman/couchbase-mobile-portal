@@ -118,6 +118,49 @@ Notice that the `_rev` property is also stored on each record on the external st
 
 Run the program again, the same number of documents are visible in Sync Gateway. This time with a 2nd generation revision number. This update operation was succesful because the parent revision number was sent as part of the request body.
 
+### Importing Changes Only
+
+The bulk insert operation is convenient to insert many documents at once. There are scenarios in which you may want 
+to insert a document only if it has changed. The Sync Function is loaded with the [underscore.js](http://underscorejs.org/) library which provides various JavaScript utility methods. For example, you can use the `isEqual` function to perform a deep equal comparison between `doc` and `oldDoc` in the Sync Function. The follow code shows you how to:
+
+- Insert documents in bulk.
+- Print all properties of the document to the logs.
+- Perform a deep equal comparison between the two.
+
+```json
+{
+	"databases": {
+		"sync_gateway": {
+			"server": "walrus:",
+			"pool": "default",
+			"bucket": "sync_gateway",
+			"name": "sync_gateway",
+			"sync": `function (doc, oldDoc) {
+			  log(_.values(doc));
+				log(_.values(oldDoc));
+				if (oldDoc) {
+				 delete oldDoc._rev;
+				 delete doc._rev;
+				}
+				if (_.isEqual(doc, oldDoc)) {
+				 throw({forbidden: "There are no changes"});
+				}
+			}`,
+			"users": {
+				"GUEST": {
+					"name": "",
+					"admin_channels": [
+						"*"
+					],
+					"all_channels": null
+				}
+			}
+		}
+	}
+}
+```
+{% include sg-codepen.html preview="https://cl.ly/1j230E141V0s/changes-only.gif" codepen="http://codepen.io/Jamiltz/pen/YZeQxm?editors=1011" %}
+
 ## Exporting Documents
 
 To export documents from Couchbase Mobile to the external system you will use a changes feed request to subscribe to changes and persist them to the external store.
