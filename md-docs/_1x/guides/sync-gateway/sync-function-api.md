@@ -60,13 +60,27 @@ In plain English: by default, a document will be assigned to the channels listed
 
 ### Changing the sync function
 
-To change a database's sync function, you simply edit the function definition in the configuration file, then restart the Sync Gateway. (Or instead of restarting, you can use the REST API to "delete" and then "create" the database.)
+The Sync Function computes document routing to channels and user access to channels at document write time. If the Sync Function is changed, Sync Gateway needs to reprocess all existing documents in the bucket to recalculate the routing and access assignments.
 
-Changing the sync function is an expensive operation because it requires every document in the database to be processed by the new function, to update the channel and access assignments. This happens while the database is being opened, and the database can't accept any requests until this process is complete (because no user's full access privileges are known until all documents have been scanned.) Therefore the update may result in application downtime.
+The Admin REST API has a re-sync endpoint to process every document in the database again. To update the Sync Function, it is recommended to follow the steps outlined below:
+
+1. Update the configuration file of the Sync Gateway instance.
+2. Restart Sync Gateway.
+3. Take the database offline using the [/{db}/_offline](../../../references/sync-gateway/admin-rest-api/index.html#!/database/post_db_offline) endpoint.
+4. Call the re-sync endpoint on the Admin REST API. The message body of the response contains the number of changes that were made as a result of calling re-sync.
+5. Bring the database back online using the [/{db}/_online](../../../references/sync-gateway/admin-rest-api/index.html#!/database/post_db_online) endpoint.
+
+This is an expensive operation because it requires every document in the database to be processed by the new function. The database can't accept any requests until this process is complete (because no user's full access privileges are known until all documents have been scanned). Therefore the Sync Function update will result in application downtime between the call to the `/{db}/_offline` and `/{db}/_online` endpoints as mentioned above.
+
+#### When should you run a re-sync?
+
+When running a re-sync operation, the context in the Sync Function is the admin user. For that reason, calling the `requireUser`, `requireAccess` and `requireRole` methods will always succeed. It is very likely that you are using those functions in production to govern write operations. But in a re-sync operation, all the documents are already written to the database. For that reason, it is recommended to use re-sync for changing the assignment to channels only (i.e. reads). If the modifications to the Sync Function only impact write security (and not routing/access), you won't need to run the re-sync operation.
+
+Similarly, if you wish to change the channel/access rules, but only want those rules to apply to documents written after the change was made, then you don't need to run the re-sync operation.
 
 If you need to ensure access to the database during the update, you can create a read-only backup of the Sync Gateway's bucket beforehand, then run a secondary Sync Gateway on the backup bucket, in read-only mode. After the update is complete, switch to the main Gateway and bucket.
 
-In a clustered environment with multiple Sync Gateways sharing the load, all the Gateways need to share the same configuration, so they all need to be taken down together. After the configuration is updated, one instance should be brought up so it can update the database — if more than one is running at this time, they'll conflict with each other. After the first instance finishes opening the database, the others can be started.
+In a clustered environment with multiple Sync Gateway instances sharing the load, all the instances need to share the same configuration, so they all need to be taken offline either by stopping the process or taking them offline using the [/{db}/_offline](../../../references/sync-gateway/admin-rest-api/index.html#!/database/post_db_offline) endpoint. After the configuration is updated, **one** instance should be brought up so it can update the database — if more than one is running at this time, they'll conflict with each other. After the first instance finishes opening the database, the others can be started.
 
 ## Validation and Authorization
 
