@@ -344,6 +344,46 @@ The resolver is responsible for returning the resulting properties that should b
 
 A resolver can be specified either at the database or the document level. If a document doesn't have its own, the database's resolver will be used. If the database doesn't have one either (the default situation), a default algorithm is used that picks the revision with the larger number of changes in its history.
 
+## Change notifications
+
+### Database changes
+
+You can register for notifications when documents are added/updated/deleted from a database. The following code example prints the IDs of the documents that have changed.
+
+<block class="objc" />
+
+```objective-c
+// database change listener
+[[NSNotificationCenter defaultCenter] addObserverForName:kCBLDatabaseChangeNotification object:database queue:nil usingBlock:^(NSNotification * _Nonnull note) {
+	NSArray* changes = note.userInfo[@"changes"];
+	NSLog(@"array %@", changes);
+}];
+```
+
+<block class="swift" />
+
+```swift
+NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: kCBLDatabaseChangesUserInfoKey), object: database, queue: nil) { (notification) in
+	let changes = notification.userInfo!["changes"] as? [AnyObject]?
+	print("array \(changes)")
+}
+```
+
+<block class="csharp" />
+
+```csharp
+database.Changed += (sender, e) =>
+{
+	var changes = e.DocIDs.ToList();
+	foreach (string docId in changes)
+	{
+		Console.WriteLine($"Document with id changed :: ${docId}");
+	}
+};
+```
+
+<block class="all" />
+
 ## Queries
 
 Database queries have changed significantly. Instead of the map/reduce algorithm used in 1.x, they're now based on expressions, of the form “*return ____ from documents where ____, ordered by ____*”, with semantics based on Couchbase Server's N1QL query language. If you've used {% st Core Data|Core Data|LINQ|LINQ %} , or other query APIs based on SQL, you'll find this familiar.
