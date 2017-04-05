@@ -80,3 +80,21 @@ var views = {
 };
 ```
 {% include java-codepen.html preview="https://cl.ly/313E3P2R2E2j/grouping-query.gif" codepen="http://codepen.io/Jamiltz/pen/LWQRYE?editors=1011" %}
+
+## Replication
+
+### Session expiry
+
+The following code shows you how to:
+
+- Create a session id using the Sync Gateway `/{db}/_session` Public endpoint.
+- Start a replication with that session id using the Couchbase Lite REST API `/_replicate` endpoint.
+- Verify that the documents are pushed from Couchbase Lite to Sync Gateway.
+- Destroy the session id using the Sync Gateway `/{db}/_session/{id}` Admin endpoint.
+- Add more documents to Couchbase Lite and verify that they are not replicated to Sync Gateway since the session isn't valid anymore.
+- Create a new session id and update the replication with the new session id.
+- Verify that the documents are pushed from Couchbase Lite to Sync Gateway with the new session id.
+
+<br>
+
+{% include lite-sg-codepen.html preview="https://cl.ly/0K2O2Q343K3T/session-expiry.mp4" codepen="http://codepen.io/Jamiltz/pen/mWgbGK?editors=1011" %}
