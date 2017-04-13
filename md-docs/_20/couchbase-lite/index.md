@@ -75,9 +75,11 @@ The following sections cover the features that are implemented in the latest dev
 
 ## Databases
 
+{% ref Database,Classes/Database.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
+
 ### Creating Databases
 
-As the top-level entity in the API, new databases can be created using the {% st Database|CBLDatabase|DatabaseFactory|Database %} class by passing in a name, options, or both. The following example creates a database using the {% st Database(name: String)|initWithName:error:|Create(string name)|new Database(String name, DatabaseOptions options) %} method.
+As the top-level entity in the API, new databases can be created using the {% ref Database,Classes/Database.html|CBLDatabase,a|DatabaseFactory,a|Database,a %} class by passing in a name, options, or both. The following example creates a database using the {% st Database(name: String)|initWithName:error:|Create(string name)|new Database(String name, DatabaseOptions options) %} method.
 
 <block class="swift" />
 
@@ -120,6 +122,8 @@ Just as before, the database will be created in a default location. Alternativel
 You can instantiate multiple databases with the same name and directory; these will all share the same storage. This is the recommended approach if you will be calling Couchbase Lite from multiple threads or dispatch queues, since Couchbase Lite objects are not thread-safe and can only be called from one thread/queue. Otherwise, for use on a single thread/queue, it's more efficient to use a single instance.
 
 ## Documents
+
+{% ref Document,Classes/Document.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
 
 In Couchbase Lite, a document's body takes the form of a JSON object — a collection of key/value pairs where the values can be different types of data such as numbers, strings, arrays or even nested objects. Every document is identified by a document ID, which can be automatically generated (as a UUID) or determined by the application; the only constraints are that it must be unique within the database, and it can't be changed. There are two methods in the API to create a new document:
 
@@ -249,6 +253,8 @@ This does create the possibility of confusion, since the document's in-memory st
 
 ### Typed Accessors
 
+{% ref Properties,Classes/Properties.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
+
 The {% st Document|CBLDocument|IDocument|Document %} class now offers a set of property accessors for various scalar types, including boolean, integers, floating-point and strings. These accessors take care of converting to/from JSON encoding, and make sure you get the type you're expecting: for example, {% st let name: String = doc["name"]|stringForKey:|GetString(string key)|getString(String key) %} returns either a {% st String|NSString|string|String %} or {% st nil|nil|null|null %}, so you can't get an unexpected object class and crash trying to use it as a string. (Even if the property in the document has an incompatible type, the accessor returns {% st nil|nil|null|null %}.)
 
 <block class="all" />
@@ -297,6 +303,8 @@ Log.d("app", String.format("createdAt value :: %s", document.getDate("createdAt"
 <block class="swift objc csharp" />
 
 ### Subdocuments
+
+{% ref Subdocument,Classes/Subdocument.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
 
 A subdocument is a nested document with its own set of named properties. In JSON terms it's a nested object. This isn't a new feature of the document model; it's just that we're exposing it in a more structured form. In Couchbase Lite 1.x you would see a nested object as a nested {% st Dictionary|NSDictionary|IDictionary|IDictionary %}. In 2.0 we expose it as a {% st Subdocument|CBLSubdocument|ISubdocument|ISubdocument %} object instead.
 
@@ -511,6 +519,8 @@ A resolver can be specified either at the database or the document level. If a d
 Database queries have changed significantly. Instead of the map/reduce algorithm used in 1.x, they're now based on expressions, of the form "return ____ from documents where \_\_\_\_, ordered by \_\_\_\_", with semantics based on Couchbase Server's N1QL query language. If you've used {% tx Core Data|Core Data|LINQ|LINQ %}, or other query APIs based on SQL, you'll find this familiar.
 
 ### Cross Platform Query API
+
+{% ref Query,Classes/Query.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}, {% ref Expression,Classes/Expression.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
 
 The Query API provides a simple way to construct a query statement from a set of API methods. There will be two API styles (builder and chainable) implemented based on what makes sense for each platform.
 
@@ -824,6 +834,8 @@ while ((ftsRow = (FullTextQueryRow) ftsQueryResult.next()) != null) {
 
 When you run a full-text query, the resulting rows are instances of {% st FullTextQueryRow|CBLFullTextQueryRow|FullTextQueryRow|FullTextQueryRow %}. This class has additional methods that let you access the full string that was matched, and the character range(s) in that string where the match(es) occur.
 
+{% ref FullTextQueryRow,Classes/FullTextQueryRow.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
+
 <block class="objc" />
 
 It's very common to sort full-text results in descending order of relevance. This can be a very difficult heuristic to define, but Couchbase Lite comes with a fairly simple ranking function you can use. In the `orderBy:` array, use a string of the form `rank(X)`, where `X` is the property or expression being searched, to represent the ranking of the result. Since higher rankings are better, you'll probably want to reverse the order by prefixing the string with a `-`.
@@ -847,6 +859,8 @@ Using the JSON query syntax is very simple: just construct a JSON object tree ou
 <block class="objc swift" />
 
 ## Replication
+
+{% ref Replication,Classes/Replication.html|CBLDatabase,a|DatabaseFactory,a|Database,a %}
 
 Couchbase Mobile 2.0 uses a [new replication protocol](https://github.com/couchbase/couchbase-lite-core/wiki/Replication-Protocol), based on WebSockets. This protocol has been designed to be fast, efficient, easier to implement, and symmetrical between client/server.
 
