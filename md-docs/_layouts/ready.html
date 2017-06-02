@@ -414,6 +414,39 @@
                 })()
               </script>
               <script type="text/javascript" src="https://cb-mobile.s3.amazonaws.com/assets/js/configs.js"></script>
+              <style>
+                /* Underline the API ref link when hovered */
+                a.token:hover {
+                  text-decoration: underline !important;
+                }
+                a.token {
+                  font-size: 17px;
+                  color: black;
+                  font-family: monospace;
+                  display: block;
+                  text-decoration: none;
+                }
+                a.token + p {
+                  margin-left: 35px;
+                  margin-top: 10px;
+                }
+                .refs {
+                  display: inline;
+                  float: left;
+                }
+                .refs.l1of5 {
+                  width: 20%;
+                }
+                .refs.l4of5 {
+                  width: 80%;
+                }
+                .refs-hr {
+                  margin: 1em auto !important;
+                  background: gray !important;
+                  width: 100%;
+                  height: 1px !important;
+                }
+              </style>
             </div>
           </div>
         </div>

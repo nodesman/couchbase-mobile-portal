@@ -1,0 +1,73 @@
+<h3>Database Class</h3><hr class="refs-hr"/><div class="refs l1of5"><b style="font-size: 20px;">Properties</b></div><div class="refs l4of5"><a class="token" href="http://docs.couchbase.com/mobile/2.0/couchbase-lite-net/db008/html/T_Couchbase_Lite_Database.htm">Config</a><p class="summary">
+              Gets the configuration that were used to create the database
+            </p><a class="token" href="http://docs.couchbase.com/mobile/2.0/couchbase-lite-net/db008/html/T_Couchbase_Lite_Database.htm">Count</a><p class="summary">
+              Gets the total number of documents in the database
+            </p><a class="token" href="http://docs.couchbase.com/mobile/2.0/couchbase-lite-net/db008/html/T_Couchbase_Lite_Database.htm">Item</a><p class="summary">
+              Bracket operator for retrieving <a href="T_Couchbase_Lite_DocumentFragment.htm">DocumentFragment</a>
+              objects
+            </p><a class="token" href="http://docs.couchbase.com/mobile/2.0/couchbase-lite-net/db008/html/T_Couchbase_Lite_Database.htm">Name</a><p class="summary">
+              Gets the name of the database
+            </p><a class="token" href="http://docs.couchbase.com/mobile/2.0/couchbase-lite-net/db008/html/T_Couchbase_Lite_Database.htm">Path</a><p class="summary">
+              Gets the path on disk where the database exists
+            </p></div><hr class="refs-hr"/><div class="refs l1of5"><b style="font-size: 20px;">Methods</b></div><div class="refs l4of5"><a class="token" href="M_Couchbase_Lite_Database__ctor_1.htm">Database(String)</a><p class="summary">
+              Creates a database instance with the given name. Internally
+              it may be operating on the same underlying data as another instance.
+            </p><a class="token" href="M_Couchbase_Lite_Database__ctor.htm">Database(Database)</a><p class="summary">
+              Copy constructor
+            </p><a class="token" href="M_Couchbase_Lite_Database__ctor_2.htm">Database(String, DatabaseConfiguration)</a><p class="summary">
+              Creates a database given a name and some configuration
+            </p><a class="token" href="M_Couchbase_Lite_Database_AddDocumentChangedListener.htm">AddDocumentChangedListener</a><p class="summary">
+              Adds a listener for changes on a certain document (by ID). Similar to <a href="E_Couchbase_Lite_Database_Changed.htm">Changed</a>
+              but requires a parameter to add so it is a method instead of an event.
+            </p><a class="token" href="M_Couchbase_Lite_Database_Close.htm">Close</a><p class="summary">
+              Closes the database
+            </p><a class="token" href="M_Couchbase_Lite_Database_Compact.htm">Compact</a><p class="summary">
+              Performs a manual compaction of this database, removing old irrelevant data
+              and decreasing the size of the database file on disk
+            </p><a class="token" href="M_Couchbase_Lite_Database_Contains.htm">Contains</a><p class="summary">
+              Checks whether or not a given <a href="T_Couchbase_Lite_Document.htm">Document</a> exists
+              in this database instance by searching for its ID.
+            </p><a class="token" href="M_Couchbase_Lite_Database_CreateIndex.htm">CreateIndex(IList<span id="LSTAFCCDC1E_2"></span>
+<script type="text/javascript">AddLanguageSpecificTextSet("LSTAFCCDC1E_2?cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=(");</script>
+            IExpression<span id="LSTAFCCDC1E_3"></span>
+<script type="text/javascript">AddLanguageSpecificTextSet("LSTAFCCDC1E_3?cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)");</script>
+            )</a><p class="summary">
+              Creates an <a href="T_Couchbase_Lite_IndexType.htm">ValueIndex</a> index on the given path
+            </p><a class="token" href="M_Couchbase_Lite_Database_CreateIndex_1.htm">CreateIndex(IList, IndexType, IndexOptions)</a><p class="summary">
+              Creates an index of the given type on the given path with the given configuration
+            </p><a class="token" href="M_Couchbase_Lite_Database_CreateReplication_1.htm">CreateReplication(Uri)</a><p class="summary">
+              Creates a replication with the giveb remote URL
+            </p><a class="token" href="M_Couchbase_Lite_Database_CreateReplication.htm">CreateReplication(Database)</a><p class="summary">
+              Creates a replication with another local database
+            </p><a class="token" href="M_Couchbase_Lite_Database_Delete.htm">Delete<span id="LSTAFCCDC1E_4"></span>
+<script type="text/javascript">AddLanguageSpecificTextSet("LSTAFCCDC1E_4?cs=()|vb=|cpp=()|nu=()|fs=()");</script>
+</a><p class="summary">
+              Deletes the database
+            </p><a class="token" href="M_Couchbase_Lite_Database_Delete_1.htm">Delete(Document)</a><p class="summary">
+              Deletes the given <a href="T_Couchbase_Lite_Document.htm">Document</a> from the database
+            </p><a class="token" href="M_Couchbase_Lite_Database_Delete_2.htm">Delete(String, String)</a><p class="summary">
+              Deletes the contents of a database with the given name in the
+              given directory
+            </p><a class="token" href="M_Couchbase_Lite_Database_DeleteIndex.htm">DeleteIndex</a><p class="summary">
+              Deletes an index of the given <a href="T_Couchbase_Lite_IndexType.htm">IndexType</a> on the given
+              propertyPath
+            </p><a class="token" href="M_Couchbase_Lite_Database_Dispose.htm">Dispose</a><p class="summary">
+              Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </p><a class="token" href="M_Couchbase_Lite_Database_DocumentExists.htm">DocumentExists</a><p class="summary">
+              Checks whether a document with the given ID exists in the database
+            </p><a class="token" href="M_Couchbase_Lite_Database_Exists.htm">Exists</a><p class="summary">
+              Returns whether or not a database with the given name
+              exists in the given directory
+            </p><a class="token" href="M_Couchbase_Lite_Database_GetDocument.htm">GetDocument</a><p class="summary">
+              Gets the <a href="T_Couchbase_Lite_Document.htm">Document</a> with the specified ID
+            </p><a class="token" href="M_Couchbase_Lite_Database_InBatch.htm">InBatch</a><p class="summary">
+              Runs the given batch of operations as an atomic unit
+            </p><a class="token" href="M_Couchbase_Lite_Database_Purge.htm">Purge</a><p class="summary">
+              Purges the given <a href="T_Couchbase_Lite_Document.htm">Document</a> from the database. This leaves
+              no trace behind and will not be replicated
+            </p><a class="token" href="M_Couchbase_Lite_Database_RemoveDocumentChangedListener.htm">RemoveDocumentChangedListener</a><p class="summary">
+              Removes a listener for changes on a certain document (by ID). Similar to <a href="E_Couchbase_Lite_Database_Changed.htm">Changed</a>
+              but requires a parameter to add so it is a method instead of an event.
+            </p><a class="token" href="M_Couchbase_Lite_Database_Save.htm">Save</a><p class="summary">
+              Saves the given <a href="T_Couchbase_Lite_Document.htm">Document</a> into this database
+            </p></div>
