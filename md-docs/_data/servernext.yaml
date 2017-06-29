@@ -1,29 +1,6 @@
-- title: INTRODUCTION
-  path: "#"
-  open: true
-  items:
-  - title: Why Couchbase?
-    path: "/documentation/server/4.6/introduction/intro.html"
-  - title: What's New?
-    path: "/documentation/server/4.6/introduction/whats-new.html"
-  - title: Couchbase Server Editions
-    path: "/documentation/server/4.6/introduction/editions.html"
 - title: GETTING STARTED
   path: "#"
   open: true
-  items:
-  - title: Start Here!
-    path: "/documentation/server/4.6/getting-started/start-here.html"
-  - title: Do a Quick Install
-    path: "/documentation/server/4.6/getting-started/do-a-quick-install.html"
-  - title: Look at the Results
-    path: "/documentation/server/4.6/getting-started/look-at-the-results.html"
-  - title: Run Your First N1QL Query
-    path: "/documentation/server/4.6/getting-started/try-a-query.html"
-  - title: Run Hello World!
-    path: "/documentation/server/4.6/getting-started/run-hello-world.html"
-  - title: Choose Your Next Steps
-    path: "/documentation/server/4.6/getting-started/choose-your-next-steps.html"
 - title: CONCEPTS & ARCHITECTURE
   path: "#"
   open: true
