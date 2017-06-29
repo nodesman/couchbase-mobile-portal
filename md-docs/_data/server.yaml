@@ -1,0 +1,1363 @@
+- title: INTRODUCTION
+  path: "#"
+  items:
+  - title: Why Couchbase?
+    path: "/documentation/server/4.6/introduction/intro.html"
+  - title: What's New?
+    path: "/documentation/server/4.6/introduction/whats-new.html"
+  - title: Couchbase Server Editions
+    path: "/documentation/server/4.6/introduction/editions.html"
+- title: GETTING STARTED
+  path: "#"
+  items:
+  - title: Start Here!
+    path: "/documentation/server/4.6/getting-started/start-here.html"
+  - title: Do a Quick Install
+    path: "/documentation/server/4.6/getting-started/do-a-quick-install.html"
+  - title: Look at the Results
+    path: "/documentation/server/4.6/getting-started/look-at-the-results.html"
+  - title: Run Your First N1QL Query
+    path: "/documentation/server/4.6/getting-started/try-a-query.html"
+  - title: Run Hello World!
+    path: "/documentation/server/4.6/getting-started/run-hello-world.html"
+  - title: Choose Your Next Steps
+    path: "/documentation/server/4.6/getting-started/choose-your-next-steps.html"
+- title: CONCEPTS & ARCHITECTURE
+  path: "#"
+  items:
+  - title: Key Concepts
+    path: "#"
+    items:
+    - title: Overview
+      path: "/documentation/server/4.6/concepts/concepts-intro.html"
+    - title: Data Model
+      path: "/documentation/server/4.6/data-modeling/concepts-data-modeling-intro.html"
+    - title: Data Access
+      path: "/documentation/server/4.6/data-access/data-access-intro.html"
+    - title: N1QL and SQL Differences
+      path: "/documentation/server/4.6/n1ql/n1ql-intro/n1ql-sql-differences.html"
+    - title: Indexing
+      path: "/documentation/server/4.6/concepts/indexing.html"
+    - title: Data Management
+      path: "/documentation/server/4.6/concepts/data-management.html"
+    - title: Distributed Data Management
+      path: "/documentation/server/4.6/concepts/distributed-data-management.html"
+    - title: High Availability and Disaster Recovery
+      path: "/documentation/server/4.6/ha-dr/ha-dr-intro.html"
+      items:
+      - title: XDCR Conflict Resolution
+        path: "/documentation/server/4.6/xdcr/xdcr-conflict-resolution.html"
+    - title: Deployment and Operations
+      path: "/documentation/server/4.6/concepts/deployment-and-operations.html"
+    - title: Security
+      path: "/documentation/server/4.6/concepts/security.html"
+    - title: Application Development
+      path: "/documentation/server/4.6/concepts/application-development.html"
+  - title: Data Modeling
+    path: "#"
+    items:
+    - title: Data Modeling Basics
+      path: "/documentation/server/4.6/data-modeling/intro-data-modeling.html"
+    - title: Phases of Data Modeling
+      path: "/documentation/server/4.6/data-modeling/data-modeling-phases.html"
+    - title: Entity Relationships and Document Design
+      path: "/documentation/server/4.6/data-modeling/entity-relationship-doc-design.html"
+    - title: Modeling Relationships
+      path: "/documentation/server/4.6/data-modeling/modeling-relationships.html"
+    - title: Evolving Data Models
+      path: "/documentation/server/4.6/data-modeling/evolving-data-models.html"
+  - title: Architecture
+    path: "#"
+    items:
+    - title: Architecture Overview
+      path: "/documentation/server/4.6/architecture/architecture-intro.html"
+    - title: Terminology
+      path: "/documentation/server/4.6/architecture/terminology.html"
+    - title: Connectivity Architecture
+      path: "/documentation/server/4.6/architecture/connectivity-architecture.html"
+    - title: High Availability and Replication Architecture
+      path: "/documentation/server/4.6/architecture/high-availability-replication-architecture.html"
+    - title: Storage Architecture
+      path: "/documentation/server/4.6/architecture/storage-architecture.html"
+    - title: Managed Caching Layer Architecture
+      path: "/documentation/server/4.6/architecture/managed-caching-layer-architecture.html"
+    - title: Cluster Manager
+      path: "/documentation/server/4.6/architecture/cluster-manager.html"
+    - title: Services Architecture and Multidimensional Scaling
+      path: "/documentation/server/4.6/architecture/services-archi-multi-dimensional-scaling.html"
+      items:
+      - title: Data Service and Core Data Access
+        path: "/documentation/server/4.6/architecture/data-service-core-data-access.html"
+      - title: Buckets
+        path: "/documentation/server/4.6/architecture/core-data-access-buckets.html"
+      - title: 'vBuckets and vBucket Maps: Bucket Partitions'
+        path: "/documentation/server/4.6/architecture/core-data-access-vbuckets-bucket-partition.html"
+      - title: Bucket Disk Storage
+        path: "/documentation/server/4.6/architecture/core-data-access-bucket-disk-storage.html"
+      - title: Database Engine Architecture
+        path: "/documentation/server/4.6/architecture/db-engine-architecture.html"
+      - title: Bloom Filters
+        path: "/documentation/server/4.6/architecture/bloom-filters.html"
+      - title: Sub-Document API
+        path: "/documentation/server/4.6/developer-guide/sub-doc-api.html"
+    - title: Views, Indexing, and Index Service
+      path: "/documentation/server/4.6/architecture/views-indexing-index-service.html"
+      items:
+      - title: Incremental MapReduce Views
+        path: "/documentation/server/4.6/architecture/incremental-map-reduce-views.html"
+      - title: Spatial Views
+        path: "/documentation/server/4.6/architecture/spatial-views.html"
+      - title: Global Secondary Indexes (GSIs)
+        path: "/documentation/server/4.6/architecture/global-secondary-indexes.html"
+      - title: Global Secondary Indexes Versus Views
+        path: "/documentation/server/4.6/architecture/gsi-versus-views.html"
+    - title: Querying Data and Query Data Service
+      path: "/documentation/server/4.6/architecture/querying-data-and-query-data-service.html"
+      items:
+      - title: Querying Data with Views
+        path: "/documentation/server/4.6/architecture/querying-data-with-views.html"
+      - title: Querying Geographic Data with Spatial Views
+        path: "/documentation/server/4.6/architecture/querying-geo-data-spatial-views.html"
+      - title: Querying Data with N1QL
+        path: "/documentation/server/4.6/architecture/querying-data-with-n1ql.html"
+      - title: Query Consistency and Reading Your Writes
+        path: "/documentation/server/4.6/developer-guide/query-consistency.html"
+- title: DEVELOPERS
+  path: "#"
+  items:
+  - title: Hello World!
+    path: "#"
+    items:
+    - title: Developer's Intro
+      path: "/documentation/server/4.6/sdk/development-intro.html"
+    - title: Start Using the SDK
+      path: "/documentation/server/4.6/sdk/nodejs/start-using-sdk.html"
+    - title: Starter Kits
+      path: "/documentation/server/4.6/getting-started/starter-kits.html"
+    - title: Sample Application
+      path: "/documentation/server/4.6/sdk/sample-application.html"
+      items:
+      - title: Sample App Backend
+        path: "/documentation/server/4.6/sdk/nodejs/sample-app-backend.html"
+    - title: Browser and CLI Access
+      path: "/documentation/server/4.6/sdk/webui-cli-access.html"
+  - title: Working with Data
+    path: "#"
+    items:
+    - title: Core Operations
+      path: "/documentation/server/4.6/sdk/core-operations.html"
+    - title: Document Operations
+      path: "/documentation/server/4.6/sdk/nodejs/document-operations.html"
+    - title: Sub-Document Operations
+      path: "/documentation/server/4.6/sdk/subdocument-operations.html"
+    - title: Data Structures
+      path: "/documentation/server/4.6/sdk/nodejs/datastructures.html"
+    - title: Querying with N1QL
+      path: "/documentation/server/4.6/sdk/n1ql-query.html"
+    - title: N1QL from the SDK
+      path: "/documentation/server/4.6/sdk/nodejs/n1ql-queries-with-sdk.html"
+    - title: Full Text Search
+      path: "/documentation/server/4.6/sdk/full-text-search-overview.html"
+    - title: Searching from the SDK
+      path: "/documentation/server/4.6/sdk/nodejs/full-text-searching-with-sdk.html"
+    - title: MapReduce Views
+      path: "/documentation/server/4.6/sdk/nodejs/view-queries-with-sdk.html"
+    - title: Asynchronous Programming
+      path: "/documentation/server/4.6/sdk/nodejs/async-programming.html"
+    - title: Batching Operations
+      path: "/documentation/server/4.6/sdk/batching-operations.html"
+    - title: Durability
+      path: "/documentation/server/4.6/sdk/durability.html"
+    - title: Concurrent Document Mutations
+      path: "/documentation/server/4.6/sdk/concurrent-mutations-cluster.html"
+    - title: Non-JSON Documents
+      path: "/documentation/server/4.6/sdk/nonjson.html"
+  - title: Deployment Environments
+    path: "#"
+    items:
+    - title: Managing Connections
+      path: "/documentation/server/4.6/sdk/nodejs/managing-connections.html"
+    - title: Managing Clusters
+      path: "/documentation/server/4.6/sdk/nodejs/managing-clusters.html"
+    - title: Compatibility
+      path: "/documentation/server/4.6/sdk/nodejs/compatibility-versions-features.html"
+  - title: Settings, Error Handling & Diagnostics
+    path: "#"
+    items:
+    - title: Client Settings
+      path: "/documentation/server/4.6/sdk/nodejs/client-settings.html"
+    - title: Handling Errors
+      path: "/documentation/server/4.6/sdk/nodejs/handling-error-conditions.html"
+    - title: Failure Considerations
+      path: "/documentation/server/4.6/sdk/nodejs/failure-considerations.html"
+    - title: Collecting Information
+      path: "/documentation/server/4.6/sdk/nodejs/collecting-information-and-logging.html"
+- title: ADMINISTRATORS
+  path: "#"
+  items:
+  - title: Setup
+    path: "#"
+    items:
+    - title: Planning for Production
+      path: "/documentation/server/4.6/install/plan-for-production.html"
+      items:
+      - title: Supported Platforms
+        path: "/documentation/server/4.6/install/install-platforms.html"
+      - title: Supported Web Browsers
+        path: "/documentation/server/4.6/install/install-browsers.html"
+      - title: Hardware Requirements
+        path: "/documentation/server/4.6/install/pre-install.html"
+      - title: Network Configuration
+        path: "/documentation/server/4.6/install/install-ports.html"
+      - title: Using NTP to Synchronize Clocks
+        path: "/documentation/server/4.6/install/synchronize-clocks-using-ntp.html"
+      - title: Deployment Considerations
+        path: "/documentation/server/4.6/install/install-production-deployment.html"
+        items:
+        - title: Multidimensional Scaling (MDS)
+          path: "/documentation/server/4.6/clustersetup/services-mds.html"
+        - title: Sizing Guidelines
+          path: "/documentation/server/4.6/install/sizing-general.html"
+        - title: Client Deployment Strategies
+          path: "/documentation/server/4.6/install/install-client-server.html"
+        - title: Deployment Considerations for Less Than 3 Nodes
+          path: "/documentation/server/4.6/install/deployment-considerations-lt-3nodes.html"
+        - title: Best Practices for Virtualized Platforms
+          path: "/documentation/server/4.6/install/best-practices-vm.html"
+      - title: Security Considerations
+        path: "/documentation/server/4.6/install/install-security-bp.html"
+    - title: Installing Couchbase Server
+      path: "#"
+      items:
+      - title: Installing On-Premises
+        path: "/documentation/server/4.6/install/install-intro.html"
+        items:
+        - title: Installing on Linux
+          path: "/documentation/server/4.6/install/install-linux.html"
+          items:
+          - title: Transparent Huge Pages (THP)
+            path: "/documentation/server/4.6/install/thp-disable.html"
+          - title: Swap Space and Kernel Swappiness
+            path: "/documentation/server/4.6/install/install-swap-space.html"
+          - title: Red Hat and CentOS Installation
+            path: "/documentation/server/4.6/install/rhel-suse-install-intro.html"
+          - title: Ubuntu/Debian Installation
+            path: "/documentation/server/4.6/install/ubuntu-debian-install.html"
+          - title: SUSE Enterprise Linux installation
+            path: "/documentation/server/4.6/install/install_suse.html"
+          - title: Oracle Enterprise Linux installation
+            path: "/documentation/server/4.6/install/install-oracle.html"
+          - title: Installing Multiple Instances
+            path: "/documentation/server/4.6/install/rhel-multiple-instances.html"
+        - title: Installing on Windows
+          path: "/documentation/server/4.6/install/install-package-windows.html"
+        - title: Installing on Mac OS X
+          path: "/documentation/server/4.6/install/macos-install.html"
+      - title: Running Couchbase Server Container
+        path: "#"
+        items:
+        - title: Getting Started with Server on Docker Containers
+          path: "/documentation/server/4.6/install/getting-started-docker.html"
+        - title: Deployment with Docker Hub
+          path: "/documentation/server/4.6/install/deploy-with-docker-hub.html"
+        - title: Deploying a Single Node Cluster
+          path: "/documentation/server/4.6/install/docker-deploy-single-node-cluster.html"
+        - title: Deploying Multi-node Cluster
+          path: "/documentation/server/4.6/install/docker-deploy-multi-node-cluster.html"
+      - title: Cloud Deployment
+        path: "#"
+        items:
+        - title: Cloud Deployment Considerations
+          path: "/documentation/server/4.6/install/cloud-deployment.html"
+        - title: AWS Marketplace
+          path: "/documentation/server/4.6/install/deployment-aws.html"
+        - title: Azure Marketplace
+          path: "/documentation/server/4.6/install/deployment-azure.html"
+        - title: XDCR in Cloud Deployments
+          path: "/documentation/server/4.6/install/deployments-xdcr.html"
+      - title: Uninstalling Couchbase Server
+        path: "/documentation/server/4.6/install/install-uninstalling.html"
+      - title: Post-installation
+        path: "/documentation/server/4.6/install/post-install.html"
+    - title: Upgrading Couchbase Server
+      path: "/documentation/server/4.6/install/upgrade.html"
+      items:
+      - title: Upgrade Options
+        path: "/documentation/server/4.6/install/upgrade-strategies.html"
+        items:
+        - title: Performing the Rolling Online Upgrade
+          path: "/documentation/server/4.6/install/upgrade-online.html"
+        - title: Performing the Offline Upgrade
+          path: "/documentation/server/4.6/install/upgrade-offline.html"
+        - title: Performing the Single Node Upgrade
+          path: "/documentation/server/4.6/install/upgrade-individual-nodes.html"
+      - title: Upgrade Matrix
+        path: "/documentation/server/4.6/install/upgrade-matrix.html"
+      - title: Migrating Data for the Timestamp-based Conflict Resolution
+        path: "/documentation/server/4.6/install/migration.html"
+    - title: Migrating to and from Other Databases
+      path: "/documentation/server/4.6/install/migrating.html"
+      items:
+      - title: Migrating from Apache CouchDB
+        path: "/documentation/server/4.6/install/migrate-couchdb.html"
+      - title: Migrating from Relational Databases
+        path: "/documentation/server/4.6/install/migrate-mysql.html"
+    - title: Initialize the Cluster
+      path: "/documentation/server/4.6/install/init-setup.html"
+      items:
+      - title: File Locations
+        path: "/documentation/server/4.6/clustersetup/file-locations.html"
+      - title: Using Hostnames
+        path: "/documentation/server/4.6/install/hostnames.html"
+    - title: Couchbase Server Startup and Shutdown
+      path: "/documentation/server/4.6/install/startup-shutdown.html"
+    - title: Testing Couchbase Server
+      path: "/documentation/server/4.6/install/testing.html"
+  - title: Cluster Administration
+    path: "/documentation/server/4.6/admin/admin-intro.html"
+    items:
+    - title: Couchbase Web Console
+      path: "/documentation/server/4.6/admin/ui-intro.html"
+  - title: Cluster Operations
+    path: "/documentation/server/4.6/clustersetup/server-setup.html"
+    items:
+    - title: Adding a Node
+      path: "/documentation/server/4.6/clustersetup/adding-nodes.html"
+    - title: Removing a Node
+      path: "/documentation/server/4.6/clustersetup/remove-nodes.html"
+    - title: Failing over a Node
+      path: "/documentation/server/4.6/clustersetup/failover.html"
+      items:
+      - title: Using Graceful Failover
+        path: "/documentation/server/4.6/clustersetup/setup-failover-graceful.html"
+      - title: Using Hard Failover
+        path: "/documentation/server/4.6/clustersetup/hard-failover.html"
+      - title: Using Automatic Failover
+        path: "/documentation/server/4.6/clustersetup/automatic-failover.html"
+    - title: Rebalancing a Cluster
+      path: "/documentation/server/4.6/clustersetup/rebalance.html"
+    - title: Rejoining a Cluster
+      path: "/documentation/server/4.6/clustersetup/rejoin-cluster.html"
+  - title: Data Bucket Setup
+    path: "/documentation/server/4.6/clustersetup/bucket-setup.html"
+    items:
+    - title: Create a New Bucket
+      path: "/documentation/server/4.6/clustersetup/create-bucket.html"
+    - title: Change Bucket Settings
+      path: "/documentation/server/4.6/clustersetup/change-settings-bucket.html"
+    - title: Flush a Bucket
+      path: "/documentation/server/4.6/clustersetup/bucket-flush.html"
+    - title: Delete a Bucket
+      path: "/documentation/server/4.6/clustersetup/delete-bucket.html"
+  - title: Indexing
+    path: "/documentation/server/4.6/indexes/indexing-overview.html"
+    items:
+    - title: View Indexes
+      path: "/documentation/server/4.6/views/views-intro.html"
+      items:
+      - title: View Concepts
+        path: "/documentation/server/4.6/views/views-basics.html"
+        items:
+        - title: Stream-based Views
+          path: "/documentation/server/4.6/views/views-streaming.html"
+        - title: View Operations
+          path: "/documentation/server/4.6/views/views-operation.html"
+        - title: Views and Stored Data
+          path: "/documentation/server/4.6/views/views-store-data.html"
+        - title: Development Views
+          path: "/documentation/server/4.6/views/views-development.html"
+        - title: Production Views
+          path: "/documentation/server/4.6/views/views-production.html"
+      - title: Writing MapReduce Views
+        path: "/documentation/server/4.6/views/views-writing.html"
+        items:
+        - title: Views Best Practices
+          path: "/documentation/server/4.6/views/views-writing-views.html"
+        - title: Map Function
+          path: "/documentation/server/4.6/views/views-writing-map.html"
+        - title: Reduce Function
+          path: "/documentation/server/4.6/views/views-writing-reduce.html"
+        - title: Built-in Utility Functions
+          path: "/documentation/server/4.6/views/views-writing-utility.html"
+        - title: Built-in _count Function
+          path: "/documentation/server/4.6/views/views-writing-count.html"
+        - title: Built-in _sum Function
+          path: "/documentation/server/4.6/views/views-writing-sum.html"
+        - title: Built-in _stats Function
+          path: "/documentation/server/4.6/views/views-writing-stats.html"
+        - title: Re-writing Built-in Reduce Functions
+          path: "/documentation/server/4.6/views/views-writing-rewriting.html"
+        - title: Custom Reduce Functions
+          path: "/documentation/server/4.6/views/views-writing-custom-reduce.html"
+        - title: Re-reduce Argument
+          path: "/documentation/server/4.6/views/views-writing-rereduce.html"
+        - title: Views for Non-JSON Objects
+          path: "/documentation/server/4.6/views/views-writing-nonjson.html"
+        - title: Translating SQL to MapReduce
+          path: "/documentation/server/4.6/views/views-trans-sql.html"
+        - title: Views in a Schema-less Database
+          path: "/documentation/server/4.6/views/views-schemaless.html"
+      - title: Querying MapReduce Views
+        path: "/documentation/server/4.6/views/views-querying.html"
+        items:
+        - title: View and Query Examples
+          path: "/documentation/server/4.6/views/views-query-samples.html"
+      - title: Writing Spatial Views
+        path: "/documentation/server/4.6/views/sv-writing-views.html"
+        items:
+        - title: Keys in Spatial View Functions
+          path: "/documentation/server/4.6/views/sv-writing-views-keys.html"
+      - title: Querying Spatial Views
+        path: "/documentation/server/4.6/views/sv-query-parameters.html"
+        items:
+        - title: Open Range Queries
+          path: "/documentation/server/4.6/views/sv-queries-open-range.html"
+        - title: Closed Range Queries
+          path: "/documentation/server/4.6/views/sv-queries-closed-range.html"
+        - title: Bounding Box Queries
+          path: "/documentation/server/4.6/views/sv-queries-bbox.html"
+      - title: Playing with GeoJSON Polygons
+        path: "/documentation/server/4.6/views/sv-example1.html"
+        items:
+        - title: Creating a Spatial View Function
+          path: "/documentation/server/4.6/views/sv-ex1-create.html"
+        - title: Querying All Data
+          path: "/documentation/server/4.6/views/sv-ex1-query-all.html"
+        - title: Querying on the East
+          path: "/documentation/server/4.6/views/sv-ex1-query-east.html"
+        - title: Querying on the Area
+          path: "/documentation/server/4.6/views/sv-ex1-query-area.html"
+        - title: Querying on Non-intersect
+          path: "/documentation/server/4.6/views/sv-ex1-query-nonintersect.html"
+      - title: Playing with Non-geographic Spatial Views
+        path: "/documentation/server/4.6/views/sv-example2.html"
+    - title: Indexes for N1QL
+      path: "/documentation/server/4.6/indexes/n1ql-in-couchbase.html"
+      items:
+      - title: Global Secondary Indexes for N1QL
+        path: "/documentation/server/4.6/indexes/gsi-for-n1ql.html"
+      - title: View Indexes for N1QL
+        path: "/documentation/server/4.6/indexes/view-indexes-for-n1ql.html"
+  - title: Settings
+    path: "#"
+    items:
+    - title: Cluster Settings
+      path: "/documentation/server/4.6/settings/cluster-settings.html"
+    - title: Update Product Notifications
+      path: "/documentation/server/4.6/settings/update-notificatioin.html"
+    - title: Change Failover Settings
+      path: "/documentation/server/4.6/settings/change-failover-settings.html"
+    - title: Alerts
+      path: "/documentation/server/4.6/settings/configure-alerts.html"
+    - title: Auto-compaction Settings
+      path: "/documentation/server/4.6/settings/configure-compact-settings.html"
+    - title: Account Management Settings
+      path: "/documentation/server/4.6/settings/configure-account-settings.html"
+    - title: Administrator Auditing
+      path: "/documentation/server/4.6/settings/configure-audits.html"
+    - title: Sample Buckets
+      path: "/documentation/server/4.6/settings/install-sample-buckets.html"
+  - title: Cross Datacenter Replication (XDCR)
+    path: "/documentation/server/4.6/xdcr/xdcr-intro.html"
+    items:
+    - title: Managing XDCR
+      path: "/documentation/server/4.6/xdcr/xdcr-create.html"
+    - title: Recover Partitions from a Remote Cluster
+      path: "/documentation/server/4.6/xdcr/xdcr-recover-partitions.html"
+    - title: Tune XDCR Performance
+      path: "/documentation/server/4.6/xdcr/xdcr-tuning-performance.html"
+    - title: XDCR Data Security
+      path: "/documentation/server/4.6/xdcr/xdcr-managing-security.html"
+    - title: Timestamp-based Conflict Resolution
+      path: "/documentation/server/4.6/xdcr/xdcr-timestamp-based-conflict-resolution.html"
+  - title: Security
+    path: "/documentation/server/4.6/security/security-intro.html"
+    items:
+    - title: What's New
+      path: "/documentation/server/4.6/security/security-watsnew.html"
+    - title: Authentication
+      path: "/documentation/server/4.6/security/security-authentication.html"
+      items:
+      - title: Password-Based Authentication
+        path: "/documentation/server/4.6/security/security-pw-auth.html"
+      - title: LDAP Authentication
+        path: "/documentation/server/4.6/security/security-ldap-new.html"
+        items:
+        - title: Setting up saslauthd
+          path: "/documentation/server/4.6/security/security-saslauthd-new.html"
+        - title: Troubleshooting LDAP Settings
+          path: "/documentation/server/4.6/security/security-ldap-tbls-new.html"
+      - title: Pluggable Authentication Modules
+        path: "/documentation/server/4.6/security/security-pam-auth.html"
+    - title: Authorization
+      path: "/documentation/server/4.6/security/security-authorisation.html"
+      items:
+      - title: Role-Based Access Control (RBAC) for Administrators
+        path: "/documentation/server/4.6/security/concepts-rba.html"
+        items:
+        - title: External Roles
+          path: "/documentation/server/4.6/security/security-ldap-gui-new.html"
+        - title: Internal Roles
+          path: "/documentation/server/4.6/security/rbac-ro-user.html"
+      - title: Authorization for Applications
+        path: "/documentation/server/4.6/security/security-author-apps.html"
+    - title: Auditing for Administrators
+      path: "/documentation/server/4.6/security/security-auditing.html"
+      items:
+      - title: Audit Events
+        path: "/documentation/server/4.6/security/security-audit-events.html"
+      - title: Audit Targets
+        path: "/documentation/server/4.6/security/security-audit-targets.html"
+        items:
+        - title: Audit File Details
+          path: "/documentation/server/4.6/security/security-json-fields-new.html"
+    - title: Encryption
+      path: "/documentation/server/4.6/security/security-encryption.html"
+      items:
+      - title: Encryption at Rest
+        path: "/documentation/server/4.6/security/security-data-encryption.html"
+      - title: Encryption on the Wire
+        path: "/documentation/server/4.6/security/security-comm-encryption.html"
+        items:
+        - title: X.509 for TLS
+          path: "/documentation/server/4.6/security/security-x509certsintro.html"
+      - title: Encryption in Applications
+        path: "/documentation/server/4.6/security/security-in-applications.html"
+      - title: Secret Management and Hardening
+        path: "/documentation/server/4.6/security/secret-mgmt.html"
+    - title: Security Best Practices
+      path: "/documentation/server/4.6/security/security-best-practices.html"
+      items:
+      - title: Couchbase Passwords
+        path: "/documentation/server/4.6/security/security-passwords.html"
+      - title: Bucket Protection
+        path: "/documentation/server/4.6/security/security-bucket-protection.html"
+      - title: Network and ACLs
+        path: "/documentation/server/4.6/security/security-iptables.html"
+      - title: Access Logs
+        path: "/documentation/server/4.6/security/security-access-logs.html"
+      - title: Client Configuration Cache
+        path: "/documentation/server/4.6/security/security-config-cache.html"
+      - title: User Input Validation
+        path: "/documentation/server/4.6/security/security-user-input.html"
+      - title: Network ACLs and Security Groups
+        path: "/documentation/server/4.6/security/security-acls-new.html"
+      - title: Reporting a Security Vulnerability
+        path: "/documentation/server/4.6/security/security-report-vulnerability.html"
+  - title: Monitoring and Troubleshooting
+    path: "#"
+    items:
+    - title: Monitoring
+      path: "/documentation/server/4.6/monitoring/monitor-intro.html"
+      items:
+      - title: Monitor Using the REST API
+        path: "/documentation/server/4.6/monitoring/monitoring-rest.html"
+      - title: Monitor Using the cbstats Utility
+        path: "/documentation/server/4.6/monitoring/monitoring-cli.html"
+      - title: Monitoring Statistics
+        path: "/documentation/server/4.6/monitoring/ui-monitoring-statistics.html"
+      - title: Monitoring XDCR Timestamp-based Conflict Resolution
+        path: "/documentation/server/4.6/xdcr/xdcr-monitor-timestamp-conflict-resolution.html"
+      - title: Monitoring Management
+        path: "/documentation/server/4.6/monitoring/monitoring-stats-configuration.html"
+    - title: Troubleshooting
+      path: "/documentation/server/4.6/troubleshooting/troubleshooting-intro.html"
+      items:
+      - title: General Tips
+        path: "/documentation/server/4.6/troubleshooting/troubleshooting-general-tips.html"
+      - title: Using Logs
+        path: "/documentation/server/4.6/clustersetup/ui-logs.html"
+      - title: Common Errors
+        path: "/documentation/server/4.6/troubleshooting/troubleshooting-common-errors.html"
+      - title: Core Files
+        path: "/documentation/server/4.6/troubleshooting/core-files.html"
+  - title: Backup and Restore
+    path: "/documentation/server/4.6/backup-restore/backup-restore.html"
+    items:
+    - title: cbbackupmgr Tool
+      path: "/documentation/server/4.6/backup-restore/enterprise-backup-restore.html"
+      items:
+      - title: Enterprise Backup Strategies
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-strategies.html"
+      - title: Enterprise Backup Tutorial
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-tutorial.html"
+      - title: Enterprise Backup Archive Layout
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-archivelayout.html"
+    - title: cbbackup and cbrestore Tools
+      path: "/documentation/server/4.6/backup-restore/incremental-backup.html"
+  - title: N1QL Performance
+    path: "#"
+    items:
+    - title: Indexing JSON Documents and Query Performance
+      path: "/documentation/server/4.6/performance/indexing-and-query-perf.html"
+    - title: Understanding Index Scans
+      path: "/documentation/server/4.6/performance/index-scans.html"
+- title: INTEGRATIONS
+  path: "#"
+  items:
+  - title: Connector Guides
+    path: "/documentation/server/4.6/connectors/intro.html"
+  - title: Elasticsearch Plug-in 2.2
+    path: "/documentation/server/4.6/connectors/elasticsearch-2.2/overview.html"
+    items:
+    - title: Installation and Configuration
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/install-and-config.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/getting-started.html"
+    - title: Working with Documents
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/working-with-documents.html"
+    - title: Advanced Settings
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/advanced-settings.html"
+    - title: Performance Tuning
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/performance-tuning.html"
+    - title: Troubleshooting
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/troubleshooting.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/elasticsearch-2.2/release-notes.html"
+  - title: Hadoop Connector 1.2
+    path: "/documentation/server/4.6/connectors/hadoop-1.2/hadoop.html"
+  - title: Kafka Connector 3.1
+    path: "/documentation/server/4.6/connectors/kafka-3.1/kafka-intro.html"
+    items:
+    - title: Quickstart
+      path: "/documentation/server/4.6/connectors/kafka-3.1/quickstart.html"
+    - title: Source Configuration Options
+      path: "/documentation/server/4.6/connectors/kafka-3.1/source-configuration-options.html"
+    - title: Sink Configuration Options
+      path: "/documentation/server/4.6/connectors/kafka-3.1/sink-configuration-options.html"
+    - title: Couchbase Sample with Kafka Streams
+      path: "/documentation/server/4.6/connectors/kafka-3.1/streams-sample.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/kafka-3.1/release-notes.html"
+  - title: Kafka Connector 3.0
+    path: "/documentation/server/4.6/connectors/kafka-3.0/kafka-intro.html"
+    items:
+    - title: Quickstart
+      path: "/documentation/server/4.6/connectors/kafka-3.0/quickstart.html"
+    - title: Source Configuration Options
+      path: "/documentation/server/4.6/connectors/kafka-3.0/source-configuration-options.html"
+    - title: Couchbase Sample with Kafka Streams
+      path: "/documentation/server/4.6/connectors/kafka-3.0/streams-sample.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/kafka-3.0/release-notes.html"
+  - title: Spark Connector 2.1
+    path: "/documentation/server/4.6/connectors/spark-2.1/spark-intro.html"
+    items:
+    - title: Download and API Reference
+      path: "/documentation/server/4.6/connectors/spark-2.1/download-links.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/spark-2.1/getting-started.html"
+    - title: Development Workflow
+      path: "/documentation/server/4.6/connectors/spark-2.1/dev-workflow.html"
+    - title: Working With RDDs
+      path: "/documentation/server/4.6/connectors/spark-2.1/working-with-rdds.html"
+    - title: Spark SQL Integration
+      path: "/documentation/server/4.6/connectors/spark-2.1/spark-sql.html"
+    - title: Spark Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-2.1/spark-streaming.html"
+    - title: Structured Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-2.1/structured-streaming.html"
+    - title: Java API
+      path: "/documentation/server/4.6/connectors/spark-2.1/java-api.html"
+    - title: Using the Spark Shell
+      path: "/documentation/server/4.6/connectors/spark-2.1/spark-shell.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/spark-2.1/release-notes.html"
+  - title: Spark Connector 2.0
+    path: "/documentation/server/4.6/connectors/spark-2.0/spark-intro.html"
+    items:
+    - title: Download and API Reference
+      path: "/documentation/server/4.6/connectors/spark-2.0/download-links.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/spark-2.0/getting-started.html"
+    - title: Development Workflow
+      path: "/documentation/server/4.6/connectors/spark-2.0/dev-workflow.html"
+    - title: Working With RDDs
+      path: "/documentation/server/4.6/connectors/spark-2.0/working-with-rdds.html"
+    - title: Spark SQL Integration
+      path: "/documentation/server/4.6/connectors/spark-2.0/spark-sql.html"
+    - title: Spark Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-2.0/spark-streaming.html"
+    - title: Structured Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-2.0/structured-streaming.html"
+    - title: Java API
+      path: "/documentation/server/4.6/connectors/spark-2.0/java-api.html"
+    - title: Using the Spark Shell
+      path: "/documentation/server/4.6/connectors/spark-2.0/spark-shell.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/spark-2.0/release-notes.html"
+  - title: Spark Connector 1.2
+    path: "/documentation/server/4.6/connectors/spark-1.2/spark-intro.html"
+    items:
+    - title: Download and API Reference
+      path: "/documentation/server/4.6/connectors/spark-1.2/download-links.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/spark-1.2/getting-started.html"
+    - title: Development Workflow
+      path: "/documentation/server/4.6/connectors/spark-1.2/dev-workflow.html"
+    - title: Working With RDDs
+      path: "/documentation/server/4.6/connectors/spark-1.2/working-with-rdds.html"
+    - title: Spark SQL Integration
+      path: "/documentation/server/4.6/connectors/spark-1.2/spark-sql.html"
+    - title: Spark Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-1.2/spark-streaming.html"
+    - title: Java API
+      path: "/documentation/server/4.6/connectors/spark-1.2/java-api.html"
+    - title: Using the Spark Shell
+      path: "/documentation/server/4.6/connectors/spark-1.2/spark-shell.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/spark-1.2/release-notes.html"
+  - title: Spark Connector 1.1
+    path: "/documentation/server/4.6/connectors/spark-1.1/spark-intro.html"
+    items:
+    - title: Download and API Reference
+      path: "/documentation/server/4.6/connectors/spark-1.1/download-links.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/spark-1.1/getting-started.html"
+    - title: Working With RDDs
+      path: "/documentation/server/4.6/connectors/spark-1.1/working-with-rdds.html"
+    - title: Spark SQL Integration
+      path: "/documentation/server/4.6/connectors/spark-1.1/spark-sql.html"
+    - title: Spark Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-1.1/spark-streaming.html"
+    - title: Java API
+      path: "/documentation/server/4.6/connectors/spark-1.1/java-api.html"
+    - title: Using the Spark Shell
+      path: "/documentation/server/4.6/connectors/spark-1.1/spark-shell.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/spark-1.1/release-notes.html"
+  - title: Spark Connector 1.0
+    path: "/documentation/server/4.6/connectors/spark-1.0/spark-intro.html"
+    items:
+    - title: Download and API Reference
+      path: "/documentation/server/4.6/connectors/spark-1.0/download-links.html"
+    - title: Getting Started
+      path: "/documentation/server/4.6/connectors/spark-1.0/getting-started.html"
+    - title: Working with RDDs
+      path: "/documentation/server/4.6/connectors/spark-1.0/working-with-rdds.html"
+    - title: Spark SQL Integration
+      path: "/documentation/server/4.6/connectors/spark-1.0/spark-sql.html"
+    - title: Spark Streaming Integration
+      path: "/documentation/server/4.6/connectors/spark-1.0/spark-streaming.html"
+    - title: Java API
+      path: "/documentation/server/4.6/connectors/spark-1.0/java-api.html"
+    - title: Using the Spark Shell
+      path: "/documentation/server/4.6/connectors/spark-1.0/spark-shell.html"
+    - title: Release Notes
+      path: "/documentation/server/4.6/connectors/spark-1.0/release-notes.html"
+  - title: Talend Connector
+    path: "/documentation/server/4.6/connectors/talend/talend.html"
+  - title: Couchbase ODBC and JDBC Drivers
+    path: "/documentation/server/4.6/connectors/odbc-jdbc-drivers.html"
+- title: REFERENCES
+  path: "#"
+  items:
+  - title: N1QL Reference
+    path: "#"
+    items:
+    - title: N1QL Language Reference
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/index.html"
+    - title: N1QL Queries and Results
+      path: "/documentation/server/4.6/n1ql/n1ql-intro/queriesandresults.html"
+    - title: Getting System Information
+      path: "/documentation/server/4.6/n1ql/n1ql-intro/sysinfo.html"
+    - title: Running N1QL Queries from a Command Line
+      path: "/documentation/server/4.6/n1ql/n1ql-intro/cbq.html"
+    - title: Conventions
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/conventions.html"
+    - title: Reserved Words
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/reservedwords.html"
+    - title: Data Types
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/datatypes.html"
+    - title: Literals
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/literals.html"
+    - title: Identifiers
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/identifiers.html"
+    - title: Operators
+      path: "#"
+      items:
+      - title: Operators Overview
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/operators.html"
+      - title: Arithmetic Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/arithmetic.html"
+      - title: Collection Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/collectionops.html"
+      - title: Comparison Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/comparisonops.html"
+      - title: Conditional Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/conditionalops.html"
+      - title: Construction Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/constructionops.html"
+      - title: Logical Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/logicalops.html"
+      - title: Nested Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/nestedops.html"
+      - title: String Operators
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/stringops.html"
+    - title: Functions
+      path: "#"
+      items:
+      - title: Functions Overview
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/functions.html"
+      - title: Aggregate Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/aggregatefun.html"
+      - title: Array Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/arrayfun.html"
+      - title: Comparison Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/comparisonfun.html"
+      - title: Conditional Functions for Unknowns
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/condfununknown.html"
+      - title: Conditional Functions for Numbers
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/condfunnum.html"
+      - title: Date Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/datefun.html"
+      - title: JSON Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/jsonfun.html"
+      - title: Meta and UUID Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/metafun.html"
+      - title: Number Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/numericfun.html"
+      - title: Object Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/objectfun.html"
+      - title: Pattern-matching Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/patternmatchingfun.html"
+      - title: String Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/stringfun.html"
+      - title: Token Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/tokenfun.html"
+      - title: Type Functions
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/typefun.html"
+    - title: Subqueries
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/subqueries.html"
+      items:
+      - title: Correlated Subqueries
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/correlated-subqueries.html"
+      - title: Examples
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/subquery-examples.html"
+    - title: Boolean Logic
+      path: "/documentation/server/4.6/n1ql/n1ql-language-reference/booleanlogic.html"
+    - title: Statements
+      path: "#"
+      items:
+      - title: BUILD INDEX
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/build-index.html"
+      - title: CREATE INDEX
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/createindex.html"
+        items:
+        - title: Array Indexing
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/indexing-arrays.html"
+        - title: Covering Indexes
+          path: "/documentation/server/4.6/indexes/covering-indexes.html"
+      - title: CREATE PRIMARY INDEX
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/createprimaryindex.html"
+      - title: DELETE
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/delete.html"
+      - title: DROP INDEX
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/dropindex.html"
+      - title: DROP PRIMARY INDEX
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/dropprimaryindex.html"
+      - title: EXPLAIN
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/explain.html"
+      - title: INFER
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/infer.html"
+      - title: INSERT
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/insert.html"
+      - title: MERGE
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/merge.html"
+      - title: PREPARE
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/prepare.html"
+      - title: SELECT
+        path: "#"
+        items:
+        - title: Overview
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/selectintro.html"
+        - title: SELECT Syntax
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/select-syntax.html"
+        - title: SELECT clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/selectclause.html"
+        - title: FROM clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/from.html"
+        - title: USE INDEX clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/hints.html"
+        - title: LET clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/let.html"
+        - title: WHERE clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/where.html"
+        - title: GROUP BY clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/groupby.html"
+        - title: UNION, INTERSECT, and EXCEPT
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/union.html"
+        - title: ORDER BY clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/orderby.html"
+        - title: LIMIT clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/limit.html"
+        - title: OFFSET clause
+          path: "/documentation/server/4.6/n1ql/n1ql-language-reference/offset.html"
+      - title: UPDATE
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/update.html"
+      - title: UPSERT
+        path: "/documentation/server/4.6/n1ql/n1ql-language-reference/upsert.html"
+  - title: Full Text Search Reference
+    path: "/documentation/server/4.6/fts/full-text-intro.html"
+    items:
+    - title: What's New in the Current Version?
+      path: "/documentation/server/4.6/fts/fts-whats-new.html"
+    - title: Text Indexing
+      path: "/documentation/server/4.6/fts/fts-creating-indexes.html"
+    - title: Text Analysis
+      path: "/documentation/server/4.6/fts/fts-text-analysis.html"
+    - title: Queries
+      path: "/documentation/server/4.6/fts/fts-queries.html"
+      items:
+      - title: Types of Queries
+        path: "/documentation/server/4.6/fts/fts-query-types.html"
+      - title: Sorting Query Results
+        path: "/documentation/server/4.6/fts/fts-sorting.html"
+      - title: Response Object Schema
+        path: "/documentation/server/4.6/fts/fts-response-object-schema.html"
+    - title: Troubleshooting and FAQs
+      path: "/documentation/server/4.6/fts/fts-troubleshooting.html"
+  - title: CLI Reference
+    path: "/documentation/server/4.6/cli/cli-intro.html"
+    items:
+    - title: cbbackupmgr
+      path: "/documentation/server/4.6/backup-restore/cbbackupmgr.html"
+      items:
+      - title: cbbackupmgr backup
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-backup.html"
+      - title: cbbackupmgr compact
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-compact.html"
+      - title: cbbackupmgr help
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-help.html"
+      - title: cbbackupmgr config
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-config.html"
+      - title: cbbackupmgr list
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-list.html"
+      - title: cbbackupmgr merge
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-merge.html"
+      - title: cbbackupmgr remove
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-remove.html"
+      - title: cbbackupmgr restore
+        path: "/documentation/server/4.6/backup-restore/cbbackupmgr-restore.html"
+    - title: couchbase-cli
+      path: "/documentation/server/4.6/cli/cbcli-intro.html"
+      items:
+      - title: admin-role-manage
+        path: "/documentation/server/4.6/cli/alter-role.html"
+      - title: bucket-compact
+        path: "/documentation/server/4.6/cli/cbcli/bucket-compact.html"
+      - title: bucket-create
+        path: "/documentation/server/4.6/cli/cbcli/bucket-create.html"
+      - title: bucket-delete
+        path: "/documentation/server/4.6/cli/cbcli/bucket-delete.html"
+      - title: bucket-edit
+        path: "/documentation/server/4.6/cli/cbcli/bucket-edit.html"
+      - title: bucket-flush
+        path: "/documentation/server/4.6/cli/cbcli/bucket-flush.html"
+      - title: bucket-list
+        path: "/documentation/server/4.6/cli/cbcli/bucket-list.html"
+      - title: cluster-edit
+        path: "/documentation/server/4.6/cli/cbcli/cluster-edit.html"
+      - title: cluster-init
+        path: "/documentation/server/4.6/cli/cbcli/cluster-init.html"
+      - title: collect-logs-start
+        path: "/documentation/server/4.6/cli/cbcli/collect-logs-start.html"
+      - title: collect-logs-status
+        path: "/documentation/server/4.6/cli/cbcli/collect-logs-status.html"
+      - title: collect-logs-stop
+        path: "/documentation/server/4.6/cli/cbcli/collect-logs-stop.html"
+      - title: failover
+        path: "/documentation/server/4.6/cli/cbcli/failover.html"
+      - title: group-manage
+        path: "/documentation/server/4.6/cli/cbcli/group-manage.html"
+      - title: master-password
+        path: "/documentation/server/4.6/cli/cbcli/master-password.html"
+      - title: node-init
+        path: "/documentation/server/4.6/cli/cbcli/node-init.html"
+      - title: rebalance
+        path: "/documentation/server/4.6/cli/cbcli/rebalance.html"
+      - title: rebalance-status
+        path: "/documentation/server/4.6/cli/cbcli/rebalance-status.html"
+      - title: rebalance-stop
+        path: "/documentation/server/4.6/cli/cbcli/rebalance-stop.html"
+      - title: recovery
+        path: "/documentation/server/4.6/cli/cbcli/recovery.html"
+      - title: reset-admin-password
+        path: "/documentation/server/4.6/cli/cbcli/reset-admin-password.html"
+      - title: server-add
+        path: "/documentation/server/4.6/cli/cbcli/server-add.html"
+      - title: server-list
+        path: "/documentation/server/4.6/cli/cbcli/server-list.html"
+      - title: server-readd
+        path: "/documentation/server/4.6/cli/cbcli/server-readd.html"
+      - title: setting-alert
+        path: "/documentation/server/4.6/cli/cbcli/setting-alert.html"
+      - title: setting-audit
+        path: "/documentation/server/4.6/cli/cbcli/setting-audit.html"
+      - title: setting-autofailover
+        path: "/documentation/server/4.6/cli/cbcli/setting-autofailover.html"
+      - title: setting-cluster
+        path: "/documentation/server/4.6/cli/cbcli/setting-cluster.html"
+      - title: setting-compaction
+        path: "/documentation/server/4.6/cli/cbcli/setting-compaction.html"
+      - title: setting-index
+        path: "/documentation/server/4.6/cli/cbcli/setting-index.html"
+      - title: setting-ldap
+        path: "/documentation/server/4.6/cli/cbcli/setting-ldap.html"
+      - title: setting-notification
+        path: "/documentation/server/4.6/cli/cbcli/setting-notification.html"
+      - title: setting-xdcr
+        path: "/documentation/server/4.6/cli/cbcli/setting-xdcr.html"
+      - title: ssl-manage
+        path: "/documentation/server/4.6/cli/cbcli/ssl-manage.html"
+      - title: user-manage
+        path: "/documentation/server/4.6/cli/cbcli/user-manage.html"
+      - title: xdcr-replicate
+        path: "/documentation/server/4.6/cli/cbcli/xdcr-replicate.html"
+      - title: xdcr-setup
+        path: "/documentation/server/4.6/cli/cbcli/xdcr-setup.html"
+    - title: cbanalyze-core
+      path: "/documentation/server/4.6/cli/cbanalyze-core-tool.html"
+    - title: cbbackup
+      path: "/documentation/server/4.6/cli/cbbackup-tool.html"
+      items:
+      - title: Backing up with cbbackup
+        path: "/documentation/server/4.6/cli/backup-cbbackup.html"
+    - title: cbbackupwrapper and cbrestorewrapper
+      path: "/documentation/server/4.6/cli/cbbackup-wrapper.html"
+    - title: cbcollect_info
+      path: "/documentation/server/4.6/cli/cbcollect-info-tool.html"
+    - title: cbdocloader
+      path: "/documentation/server/4.6/cli/cbdocloader-tool.html"
+    - title: cbepctl
+      path: "/documentation/server/4.6/cli/cbepctl-intro.html"
+      items:
+      - title: set checkpoint_param
+        path: "/documentation/server/4.6/cli/cbepctl/set-checkpoint_param.html"
+      - title: set flush_param
+        path: "/documentation/server/4.6/cli/cbepctl/set-flush_param.html"
+      - title: set tap_param
+        path: "/documentation/server/4.6/cli/cbepctl/set-tap_param.html"
+    - title: cbft-bleve-dump
+      path: "/documentation/server/4.6/cli/cbft-bleve-dump.html"
+    - title: cbft-bleve-query
+      path: "/documentation/server/4.6/cli/cbft-bleve-query.html"
+    - title: cbq
+      path: "/documentation/server/4.6/cli/cbq-tool.html"
+    - title: cbrestore
+      path: "/documentation/server/4.6/cli/cbrestore-tool.html"
+      items:
+      - title: Restoring with cbrestore
+        path: "/documentation/server/4.6/cli/restore-cbrestore.html"
+      - title: rehash=1
+        path: "/documentation/server/4.6/cli/cbrestore-tween-opsys.html"
+    - title: cbstats
+      path: "/documentation/server/4.6/cli/cbstats-intro.html"
+      items:
+      - title: all
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-all.html"
+      - title: allocator
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-allocator.html"
+      - title: checkpoint
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-checkpoint.html"
+      - title: config
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-config.html"
+      - title: dcp
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-dcp.html"
+      - title: dcpagg
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-dcpagg.html"
+      - title: diskinfo
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-diskinfo.html"
+      - title: dispatcher
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-dispatcher-job.html"
+      - title: failovers
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-failovers.html"
+      - title: hash
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-hash.html"
+      - title: key
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-key.html"
+      - title: kvstore
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-kvstore.html"
+      - title: kvtimings
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-kvtimings.html"
+      - title: memory
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-memory.html"
+      - title: reset
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-reset.html"
+      - title: runtimes
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-runtimes.html"
+      - title: scheduler
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-scheduler.html"
+      - title: tap
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-tap.html"
+      - title: tapagg
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-tapagg.html"
+      - title: timings
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-timing.html"
+      - title: uuid
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-uuid.html"
+      - title: vbucket
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-vbucket.html"
+      - title: vkey
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-vkey.html"
+      - title: warmup
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-warmup.html"
+      - title: workload
+        path: "/documentation/server/4.6/cli/cbstats/cbstats-workload.html"
+    - title: cbtransfer
+      path: "/documentation/server/4.6/cli/cbtransfer-tool.html"
+    - title: cbworkloadgen
+      path: "/documentation/server/4.6/cli/cbworkloadgen-tool.html"
+    - title: mctimings
+      path: "/documentation/server/4.6/cli/mctimings.html"
+  - title: REST API reference
+    path: "/documentation/server/4.6/rest-api/rest-intro.html"
+    items:
+    - title: REST API endpoint list
+      path: "/documentation/server/4.6/rest-api/rest-endpoints-all.html"
+      items:
+      - title: Cluster API
+        path: "/documentation/server/4.6/rest-api/rest-cluster-intro.html"
+        items:
+        - title: Creating a new cluster
+          path: "/documentation/server/4.6/rest-api/rest-node-provisioning.html"
+        - title: Retrieving Cluster Information
+          path: "/documentation/server/4.6/rest-api/rest-cluster-get.html"
+        - title: Viewing Cluster Details
+          path: "/documentation/server/4.6/rest-api/rest-cluster-details.html"
+        - title: Adding Nodes to Clusters
+          path: "/documentation/server/4.6/rest-api/rest-cluster-addnodes.html"
+        - title: Joining Nodes into Clusters
+          path: "/documentation/server/4.6/rest-api/rest-cluster-joinnode.html"
+        - title: Removing Nodes from Clusters
+          path: "/documentation/server/4.6/rest-api/rest-cluster-removenode.html"
+        - title: Rebalancing Nodes
+          path: "/documentation/server/4.6/rest-api/rest-cluster-rebalance.html"
+        - title: Viewing Internal Settings
+          path: "/documentation/server/4.6/rest-api/rest-get-internal-setting.html"
+        - title: Managing Auto-Failover
+          path: "/documentation/server/4.6/rest-api/rest-cluster-autofailover-intro.html"
+          items:
+          - title: Retrieving Auto-Failover Settings
+            path: "/documentation/server/4.6/rest-api/rest-cluster-autofailover-settings.html"
+          - title: Enabling and Disabling Auto-Failover
+            path: "/documentation/server/4.6/rest-api/rest-cluster-autofailover-enable.html"
+          - title: Resetting Auto-Failover
+            path: "/documentation/server/4.6/rest-api/rest-cluster-autofailover-reset.html"
+        - title: Disabling Consistent Query Results on Rebalance
+          path: "/documentation/server/4.6/rest-api/rest-cluster-disable-query.html"
+        - title: Setting Email Notifications
+          path: "/documentation/server/4.6/rest-api/rest-cluster-email-notifications.html"
+      - title: Server Nodes API
+        path: "/documentation/server/4.6/rest-api/rest-server-nodes.html"
+        items:
+        - title: Getting Server Node Information
+          path: "/documentation/server/4.6/rest-api/rest-node-get-info.html"
+        - title: Enabling Couchbase Server Services
+          path: "/documentation/server/4.6/rest-api/rest-node-services.html"
+        - title: Failing over Nodes
+          path: "/documentation/server/4.6/rest-api/rest-node-failover.html"
+        - title: Setting Recovery Type
+          path: "/documentation/server/4.6/rest-api/rest-node-recovery-incremental.html"
+        - title: Setting Graceful Failover
+          path: "/documentation/server/4.6/rest-api/rest-failover-graceful.html"
+        - title: Setting Hostnames
+          path: "/documentation/server/4.6/rest-api/rest-node-hostname.html"
+        - title: Setting Usernames and Passwords
+          path: "/documentation/server/4.6/rest-api/rest-node-set-username.html"
+        - title: Setting Memory Quota
+          path: "/documentation/server/4.6/rest-api/rest-node-memory-quota.html"
+        - title: Setting Index Paths
+          path: "/documentation/server/4.6/rest-api/rest-node-index-path.html"
+        - title: Retrieving Statistics
+          path: "/documentation/server/4.6/rest-api/rest-node-retrieve-stats.html"
+      - title: Server Groups API
+        path: "/documentation/server/4.6/rest-api/rest-rza.html"
+        items:
+        - title: Getting Server Group Information
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-get.html"
+        - title: Creating Server Groups
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-post-create.html"
+        - title: Adding Servers to Server Groups
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-post-add.html"
+        - title: Renaming Server Groups
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-put.html"
+        - title: Updating Server Group Memberships
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-put-membership.html"
+        - title: Deleting Server Groups
+          path: "/documentation/server/4.6/rest-api/rest-servergroup-delete.html"
+      - title: Buckets API
+        path: "/documentation/server/4.6/rest-api/rest-bucket-intro.html"
+        items:
+        - title: Getting all Bucket Information
+          path: "/documentation/server/4.6/rest-api/rest-buckets-summary.html"
+        - title: Getting Single Bucket Information
+          path: "/documentation/server/4.6/rest-api/rest-bucket-info.html"
+        - title: Getting Bucket Statistics
+          path: "/documentation/server/4.6/rest-api/rest-bucket-stats.html"
+        - title: Getting Bucket Streaming URI
+          path: "/documentation/server/4.6/rest-api/rest-buckets-streamingURI.html"
+        - title: Creating and Editing Buckets
+          path: "/documentation/server/4.6/rest-api/rest-bucket-create.html"
+        - title: Setting Disk I/O Priority
+          path: "/documentation/server/4.6/rest-api/rest-bucket-set-priority.html"
+        - title: Setting Metadata Ejection
+          path: "/documentation/server/4.6/rest-api/rest-bucket-metadata-ejection.html"
+        - title: Changing Bucket Parameters
+          path: "/documentation/server/4.6/rest-api/rest-bucket-parameters.html"
+        - title: Changing Bucket Authentication
+          path: "/documentation/server/4.6/rest-api/rest-bucket-auth.html"
+        - title: Changing Bucket Memory Quota
+          path: "/documentation/server/4.6/rest-api/rest-bucket-memory-quota.html"
+        - title: Deleting Buckets
+          path: "/documentation/server/4.6/rest-api/rest-bucket-delete.html"
+        - title: Flushing Buckets
+          path: "/documentation/server/4.6/rest-api/rest-bucket-flush.html"
+      - title: Index Service API
+        path: "/documentation/server/4.6/rest-api/rest-index-service.html"
+        items:
+        - title: Retrieve the Global Secondary Index Settings
+          path: "/documentation/server/4.6/rest-api/get-settings-indexes.html"
+        - title: Set the Global Secondary Index Settings
+          path: "/documentation/server/4.6/rest-api/post-settings-indexes.html"
+      - title: Views API
+        path: "/documentation/server/4.6/rest-api/rest-views-intro.html"
+        items:
+        - title: Getting Design Doc Information
+          path: "/documentation/server/4.6/rest-api/rest-ddocs-get.html"
+        - title: Creating Design Documents
+          path: "/documentation/server/4.6/rest-api/rest-ddocs-create.html"
+        - title: Deleting Design Documents
+          path: "/documentation/server/4.6/rest-api/rest-ddocs-delete.html"
+        - title: Getting Views Information
+          path: "/documentation/server/4.6/rest-api/rest-views-get.html"
+        - title: Limiting Views Requests
+          path: "/documentation/server/4.6/rest-api/rest-views-requests.html"
+      - title: Full Text Search API
+        path: "/documentation/server/4.6/rest-api/rest-fts.html"
+        items:
+        - title: Node Configuration
+          path: "/documentation/server/4.6/rest-api/rest-fts-node.html"
+        - title: Indexes
+          path: "/documentation/server/4.6/rest-api/rest-fts-indexing.html"
+        - title: Advanced
+          path: "/documentation/server/4.6/rest-api/rest-fts-advanced.html"
+      - title: XDCR API
+        path: "/documentation/server/4.6/rest-api/rest-xdcr-intro.html"
+        items:
+        - title: Creating XDCR Replications
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-create-replication.html"
+        - title: Getting a Destination Cluster Reference
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-get-ref.html"
+        - title: Setting Destination Cluster References
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-create-ref.html"
+        - title: Deleting a Destination Cluster Reference
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-delete-ref.html"
+        - title: Managing XDCR Data Encryption
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-data-encrypt.html"
+        - title: Deleting XDCR Replications
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-delete-replication.html"
+        - title: Managing Advanced XDCR Settings
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-adv-settings.html"
+        - title: Pausing XDCR Replication Streams
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-pause-resume.html"
+        - title: Getting XDCR Stats
+          path: "/documentation/server/4.6/rest-api/rest-xdcr-statistics.html"
+      - title: Compaction API
+        path: "/documentation/server/4.6/rest-api/compaction-rest-api.html"
+        items:
+        - title: Using REST for Encrypted Access
+          path: "/documentation/server/4.6/rest-api/security-encrypted-access.html"
+        - title: Compacting Buckets
+          path: "/documentation/server/4.6/rest-api/rest-compact-post.html"
+        - title: Compacting Spatial Views
+          path: "/documentation/server/4.6/rest-api/rest-compact-spatialviews.html"
+        - title: Getting Auto-Compaction Settings
+          path: "/documentation/server/4.6/rest-api/rest-autocompact-get.html"
+      - title: Logs API
+        path: "/documentation/server/4.6/rest-api/logs-rest-api.html"
+        items:
+        - title: Retrieving Log Information
+          path: "/documentation/server/4.6/rest-api/rest-logs-get.html"
+        - title: Creating Client Logs
+          path: "/documentation/server/4.6/rest-api/rest-client-logs.html"
+      - title: Security API
+        path: "/documentation/server/4.6/rest-api/rest-security.html"
+        items:
+        - title: Auditing API
+          path: "/documentation/server/4.6/rest-api/rest-auditing.html"
+        - title: Authorization API
+          path: "/documentation/server/4.6/rest-api/rest-authorization.html"
+          items:
+          - title: Role Based Admin Access (RBAC)
+            path: "/documentation/server/4.6/rest-api/rbac.html"
+          - title: Create a Read-Only Administrator
+            path: "/documentation/server/4.6/rest-api/rest-user-create.html"
+          - title: Retrieve the Read-Only Administrator's Name
+            path: "/documentation/server/4.6/rest-api/rest-user-getname.html"
+          - title: Change the Read-Only Administrator's Password
+            path: "/documentation/server/4.6/rest-api/rest-user-password-put.html"
+          - title: Delete the Read-Only Administrator
+            path: "/documentation/server/4.6/rest-api/rest-user-delete.html"
+        - title: Encryption On-the-Wire API
+          path: "/documentation/server/4.6/rest-api/rest-encryption.html"
+        - title: Secret Management API
+          path: "/documentation/server/4.6/rest-api/rest-secret-mgmt.html"
+      - title: N1QL REST API
+        path: "/documentation/server/4.6/n1ql/n1ql-rest-api/index.html"
+        items:
+        - title: Examples
+          path: "/documentation/server/4.6/n1ql/n1ql-rest-api/examplesrest.html"
+          items:
+          - title: Successful request
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exsuccessful.html"
+          - title: Request with positional parameters
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/expositional.html"
+          - title: Request with Named Parameters
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exnamed.html"
+          - title: Request Timeout
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/extimeout.html"
+          - title: Request error
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exrequesterror.html"
+          - title: Service error
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exserviceerror.html"
+          - title: N1QL error
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exn1qlerror.html"
+          - title: Unsupported HTTP method
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exunsupportedhttp.html"
+          - title: Request with authentication - HTTP header
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exauthhttp.html"
+          - title: Request with authentication - request parameter
+            path: "/documentation/server/4.6/n1ql/n1ql-rest-api/exauthrequest.html"
+  - title: Couchbase Server Tools
+    path: "/documentation/server/4.6/tools/tools-ref.html"
+    items:
+    - title: 'cbq: The Command Line Shell for N1QL'
+      path: "/documentation/server/4.6/tools/cbq-shell.html"
+    - title: Query Workbench
+      path: "/documentation/server/4.6/tools/query-workbench.html"
+    - title: Query Monitoring
+      path: "/documentation/server/4.6/tools/query-monitoring.html"
+    - title: Data Import/Export Tools
+      path: "#"
+      items:
+      - title: cbimport
+        path: "/documentation/server/4.6/tools/cbimport.html"
+      - title: cbexport
+        path: "/documentation/server/4.6/tools/cbexport.html"
+- title: Release Notes
+  path: "#"
+  items:
+  - title: Release Notes
+    path: "/documentation/server/4.6/release-notes/relnotes.html"
+  - title: Older Release Notes
+    path: "#"
+    items:
+    - title: Release Notes for Couchbase Server 4.5
+      path: "/documentation/server/4.6/release-notes/relnotes-45-ga.html"
+    - title: Release Notes for Couchbase Server 4.1
+      path: "/documentation/server/4.6/release-notes/relnotes-41-ga.html"
+    - title: Release Notes for Couchbase Server 4.0
+      path: "/documentation/server/4.6/release-notes/relnotes-40-ga.html"
+  - title: Providing Feedback
+    path: "/documentation/server/4.6/release-notes/giving-feedback.html"

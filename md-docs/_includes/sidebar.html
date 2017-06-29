@@ -12,6 +12,8 @@
   {% assign nav_docs = site.data.15 %}
 {% elsif site.version == '2.0' %}
   {% assign nav_docs = site.data.20 %}
+{% elsif site.version == 'server' %}
+  {% assign nav_docs = site.data.server %}
 {% endif %}
 
 <!-- Used in the left nav to find the relative URL -->
