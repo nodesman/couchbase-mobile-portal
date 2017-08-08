@@ -15,35 +15,6 @@
       path: installation/phonegap/index.html
     - title: Sync Gateway
       path: installation/sync-gateway/index.html
-- title: Tutorial
-  path: training/index.html
-  items:
-    - title: Design
-      items:
-        - title: Data Modeling
-          path: training/design/data-modeling/index.html
-        - title: Access Control
-          path: training/design/security/index.html
-    - title: Develop
-      items:
-        - title: Create a Database
-          path: training/develop/create-database/index.html
-        - title: Using the Database
-          path: training/develop/using-the-database/index.html
-        - title: Adding Sync
-          path: training/develop/adding-synchronization/index.html
-        - title: Adding Security
-          path: training/develop/adding-security/index.html
-        - title: Integration
-          path: training/develop/integration/index.html
-    - title: Deploy
-      items:
-        - title: Install
-          path: training/deploy/install/index.html
-        - title: Upgrade
-          path: training/deploy/upgrade/index.html
-        - title: Scale
-          path: training/deploy/scale/index.html
 - title: Guides
   path: guides/index.html
   items:
