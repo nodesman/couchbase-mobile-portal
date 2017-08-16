@@ -3,6 +3,30 @@ id: release-notes
 title: Release notes
 permalink: references/couchbase-lite/release-notes/index.html
 ---
+
+### Developer build 14
+
+<block class="objc swift" />
+
+* Support Select all properties.
+* Support Quantified expression (Any, AnyAndEvery, and Every).
+* Support Query's isNullOrMissing expression.
+* Support more Query functions including array, mathematics, string, and type functions.
+* Support type setters on Document, Dictionary, Array, and Query's parameters.
+* Support Int64 getter on Document, Dictionary, Array.
+* Added Connecting and Offline to the Replicator's ActivityLevel status.
+
+<block class="net" />
+
+- Select all properties via `SelectResult.All()`
+- Lots of new functions (Check the `Function` class) for use in querying
+- Collection functions (Any / Every / AnyAndEvery) for running predicates on array items during query
+- Collation API (see `Collation` class) for locale and language based sorting of strings
+- Typed setter functions (`SetString`, `SetInt`, etc) and added `GetFloat` for completion
+- Expanded the replicator statuses
+
+<block class="all" />
+
 ### Developer build 13
 
 <block class="objc swift" />

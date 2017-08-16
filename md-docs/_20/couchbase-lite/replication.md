@@ -71,12 +71,8 @@ CBLReplication *replication = [[CBLReplicator alloc] initWithConfig: config];
 
 ```swift
 let url = URL(string: "blip://localhost:4984/db")!
-var config = ReplicatorConfiguration()
-config.database = db
-config.target = .url(url)
-config.continuous = true
-        
-let replication = Replicator(config: config);
+let replConfig = ReplicatorConfiguration(database: database, targetURL: url)
+let replication = Replicator(config: replConfig)
 replication.start()
 ```
 
@@ -142,6 +138,18 @@ replicator.addChangeListener(new ReplicatorChangeListener() {
 		}
 });
 ```
+
+<block class="java csharp" />
+
+The following table lists the different activity levels in the API and the meaning of each one.
+
+|State|Meaning|
+|:----|:------|
+|`STOPPED`|The replication is finished or hit a fatal error.|
+|`OFFLINE`|The replicator is offline as the remote host is unreachable.|
+|`CONNECTING`|The replicator is connecting to the remote host.|
+|`IDLE`|The replication caught up with all the changes available from the server. The `IDLE` state is only used in continuous replications.|
+|`BUSY`|The replication is actively transferring data.|
 
 <block class="all" />
 
