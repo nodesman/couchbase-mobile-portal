@@ -138,6 +138,33 @@ properties:
             type: string
             description: Feed type DCP or TAP.
             default: TAP
+          import_filter:
+            type: string
+            description: |
+              JavaScript filter function to determine if a document written to the Couchbase Server bucket should be made available to Couchbase Mobile clients (i.e imported). The filter function takes the document body as parameter and is expected to return a boolean to indicate whether the document should be imported.
+              
+              ```json
+              {
+                "databases": {
+                  "db": {
+                    "server": "http://localhost:8091",
+                    "bucket": "default",
+                    "password": "password",
+                    "import_docs": "continuous",
+                    "enable_shared_bucket_access": true,  
+                    "import_filter": `
+              		function(doc) {
+              		  if (doc.type != "mobile") {
+              		    return false
+              		  }
+              		  return true
+              		}
+              		`,
+                  }
+                }
+              }
+              ```
+            default: function(doc) {return false;}
           oidc:
             type: object
             description: OIDC providers.
