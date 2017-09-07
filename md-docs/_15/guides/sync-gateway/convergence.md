@@ -50,11 +50,25 @@ Plan:
 
 -->
 
-## Overview
+## Beta 2
 
-With Sync Gateway 1.5 and Couchbase Server 5.0, sharing data between mobile and server applications is easier than ever. Both mobile and server applications can now read and write data in the same bucket.
+- Mobile Convergence.
+- In Sync Gateway 1.5 you have the ability to define multiple server URLs in the Sync Gateway configuration, and full support for SSL between Sync Gateway and Couchbase Server (ref [databases.foo\_db.server](../1.4/guides/sync-gateway/config-properties/index.html)).
 
-## Compatibility
+## Mobile Convergence
+
+### What is Mobile Convergence?
+
+The core functionality provided by convergence is the ability for mobile and server applications to read from and write to the same bucket.
+
+Mobile applications require additional metadata in order to manage security and replication. Until now, this information has always been stored in the document body. This required users to interact w/ mobile documents only through Sync Gateway, to avoid issues like:
+
+- SDK writes failing to preserve or update mobile metadata
+- SDK reads including (usually unwanted) mobile metadata
+
+Convergence is an opt-in feature in Sync Gateway 1.5. Customers must explicitly enable convergence in the Sync Gateway config, using the [databases.foo_db.enabled\_shared\_bucket\_access](../1.4/guides/sync-gateway/config-properties/index.html) property. The feature was made opt-in primarily out of consideration for existing customers upgrading from Sync Gateway 1.4. It ensures that their existing configs will continue to work as-is, and supports upgrade without bringing down the entire Sync Gateway cluster.
+
+### Compatibility matrix
 
 #### Sync Gateway - Couchbase Server
 
