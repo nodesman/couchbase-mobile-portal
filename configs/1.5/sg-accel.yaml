@@ -20,7 +20,26 @@ properties:
     properties:
       server:
         type: string
-        description: The hostname of the Couchbase Server cluster.
+        description: |
+          Hostname(s) to the Couchbase Server nodes in the cluster.
+          
+          Multiple URLs can be specified in any of the following formats:
+          
+            - `couchbase://host1`
+            - `couchbases://host1`
+            - `couchbase://host1,host2`
+            - `couchbase://host1:8091,host2,`
+            - `couchbase://host1:18091,host2:8091`
+            - `http://host1:8091`
+            - `http://host1,host2:8091`
+            - `http://foo:bar@host1:8091`
+            
+          On startup, Sync Gateway Accelerator will try each hostname that is provided until it is able to connect successfully.
+          
+          If the connection to Couchbase Server is lost during normal operations, Sync Gateway Accelerator will automatically re-connect to another node in the cluster.
+            
+          The default value is an in-memory bucket called **walrus** that is only used during development and prototyping.
+        default: 'walrus:'
       bucket:
         type: string
         description: The bucket name where the data is stored (i.e the one specified in the database configuration.)
@@ -43,7 +62,26 @@ properties:
               description: Bucket name on Couchbase Server or a Walrus bucket. The default is the value of the property Name.
             server:
               type: string
-              description: Couchbase Server (or Walrus) URL. The default is walrus.
+              description: |
+                Hostname(s) to the Couchbase Server nodes in the cluster.
+                
+                Multiple URLs can be specified in any of the following formats:
+                
+                  - `couchbase://host1`
+                  - `couchbases://host1`
+                  - `couchbase://host1,host2`
+                  - `couchbase://host1:8091,host2,`
+                  - `couchbase://host1:18091,host2:8091`
+                  - `http://host1:8091`
+                  - `http://host1,host2:8091`
+                  - `http://foo:bar@host1:8091`
+                  
+                On startup, Sync Gateway Accelerator will try each hostname that is provided until it is able to connect successfully.
+                
+                If the connection to Couchbase Server is lost during normal operations, Sync Gateway Accelerator will automatically re-connect to another node in the cluster.
+                  
+                The default value is an in-memory bucket called **walrus** that is only used during development and prototyping.
+              default: 'walrus:'
             channel_index:
               type: object
               properties:
@@ -52,7 +90,23 @@ properties:
                   description: Whether the channel index node can write to the bucket.
                 server:
                   type: string
-                  description: Hostname to the Couchbase Server cluster.
+                  description: |
+                    Hostname(s) to the Couchbase Server nodes in the cluster.
+                    
+                    Multiple URLs can be specified in any of the following formats:
+                    
+                      - `couchbase://host1`
+                      - `couchbases://host1`
+                      - `couchbase://host1,host2`
+                      - `couchbase://host1:8091,host2,`
+                      - `couchbase://host1:18091,host2:8091`
+                      - `http://host1:8091`
+                      - `http://host1,host2:8091`
+                      - `http://foo:bar@host1:8091`
+                      
+                    On startup, Sync Gateway Accelerator will try each hostname that is provided until it is able to connect successfully.
+                    
+                    If the connection to Couchbase Server is lost during normal operations, Sync Gateway Accelerator will automatically re-connect to another node in the cluster.
                 bucket:
                   type: string
                   description: Bucket name for channel indexing. A common name is "channel_index".
