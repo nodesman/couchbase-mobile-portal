@@ -35,7 +35,7 @@ Configuration files have one syntactic feature that is not standard JSON: any te
 	var specsInfo = versions.map(function(version) {
 		return {
 			version: version,
-			url: 'https://couchbase-docs.s3.amazonaws.com/mobile/' + version + '/configs/sg.1504711149319.json'
+			url: 'https://couchbase-docs.s3.amazonaws.com/mobile/' + version + '/configs/sg.json?v=1'
 		};
 	});
 	setTimeout(function() {
