@@ -277,35 +277,22 @@ properties:
     type: string
     default: ':4984'
   log:
-    description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
-    type: array
-    items:
-      type: string
-      enum:
-        - Access:
-            description: Anytime an access() call is made in the sync function.
-        - Attach:
-            description: Attachment processing.
-        - Auth:
-            description: Authentication.
-        - Bucket:
-            description: Sync Gateway interactions with the bucket (verbose logging).
-        - Cache:
-            description: Interactions with Sync Gateway's in-memory channel cache.
-        - Changes:
-            description: Processing of _changes requests.
-        - CRUD:
-            description: Updates made by Sync Gateway to documents.
-        - DCP:
-            description: DCP-feed processing (verbose logging).
-        - Events:
-            description: Event processing (webhooks).
-        - Feed:
-            description: Server-feed processing.
-        - HTTP:
-            description: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
-        - Replicate:
-            description: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+    description: |
+      Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
+            
+      - Access: Anytime an access() call is made in the sync function.
+      - Attach: Attachment processing.
+      - Auth: Authentication.
+      - Bucket: Sync Gateway interactions with the bucket (verbose logging).
+      - Cache: Interactions with Sync Gateway's in-memory channel cache.
+      - Changes: Processing of _changes requests.
+      - CRUD: Updates made by Sync Gateway to documents.
+      - DCP: DCP-feed processing (verbose logging).
+      - Events: Event processing (webhooks).
+      - Feed: Server-feed processing.
+      - HTTP: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
+      - Replicate: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+    type: string
     default: '["HTTP"]'
   logFilePath:
     description: Absolute or relative path on the filesystem to the log file. A relative path is from the directory that contains the Sync Gateway executable file.
@@ -323,52 +310,33 @@ properties:
             type: string
             default: 'stderr'
           logKeys:
-            description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
-            type: array
-            items:
-              type: string
-              enum:
-                - Access:
-                    description: Anytime an access() call is made in the sync function.
-                - Attach:
-                    description: Attachment processing.
-                - Auth:
-                    description: Authentication.
-                - Bucket:
-                    description: Sync Gateway interactions with the bucket (verbose logging).
-                - Cache:
-                    description: Interactions with Sync Gateway's in-memory channel cache.
-                - Changes:
-                    description: Processing of _changes requests.
-                - CRUD:
-                    description: Updates made by Sync Gateway to documents.
-                - DCP:
-                    description: DCP-feed processing (verbose logging).
-                - Events:
-                    description: Event processing (webhooks).
-                - Feed:
-                    description: Server-feed processing.
-                - HTTP:
-                    description: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
-                - Replicate:
-                    description: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+            description: |
+              Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
+              
+              - Access: Anytime an access() call is made in the sync function.
+              - Attach: Attachment processing.
+              - Auth: Authentication.
+              - Bucket: Sync Gateway interactions with the bucket (verbose logging).
+              - Cache: Interactions with Sync Gateway's in-memory channel cache.
+              - Changes: Processing of _changes requests.
+              - CRUD: Updates made by Sync Gateway to documents.
+              - DCP: DCP-feed processing (verbose logging).
+              - Events: Event processing (webhooks).
+              - Feed: Server-feed processing.
+              - HTTP: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
+              - Replicate: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+            type: string
             default: '["HTTP"]'
           logLevel:
-            description: The level of logging.
-            type: array
-            items:
-              type: string
-              enum:
-                - debug:
-                    description: 'Print all debug messages. With this level of logging, logs are usually voluminous. This log level is usually disabled in production.'
-                - info:
-                    description: 'Pint all information messages.'
-                - error:
-                    description: 'Print all errors. If an application is running smoothly it should not generate any error level logs.'
-                - panic:
-                    description: 'Logs a message, then panics.'
-                - fatal:
-                    description: 'Logs a message, then calls os.Exit(1).'
+            description: |
+              The level of logging.
+              
+              - debug: 'Print all debug messages. With this level of logging, logs are usually voluminous. This log level is usually disabled in production.'
+              - info: 'Pint all information messages.'
+              - error: 'Print all errors. If an application is running smoothly it should not generate any error level logs.'
+              - panic: 'Logs a message, then panics.'
+              - fatal: 'Logs a message, then calls os.Exit(1).'
+            type: string
             default: '["info"]'
           rotation:
             description: The log file may be rotated by defining a "rotation" sub document. See details in the table below.
