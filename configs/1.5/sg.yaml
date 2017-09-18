@@ -275,8 +275,8 @@ properties:
                 - `couchbase://host1`
                 - `couchbases://host1`
                 - `couchbase://host1,host2`
-                - `couchbase://host1:8091,host2,`
-                - `couchbase://host1:18091,host2:8091`
+                - `couchbase://host1:11210,host2,`
+                - `couchbases://host1:11207,host2`
                 - `http://host1:8091`
                 - `http://host1,host2:8091`
                 - `http://foo:bar@host1:8091`
