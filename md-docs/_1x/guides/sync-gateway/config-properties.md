@@ -30,27 +30,20 @@ Configuration files have one syntactic feature that is not standard JSON: any te
 <div id="json-config-ui"></div>
 <script src="https://couchbase-docs.s3.amazonaws.com/assets/json-config-ui/json-config-ui-bundle.js"></script>
 <script>
-var interval = setInterval(checkjQueryIsLoaded, 10);
-function checkjQueryIsLoaded() {
-	if ($.fn.jquery == '1.11.1') {
-		var frontMatter = "{{ page.versions | json | join: ','}}";
-    	var versions = frontMatter.split(",");
-    	var specsInfo = versions.map(function(version) {
-    		return {
-    			version: version,
-    			url: 'https://couchbase-docs.s3.amazonaws.com/mobile/' + version + '/configs/sg.json?v=1'
-    		};
-    	});
-    	setTimeout(function() {
-    		const ui = JSONConfigUIBundle({
-      		dom_id: '#json-config-ui',
-      		specs: specsInfo,
-      		current: {{ site.version }}
-      	});
-      	window.ui = ui
-    	}, 0);
-
-		window.clearInterval(interval);
-	}
-}
+var frontMatter = "{{ page.versions | json | join: ','}}";
+var versions = frontMatter.split(",");
+var specsInfo = versions.map(function(version) {
+	return {
+		version: version,
+		url: 'https://couchbase-docs.s3.amazonaws.com/mobile/' + version + '/configs/sg.json?v=1'
+	};
+});
+$(window).load(function() {
+	const ui = JSONConfigUIBundle({
+		dom_id: '#json-config-ui',
+		specs: specsInfo,
+		current: {{ site.version }}
+	});
+	window.ui = ui
+});
 </script>
