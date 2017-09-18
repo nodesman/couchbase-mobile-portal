@@ -1,5 +1,8 @@
 ---
 title: Accelerator
+versions:
+  - 1.4
+  - 1.5
 ---
 
 In this guide, you will learn how to scale a Couchbase Mobile deployment with Sync Gateway Accelerator. Before going into the details, it's important to identify if you wish to scale the **read** or **write** throughput of your application's back-end infrastructure.
@@ -261,7 +264,28 @@ When specifying a configuration file, the command to run Sync Gateway Accelerato
 $ sg_accel accel-config.json
 ```
 
+## Configuration Reference
+
+<link rel="stylesheet" type="text/css" href="https://couchbase-docs.s3.amazonaws.com/assets/json-config-ui/json-config-ui.css">
+
+<div id="swagger-ui"></div>
+<div id="json-config-ui"></div>
+<script src="https://couchbase-docs.s3.amazonaws.com/assets/json-config-ui/json-config-ui-bundle.js"></script>
 <script>
-	window.configurl = 'https://couchbase-docs.s3.amazonaws.com/mobile/1.4/configs/{{ site.configs_last_commit }}/sg-accel.json';
+var frontMatter = "{{ page.versions | json | join: ','}}";
+var versions = frontMatter.split(",");
+var specsInfo = versions.map(function(version) {
+	return {
+		version: version,
+		url: 'https://couchbase-docs.s3.amazonaws.com/mobile/' + version + '/configs/sg-accel.json?v=1'
+	};
+});
+$(window).load(function() {
+	const ui = JSONConfigUIBundle({
+		dom_id: '#json-config-ui',
+		specs: specsInfo,
+		current: {{ site.version }}
+	});
+	window.ui = ui
+});
 </script>
-<div id="root"></div>
