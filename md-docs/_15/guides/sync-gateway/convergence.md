@@ -52,25 +52,41 @@ Plan:
 
 ## Beta 2
 
-- Mobile Convergence.
-- In Sync Gateway 1.5 you have the ability to define multiple server URLs in the Sync Gateway configuration, and full support for SSL between Sync Gateway and Couchbase Server (ref [databases.foo\_db.server](../1.4/guides/sync-gateway/config-properties/index.html)).
+### SSL and Multi-URL support
 
-## Mobile Convergence
+In Sync Gateway 1.5 you have the ability to define multiple server URLs in the Sync Gateway configuration, and full support for SSL between Sync Gateway and Couchbase Server.
 
-### What is Mobile Convergence?
+- Sync Gateway Reference ([$dbname.server](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-server))
+- Sync Gateway Accelerator Reference ([$dbname.server](../1.4/guides/sync-gateway/accelerator.html#1.5/databases-foo_db-server), [cluster_config.server](../1.4/guides/sync-gateway/accelerator.html#1.5/cluster_config-server))
 
-The core functionality provided by convergence is the ability for mobile and server applications to read from and write to the same bucket.
+### Mobile Convergence
 
-Mobile applications require additional metadata in order to manage security and replication. Until now, this information has always been stored in the document body. This required users to interact w/ mobile documents only through Sync Gateway, to avoid issues like:
+The core functionality provided by convergence is the ability for mobile and server applications to read from and write to the same bucket. It is an opt-in feature that can be enabled in the Sync Gateway configuration file.
 
-- SDK writes failing to preserve or update mobile metadata
-- SDK reads including (usually unwanted) mobile metadata
+The feature was made opt-in primarily out of consideration for existing customers upgrading from Sync Gateway 1.4. It ensures that their existing configs will continue to work as-is, and supports upgrade without bringing down the entire Sync Gateway cluster.
 
-Convergence is an opt-in feature in Sync Gateway 1.5. Customers must explicitly enable convergence in the Sync Gateway config, using the [databases.foo_db.enabled\_shared\_bucket\_access](../1.4/guides/sync-gateway/config-properties/index.html) property. The feature was made opt-in primarily out of consideration for existing customers upgrading from Sync Gateway 1.4. It ensures that their existing configs will continue to work as-is, and supports upgrade without bringing down the entire Sync Gateway cluster.
+The changes to the Sync Gateway configuration file are the following:
 
-### Compatibility matrix
+- [$dbname.unsupported.enable\_extended\_attributes](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-unsupported-enable_extended_attributes) to enable convergence for a given database.
+- [$dbname.import\_docs](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_docs) to give a particular Sync Gateway node the role of importing the documents.
+- [$dbname.import\_filter](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_filter) to select which document(s) to make aware to mobile clients.
 
-#### Sync Gateway - Couchbase Server
+Lastly, in a Couchbase deployment with convergence enabled, there is a difference in behaviour for the following:
+
+- Sync Gateway purging ([/{db}/_purge](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/post__db___purge))
+- Sync Gateway document expiry (PUT [/{db}/{docid}](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/put__db___doc_))
+
+### Revs Limit lower limit
+
+The [databases.foo\_db.revs\_limit](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-revs_limit) property now has a minimal value. See the API reference for more detail.
+
+### Rev Tree endpoint
+
+The [/{db}/\_revtree/{doc}](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/get__db___revtree__doc_) endpoint returns the revision tree in dot syntax for the specified document. This endpoint is not officially supported and should only be used for troubleshooting and debugging purposes.
+
+## Compatibility matrix
+
+### Sync Gateway - Couchbase Server
 
 The table below shows the versions of Sync Gateway compatible with Couchbase Server.
 
@@ -91,36 +107,6 @@ For all of the above, the [bucket type](https://developer.couchbase.com/document
 |CBL 1.3|✔|✔|
 |CBL 1.4|✔|✔|
 |CBL 2.0|✔|✔|
-
-### Extended Attributes
-
-Previously, mobile metadata was stored along with the document body (as a `_sync` property). Updates made anywhere other than Sync Gateway would invalidate or overwrite that data, breaking mobile replication.  In Sync Gateway 1.5, the mobile metadata is moved out of the document body and into a system extended attribute, only accessible by Sync Gateway.  
-
-### Import
-
-In order for non-Sync Gateway updates to be available to mobile clients, they need to be imported by Sync Gateway.  The import process applies both security (by executing the Sync Function), as well as updating the document's sequence and revision history.
-
-
-### Sync Function
-
-When a non-Sync Gateway write is imported into Sync Gateway, that import is done as with admin credentials.  This means that any write security (`requireUser`, `requireRole`, `requireChannel`) in the Sync Function is bypassed during import.  For non-Sync Gateway writes, it's assumed that the application making those writes is applying the appropriate write security.  When executing the Sync Function for an import, oldDoc is empty.
-
-Channel assignment and access grants performed by the Sync Function behave as usual during import.  
-
-### Users
-
-The method of [authorizing users](https://developer.couchbase.com/documentation/mobile/current/guides/sync-gateway/authorizing-users/index.html) in Sync Gateway 1.5 is unchanged. As with previous versions, the security rules are defined in the Sync Function. A user is defined with a **name** and **password** in Sync Gateway which Couchbase Lite clients use in replications. However, SDK operations to the same bucket cannot be user authenticated.
-
-For example, let's consider a server application that is using Couchbase SDKs to support a web client. Users may want to access the same data on the web as they would on mobile devices. In this case, the server application must verify the user credentials sent from the web client against the Sync Gateway [/{db}/_session](https://developer.couchbase.com/documentation/mobile/current/references/sync-gateway/rest-api/index.html#!/session/post_db_session) endpoint first before allowing any read/write operation to the bucket.
-
-### Metadata Purge Interval
-
-Starting in 1.5, tombstones will be purged based on Couchbase Server's Metadata Purge Interval. The default Metadata Purge Interval is set to 3 days which can potentially result in tombstones being purged before all clients have had to chance to get notified of it. For that reason, the Metadata Purge Interval should be increased to the maximum amount of time users are expected to be offline between pull replications.
-
-Ways to tune the Metadata Purge Interval:
-
-- Bucket settings [on UI](https://developer.couchbase.com/documentation/server/5.0/settings/configure-compact-settings.html)
-- Bucket endpoint [on the REST API](https://developer.couchbase.com/documentation/server/4.6/rest-api/rest-bucket-create.html)
 
 ## Sample App
 
