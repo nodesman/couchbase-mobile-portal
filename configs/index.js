@@ -7,7 +7,6 @@ var yaml = require('js-yaml')
 
 
 var output = [];
-var date = new Date().valueOf();
 findFiles('.', '.yaml', [])
   .forEach(function (file) {
     convertFile(file, 'tmp');
@@ -16,7 +15,7 @@ findFiles('.', '.yaml', [])
 function convertFile(sourceFile, destinationFolder) {
   var obj = yaml.load(fs.readFileSync(sourceFile, {encoding: 'utf-8'}));
   var outputDirectoryPath = path.join(destinationFolder, path.dirname(sourceFile), 'configs');
-  var outputFilePath = path.join(outputDirectoryPath, path.basename(sourceFile).replace('.yaml', '.' + date + '.json'));
+  var outputFilePath = path.join(outputDirectoryPath, path.basename(sourceFile).replace('.yaml', '.json'));
   mkdirp(outputDirectoryPath, function (err) {
     if (err) console.error(error);
     else fs.writeFileSync(outputFilePath, JSON.stringify(obj, null, 2));
