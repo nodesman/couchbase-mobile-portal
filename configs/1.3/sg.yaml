@@ -268,35 +268,22 @@ properties:
     type: string
     default: ':4984'
   log:
-    description: Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
-    type: array
-    items:
-      type: string
-      enum:
-        - Access:
-            description: Anytime an access() call is made in the sync function.
-        - Attach:
-            description: Attachment processing.
-        - Auth:
-            description: Authentication.
-        - Bucket:
-            description: Sync Gateway interactions with the bucket (verbose logging).
-        - Cache:
-            description: Interactions with Sync Gateway's in-memory channel cache.
-        - Changes:
-            description: Processing of _changes requests.
-        - CRUD:
-            description: Updates made by Sync Gateway to documents.
-        - DCP:
-            description: DCP-feed processing (verbose logging).
-        - Events:
-            description: Event processing (webhooks).
-        - Feed:
-            description: Server-feed processing.
-        - HTTP:
-            description: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
-        - Replicate:
-            description: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+    description: |
+      Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
+            
+      - Access: Anytime an access() call is made in the sync function.
+      - Attach: Attachment processing.
+      - Auth: Authentication.
+      - Bucket: Sync Gateway interactions with the bucket (verbose logging).
+      - Cache: Interactions with Sync Gateway's in-memory channel cache.
+      - Changes: Processing of _changes requests.
+      - CRUD: Updates made by Sync Gateway to documents.
+      - DCP: DCP-feed processing (verbose logging).
+      - Events: Event processing (webhooks).
+      - Feed: Server-feed processing.
+      - HTTP: All requests made to the Sync Gateway REST APIs (Sync and Admin). Note that the log keyword HTTP is always enabled, which means that HTTP requests and error responses are always logged (in a non-verbose manner). HTTP+ provides more verbose HTTP logging.
+      - Replicate: Log messages related to replications between Sync Gateways (using sg-replicate). This tag cannot be used for replications initiated by Couchbase Lite.
+    type: string
     default: '["HTTP"]'
   logFilePath:
     description: Absolute or relative path on the filesystem to the log file. A relative path is from the directory that contains the Sync Gateway executable file.
