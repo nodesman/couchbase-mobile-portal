@@ -6,8 +6,7 @@ noedit: true
 versions:
   - 1.3
   - 1.4
-  - 1.5-beta
-  - 1.5-beta2
+  - 1.5
 ---
 
 <link rel="stylesheet" type="text/css" href="https://couchbase-docs.s3.amazonaws.com/assets/json-config-ui/json-config-ui.css">
