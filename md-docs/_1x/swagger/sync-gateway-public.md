@@ -3,6 +3,10 @@ id: sync-gateway-public
 title: Sync Gateway Public REST API
 permalink: references/sync-gateway/rest-api/index.html
 swagger: true
+versions:
+  - 1.3
+  - 1.4
+  - 1.5
 ---
 
 The API explorer below groups all the endpoints by functionality. You can click on a label to expand the list of endpoints.
@@ -24,4 +28,4 @@ You can also send a request to each endpoint against an instance of Sync Gateway
 
 ### API Explorer
 
-{% include swagger.html name="sync-gateway-public" file="swagger-ui" %}
+{% include swagger.html name="sync-gateway-public" versions=page.versions %}
