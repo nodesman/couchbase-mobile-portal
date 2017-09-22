@@ -84,30 +84,6 @@ The [databases.foo\_db.revs\_limit](../1.4/guides/sync-gateway/config-properties
 
 The [/{db}/\_revtree/{doc}](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/get__db___revtree__doc_) endpoint returns the revision tree in dot syntax for the specified document. This endpoint is not officially supported and should only be used for troubleshooting and debugging purposes.
 
-## Compatibility matrix
-
-### Sync Gateway - Couchbase Server
-
-The table below shows the versions of Sync Gateway compatible with Couchbase Server.
-
-|CB Server/Sync Gateway|SG 1.5|SG 1.5 (XATTRs)|
-|:--------------|:------|:-----|
-|CB 4.0|✔|✖|
-|CB 4.1|✔|✖|
-|CB 4.5|✔|✖|
-|CB 4.6|✔|✖|
-|CB 5.0|✔|✔|
-
-For all of the above, the [bucket type](https://developer.couchbase.com/documentation/server/5.0/architecture/core-data-access-buckets.html#concept_qqk_4r2_xs) must be Couchbase. Usage of Ephemeral and Memcached buckets with Couchbase Mobile is not supported.
-
-#### Couchbase Lite - Sync Gateway
-
-|CB Lite/Sync Gateway|SG 1.5|SG 1.5 (XATTRs)|
-|:--------------|:------|:-----|
-|CBL 1.3|✔|✔|
-|CBL 1.4|✔|✔|
-|CBL 2.0|✔|✔|
-
 ## Sample App
 
 The following tutorial demonstrates the extended attributes support introduced in Sync Gateway 1.5.
