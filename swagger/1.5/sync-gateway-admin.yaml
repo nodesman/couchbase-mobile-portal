@@ -120,7 +120,7 @@ parameters:
   doc_ids:
     in: query
     name: doc_ids
-    description: A list of document IDs as a valid JSON array. The response will be filtered to only documents with these IDs. (This parameter must be used with the _doc_ids filter parameter; see below.)
+    description: A list of document IDs as a valid JSON array. The response will be filtered to only documents with these IDs. This parameter must be used with the `filter=_doc_ids` and `feed=normal` parameters.
     type: array
     items:
       type: string
@@ -208,7 +208,7 @@ parameters:
   revs:
     in: query
     name: revs
-    description: Default is false. Indicates whether to include a _revisions property for each document in the response, which contains a revision history of the document.
+    description: Default is false. Indicates whether to include a _revisions property for each document in the response, which contains a revision history of the document. The length of the returned revision tree can be specified with the `revs_limit` querystring parameter.
     type: boolean
     default: false
   role:
@@ -268,7 +268,6 @@ parameters:
     description: View name
     type: string
     required: true
-  
   bulkdocs:
     in: body
     name: BulkDocsBody
@@ -435,6 +434,12 @@ parameters:
           type: integer
           description: The maximum number of change entries to pull in each loop of a continuous changes feed.
           default: 50
+  revs_limit:
+    in: query
+    name: revs_limit
+    description: The number of revisions to include in the response from the document history. This parameter is only honoured if the `revs=true` querystring parameter is also sent in the request. If `revs=true` is specified and `revs_limit` isn't, the full revision history is returned.
+    type: integer
+    required: false
   show_exp:
     in: query
     name: show_exp
@@ -540,7 +545,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Success'
+              $ref: '#/definitions/BulkDocsSuccess'
         409:
           description: The operation failed with a forbidden error. Probably because the document already exists in the database but a revision number wasn't specified.
           schema:
@@ -571,6 +576,7 @@ paths:
         A body for a document that has attachments will be written as a nested multipart/related body. Its first part will be the document's JSON, and the subsequent parts will be the attachments (each identified by a Content-Disposition header giving its attachment name.)
       parameters:
         - $ref: '#/parameters/revs'
+        - $ref: '#/parameters/revs_limit'
         - $ref: '#/parameters/attachments'
         - $ref: '#/parameters/bulkget'
       responses:
@@ -1018,7 +1024,34 @@ paths:
           description: Bad request.  
         401:
           description: Authentication failed.  Unable to refresh token.
-  
+  /{db}/_revs_diff:
+      parameters:
+        - $ref: '#/parameters/db'
+      post:
+        summary: Used by the replicator
+        description: Given a set of document/revision IDs, returns the subset of those that do not correspond to revisions stored in the database.
+        parameters:
+          - in: body
+            name: body
+            description: Request body
+            schema:
+              type: object
+              properties:
+                a_doc_id:
+                  type: array
+                  description: An array of revision IDs for that document.
+        responses:
+          200:
+            description: The request was successful
+            schema:
+              type: object
+              properties:
+                a_doc_id:
+                  type: object
+                  properties:
+                    missing:
+                      type: array
+                      description: A list of revision IDs for that document (the ones that are not stored in the database).
   /_config:
     get:
       tags:
@@ -1850,10 +1883,20 @@ definitions:
     properties:
      a_doc_id:
        type: array
-       description: Passing "*" as an item in the array will remove all the revisions for that document. Removing specific revisions from a document is not supported.
+       description: Only possible value is `["*"]`. It permanently removes all revisions for that document ID.
        items:
          type: string
-         description: Revision ID to delete or "*" to delete all the revisions of the document.
+         description: Only possible value is `"*"`. It permanently removes all revisions for that document ID.
+         enum: ["*"]
+  BulkDocsSuccess:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Design document identifier
+      rev:
+        type: string
+        description: Revision identifier
   Success:
     type: object
     properties:
