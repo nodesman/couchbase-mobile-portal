@@ -61,7 +61,7 @@ properties:
             description: |
               If set to `true`, causes the Sync Gateway to scan the bucket on startup looking for documents that have no `_sync` metadata, and adding that metadata. You only want to have this on when you do the first import, because it will slow down the startup of the Sync Gateway. You also only want to run a single Sync Gateway while in this mode, otherwise they'll step on each other's toes tying to generate the `_sync` metadata at the same time.
               
-              In Sync Gateway 1.5, the behaviour of this property has changed to work in tandem with the [enable_shared_bucket_access](#1.5/databases-foo_db-unsupported-enable_extended_attributes) property. When **convergence** is enabled (by setting `"enable_shared_bucket_access": "true"`), setting this property to continuous `"import_docs": "continuous"` indicates that this Sync Gateway node should perform [import processing](glossary.html#import-process). If convergence is not enabled, Sync Gateway continues to support the previously existing import functionality.
+              In Sync Gateway 1.5, the behaviour of this property has changed to work in tandem with the [enable_shared_bucket_access](#1.5/databases-foo_db-unsupported-enable_extended_attributes) property. When **convergence** is enabled (by setting `"enable_shared_bucket_access": "true"`), setting this property to continuous `"import_docs": "continuous"` indicates that this Sync Gateway node should perform import processing. If convergence is not enabled, Sync Gateway continues to support the previously existing import functionality.
             default: false
           channel_index:
             type: object
