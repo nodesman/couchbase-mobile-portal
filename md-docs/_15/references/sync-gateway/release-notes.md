@@ -34,3 +34,4 @@ __Known issues__
 - [__#2744__](https://github.com/couchbase/sync_gateway/pull/2744) Failures due to multi operation deletes
 - [__#149__](https://github.com/couchbaselabs/sync-gateway-accel/issues/149) Changes missing on Sync Gateway Accelerator re-shard
 - [__#2068__](https://github.com/couchbase/sync_gateway/issues/2068) Update user doc sequence for access-based channel grants
+- [__#160__](https://github.com/couchbaselabs/sync-gateway-accel/issues/160) The `_doc_ids` changes feed filter doesn't work with Accelerator
