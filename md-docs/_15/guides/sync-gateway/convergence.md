@@ -50,8 +50,6 @@ Plan:
 
 -->
 
-## Beta 2
-
 ### SSL and Multi-URL support
 
 In Sync Gateway 1.5 you have the ability to define multiple server URLs in the Sync Gateway configuration, and full support for SSL between Sync Gateway and Couchbase Server.
@@ -67,7 +65,7 @@ The feature was made opt-in primarily out of consideration for existing customer
 
 The changes to the Sync Gateway configuration file are the following:
 
-- [$dbname.unsupported.enable\_extended\_attributes](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-unsupported-enable_extended_attributes) to enable convergence for a given database.
+- [$dbname.enable\_shared\_bucket\_access](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) to enable convergence for a given database.
 - [$dbname.import\_docs](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_docs) to give a particular Sync Gateway node the role of importing the documents.
 - [$dbname.import\_filter](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_filter) to select which document(s) to make aware to mobile clients.
 
