@@ -50,15 +50,15 @@ Plan:
 
 -->
 
-With Sync Gateway 1.5, you can seamlessly extend an existing Couchbase Server deployment to connect with remote edge devices that are occasionally disconnected or connected. Mobile, web and desktop applications can write to the same bucket in a Couchbase cluster.
+With Sync Gateway 1.5, you can seamlessly extend an existing Couchbase Server deployment to connect with remote edge devices that are occasionally disconnected or connected.
 
-In this release, the metadata created by the Sync Gateway, to facilitate replication between occasionally connected or disconnected edge devices and the Cloud, is abstracted from applications reading and writing data directly to Couchbase Server.
+In previous releases, you either had to ensure all writes happened through Sync Gateway, or had to set up bucket shadowing to ensure that the security and replication metadata needed by mobile applications was preserved.
 
-In previous releases, you either had to ensure all writes happened through Sync Gateway, or had to set up bucket shadowing, to ensure that the security and replication metadata needed by mobile applications was preserved. Now Sync Gateway takes care of this for you automatically, no matter how you write to your bucket.
+In this release, the metadata created by the Sync Gateway is abstracted from applications reading and writing data directly to Couchbase Server. Mobile, web and desktop applications can therefore write to the same bucket in a Couchbase cluster.
 
 ### How to enable it
 
-This new feature was made opt-in primarily out of consideration for existing customers upgrading from Sync Gateway 1.4. It ensures that their existing configs will continue to work as-is, and supports upgrade without bringing down the entire Sync Gateway cluster.
+This new feature was made opt-in primarily out of consideration for existing customers upgrading from Sync Gateway 1.4. It ensures that their existing configs will continue to work as-is, and supports upgrade without bringing down the entire Sync Gateway cluster. The steps below walk through how to enable this new feature.
 
 1. [Download Couchbase Server 5.0](https://www.couchbase.com/downloads).
 2. [Download Sync Gateway 1.5](https://www.couchbase.com/downloads?family=Mobile&product=Couchbase%20Sync%20Gateway&edition=Enterprise%20Edition 
@@ -115,7 +115,7 @@ When this feature is enabled, mobile tombstones are not retained indefinitely. T
      
 #### From 1.4 to 1.5 (xattrs enabled)
 
-- All nodes to be stopped (requires application downtime) and updated.
+- All nodes must be stopped (resulting in application downtime) during the upgrade.
 - The first node to be restarted should have the `import_docs=continuous` property enabled.
 
 > **Note:** Enabling convergence on your existing deployment (i.e XATTRs) is **not** reversible. It is recommended to test the upgrade on a staging environment before upgrading the production environment.
