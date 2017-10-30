@@ -25,26 +25,24 @@ Here is a sample Sync Gateway config file, configured to use the Auth Code Flow.
 
 ```javascript
 {
-   "interface":":4984",
-   "log":["*"],
-   "databases": {
-      "default": {
-        "server": "http://localhost:8091",
-        "bucket": "default",
-        "oidc": {
-          "default_provider":"google",
-          "providers": {
-            "google": {
-                "issuer":"https://accounts.google.com",
-                "client_id":"YOUR_CLIENT_ID",
-                "validation_key":"YOUR_CLIENT_SECRET",
-                "callback_url":"http://localhost:4984/default/_oidc_callback",
-                "register":true
-            }
+  "interface":":4984",
+  "log":["*"],
+  "databases": {
+    "default": {
+      "server": "http://localhost:8091",
+      "bucket": "default",
+      "oidc": {
+        "providers": {
+          "google_authcode": {
+            "issuer":"https://accounts.google.com",
+            "client_id":"yourclientid-uso.apps.googleusercontent.com",
+            "validation_key":"your_client_secret",
+            "register":true
           }
         }
       }
-   }
+	}
+  }
 }
 ```
 
