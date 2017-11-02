@@ -284,7 +284,7 @@ $(window).load(function() {
 	const ui = JSONConfigUIBundle({
 		dom_id: '#json-config-ui',
 		specs: specsInfo,
-		current: {{ site.version }}
+		current: {{ site.sg_version }}
 	});
 	window.ui = ui
 });
