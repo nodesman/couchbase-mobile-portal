@@ -53,7 +53,7 @@ function (doc) {
 }
 ```
 
-Learn more about defining a sync function in our Sync Function API guide.
+Learn more about defining a sync function in our [Sync Function API guide](../sync-function-api-guide/index.html).
 
 ### Replicating channels to Couchbase Lite
 
