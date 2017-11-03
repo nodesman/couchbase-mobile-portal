@@ -159,6 +159,8 @@ if (oldDoc) {
 
 The function signals rejection by throwing an exception, so the rest of the sync function will not be run.
 
+If a user was granted access to the [star channel](../channels/index.html#special-channels) (noted `*`), a call to `requireAccess('any channel name')'` will fail because the user wasn't granted access to that channel (only to the `*` channel). To allow a user to perform a document update in this case, you can specify multiple channel names (`requireAccess('any channel name', '*')'`)
+
 ### Example
 
 Here's an example of a complete, useful sync function that properly validates and authorizes both new and updated documents. The requirements are:
