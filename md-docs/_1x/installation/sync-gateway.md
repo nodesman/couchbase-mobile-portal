@@ -211,7 +211,7 @@ In a typical mobile deployment on premise or in the cloud (AWS, RedHat etc), the
 
 Before installing Sync Gateway, you should have completed the Getting Started instructions for Couchbase Lite on the platform of [your choice](../index.html) (iOS, Android, .NET, Xamarin, Java or PhoneGap). To begin synchronizing between Couchbase Lite and Sync Gateway follow the steps below:
 
-1. Configure Sync Gateway to use the following configuration file.
+1. Create a new file called **sync-gateway-config.json** with the following configuration.
 
 	```json
 	{
@@ -229,9 +229,15 @@ Before installing Sync Gateway, you should have completed the Getting Started in
 	}
 	```
 
-	This configuration file creates a database called `hello` and routes documents to different channels based on the `doc.sdk` property, if it exists.
+	This configuration file creates a database called `hello` and routes documents to different channels based on the document's `sdk` property, if it exists.
 
-2. Run the application where Couchbase Lite is installed. You should then see the documents that were replicated on the admin UI at http://localhost:4985/_admin/.
+2. Start Sync Gateway from the command line.
+
+	```bash
+	~/Downloads/couchbase-sync-gateway/bin/sync_gateway ~/path/to/sync-gateway-config.json
+	```
+
+3. Run the application where Couchbase Lite is installed. You should then see the documents that were replicated on the admin UI at http://localhost:4985/_admin/.
 
 {% include experimental-label.html %}
 
