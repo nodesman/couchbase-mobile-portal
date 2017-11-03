@@ -6,6 +6,15 @@ permalink: references/couchbase-lite/release-notes/index.html
 
 <block class="all" />
 
+### Developer build 19
+
+<block class="net" />
+
+- `IReadOnlyDictionary` / `IDictionaryObject`, `IReadOnlyArray` / `IArray` now return `Dictionary<string, object>` and `List<object>` instead of `IDictionary<string, object>` and `IList<object>` so that the return value can be used in both read only and read write interface signatures (e.g. both `Foo(IDictionary<string, object>` and `Foo(IReadOnlyDictionary<string, object>`)
+- Ensure that calls to `Activate` are only performed once (unclear on the impact on Android if the passed activity gets destroyed)
+
+<block class="all" />
+
 ### Developer build 18
 
 <block class="objc swift" />
