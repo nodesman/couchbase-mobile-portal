@@ -8,6 +8,13 @@ permalink: references/couchbase-lite/release-notes/index.html
 
 ### Developer build 19
 
+<block class="objc swift" />
+* Fixed Replicator’s uncleaned socket disconnect warning (#1937).
+* Fixed Session Cookie being overwritten (#1943).
+* Fixed Carthage build failure on DB019 (#1947).
+* Reimplemented Fragment API - API is now more light weight and has better performance.
+* Improved performance of read/write document data with Mutable Fleece.
+
 <block class="net" />
 
 - `IReadOnlyDictionary` / `IDictionaryObject`, `IReadOnlyArray` / `IArray` now return `Dictionary<string, object>` and `List<object>` instead of `IDictionary<string, object>` and `IList<object>` so that the return value can be used in both read only and read write interface signatures (e.g. both `Foo(IDictionary<string, object>` and `Foo(IReadOnlyDictionary<string, object>`)
