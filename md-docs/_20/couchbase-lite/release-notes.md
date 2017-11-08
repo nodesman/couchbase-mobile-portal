@@ -9,6 +9,7 @@ permalink: references/couchbase-lite/release-notes/index.html
 ### Developer build 19
 
 <block class="objc swift" />
+
 - Fixed Replicator’s uncleaned socket disconnect warning (#1937).
 - Fixed Session Cookie being overwritten (#1943).
 - Fixed Carthage build failure on DB019 (#1947).
