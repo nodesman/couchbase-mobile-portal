@@ -782,7 +782,7 @@ paths:
           type: string
         - in: query
           name: include_docs
-          description: Indicates whether to include the full content of the documents in the response.
+          description: Only works when using Couchbase Server 3.0 and earlier.  Indicates whether to include the full content of the documents in the response.
           type: boolean
         - in: query
           name: inclusive_end
