@@ -62,6 +62,8 @@ When this feature is enabled, mobile tombstones are not retained indefinitely. T
 
 ### Upgrading
 
+This section is an overview of the different options to upgrade a running cluster to the latest version of Sync Gateway and Couchbase Server. For a complete list of instructions, we recommend to follow the [upgrade section](http://docs.couchbase.com/tutorials/travel-sample/deploy/centos#/0/4/0) in the travel sample tutorial. You will learn how to perform a rolling upgrade and enable the shared bucket access introduced in Sync Gateway 1.5 in order to use N1QL, Mobile and Server SDKs on the same bucket.
+
 In each of the scenarios described below, the upgrade process will trigger views in Couchbase Server to be re-indexed. During the re-indexing, operations that are dependent on those views will not be available. The main operations relying on views to be indexed are:
 
 - A user requests data that doesn't reside in the [channel cache](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-cache-channel_cache_max_length).
