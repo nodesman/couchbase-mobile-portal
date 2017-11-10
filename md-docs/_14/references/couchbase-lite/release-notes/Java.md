@@ -3,6 +3,34 @@ id: java-release-notes
 title: Java release notes
 ---
 
+## 1.4.1 release
+
+__Performance Improvements__
+
+- [__#1608__](https://github.com/couchbase/couchbase-lite-java-core/issues/1608) Purge does not remove row from 'docs' table
+- [__#1623__](https://github.com/couchbase/couchbase-lite-java-core/issues/1623) Potential bug: Push replication becomes slower as local DB grows
+- [__#1630__](https://github.com/couchbase/couchbase-lite-java-core/issues/1630) View indexing is very slow, due to mis-optimized SQLite query
+
+__Enhancements__
+
+- [__#290__](https://github.com/couchbase/couchbase-lite-java-core/issues/290) 1.x: [Memory] Memory leak in allReplicators
+- [__#639__](https://github.com/couchbase/couchbase-lite-java-core/issues/639) 1.x: Enhance ChangeTracker Error handling (port latest codes from iOS)
+
+__Bugs__
+
+- [__#1372__](https://github.com/couchbase/couchbase-lite-java-core/issues/1372) Router unable to route request to do_GET_DesignDocument (ForestDB)
+- [__#1483__](https://github.com/couchbase/couchbase-lite-java-core/issues/1483) 1.x: java.lang.OutOfMemoryError: Failed to allocate a 24 byte allocation with 329648 free bytes and 321KB until OOM; failed due to fragmentation...
+- [__#1604__](https://github.com/couchbase/couchbase-lite-java-core/issues/1604) 1.x: Leftover replication threads prevent application exit.
+- [__#1605__](https://github.com/couchbase/couchbase-lite-java-core/issues/1605) 1.x: peer to peer replication with attachments does not work with android client
+- [__#1627__](https://github.com/couchbase/couchbase-lite-java-core/issues/1627) Replicator does not close a connection immediately after stopping the replication. 
+- [__#1629__](https://github.com/couchbase/couchbase-lite-java-core/issues/1629) Wrong return code for listener causes problems with puller and deleted items
+- [__#1631__](https://github.com/couchbase/couchbase-lite-java-core/issues/1631) Stopped replicator is restarted by network reachability
+- [__#1637__](https://github.com/couchbase/couchbase-lite-java-core/issues/1637) 1.x: RejectedExecutionException is through from Replicator
+- [__#1652__](https://github.com/couchbase/couchbase-lite-java-core/issues/1652) 1.x - LiveQuery: row.getDocument().getProperties() return null if document is deleted during indexing
+- [__#1660__](https://github.com/couchbase/couchbase-lite-java-core/issues/1660) 1.x: Peer to Peer: InvocationTargetException in Router.java with PhotoDrop sample app
+
+## 1.4 release
+
 __API change__
 
 - An `isDeletion` property is now available on the `DatabaseChange` object to identify if a change is tombstone document.

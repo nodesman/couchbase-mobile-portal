@@ -3,6 +3,30 @@ id: ios-release-notes
 title: iOS release notes
 ---
 
+## 1.4.1 release
+
+__Performance Improvements__
+
+- [__#1648__](https://github.com/couchbase/couchbase-lite-ios/issues/1648) Purge does not remove row from 'docs' table
+- [__#1737__](https://github.com/couchbase/couchbase-lite-ios/issues/1737) View indexing is very slow, due to mis-optimized SQLite query
+- [__#1751__](https://github.com/couchbase/couchbase-lite-ios/issues/1751) Push replication becomes slower as local DB grows
+
+__Bugs__
+
+- [__#1613__](https://github.com/couchbase/couchbase-lite-ios/issues/1613) Crash in askDelegateToValidateServerTrust
+- [__#1622__](https://github.com/couchbase/couchbase-lite-ios/issues/1622) Error opening!: 23 - when trying to load data from iOS to Apple Watch
+- [__#1649__](https://github.com/couchbase/couchbase-lite-ios/issues/1649) Missing role appears to cause continuous push replication to stop [v1.4]
+- [__#1655__](https://github.com/couchbase/couchbase-lite-ios/issues/1655) Fatal Exception: NSInternalInconsistencyException [1.4]
+- [__#1707__](https://github.com/couchbase/couchbase-lite-ios/issues/1707) Replication Stops working after lots of syncing / lots of time - Too much memory used during replication
+- [__#1739__](https://github.com/couchbase/couchbase-lite-ios/issues/1739) Crash on [CBLDatabase(Internal) notifyChanges:]
+- [__#1750__](https://github.com/couchbase/couchbase-lite-ios/issues/1750) Wrong return code for listener causes problems with puller and deleted items
+- [__#1757__](https://github.com/couchbase/couchbase-lite-ios/issues/1757) Test_replication_with_session_cookie_short_ttl test failure
+- [__#1758__](https://github.com/couchbase/couchbase-lite-ios/issues/1758) Updating a design doc view map function does not take effect
+- [__#1887__](https://github.com/couchbase/couchbase-lite-ios/issues/1887) 1.4 Encrypting a new database fails. Existing database encrypt fine.
+- [__#1898__](https://github.com/couchbase/couchbase-lite-ios/issues/1898) One shot sync not pulling data properly in background
+
+## 1.4 release
+
 __API change__
 
 - An `isDeletion` property is now available on the `DatabaseChange` object to identify if a change is tombstone document.

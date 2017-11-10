@@ -6,6 +6,19 @@ noedit: true
 
 {% include landing.html %}
 
+## 1.4.1 release
+
+The 1.4.1 release contains a number of bug fixes and enhancements for Sync Gateway and Couchbase Lite. This release can be found on the [download page](https://www.couchbase.com/downloads) or installed through package managers (see [Getting Started](installation/index.html) guides).
+
+Release notes:
+
+- [couchbase-lite-ios](references/couchbase-lite/release-notes/iOS.html)
+- [couchbase-lite-android](references/couchbase-lite/release-notes/Java.html)
+- [couchbase-lite-net](references/couchbase-lite/release-notes/Dot-Net.html)
+- [sync_gateway](references/sync-gateway/release-notes.html)
+
+## 1.4 release
+
 <div class="dp">
   <h3>Couchbase Lite</h3>
   <h4>Release notes</h4>

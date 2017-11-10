@@ -3,6 +3,38 @@ id: dot-net-release-notes
 title: .NET release notes
 ---
 
+## 1.4.1 release
+
+__Performance Improvements__
+
+- [__#827__](https://github.com/couchbase/couchbase-lite-net/issues/827) Purge does not remove row from 'docs' table
+- [__#856__](https://github.com/couchbase/couchbase-lite-net/issues/856) View indexing is very slow, due to mis-optimized SQLite query
+
+__Enhancements__
+
+- [__#867__](https://github.com/couchbase/couchbase-lite-net/issues/867) Preserve revision history for each "branch" on pruning
+- [__#915__](https://github.com/couchbase/couchbase-lite-net/issues/915) Support DocIDs setting for pull replication with Sync Gateway
+
+__Bugs__
+
+- [__#778__](https://github.com/couchbase/couchbase-lite-net/issues/778) Push sync becomes slower as local DB grows, fails to advance lastSequence
+- [__#821__](https://github.com/couchbase/couchbase-lite-net/issues/821) .NET not encoding atts_since
+- [__#824__](https://github.com/couchbase/couchbase-lite-net/issues/824) Pull replication stopping when coming online
+- [__#830__](https://github.com/couchbase/couchbase-lite-net/issues/830) Remove RunInOuterTransaction
+- [__#832__](https://github.com/couchbase/couchbase-lite-net/issues/832) New_edits on _bulk_docs should default to true
+- [__#834__](https://github.com/couchbase/couchbase-lite-net/issues/834) 1.4 breaks custom headers on PUT HTTP requests
+- [__#835__](https://github.com/couchbase/couchbase-lite-net/issues/835) Unable to select multiple values with LINQ 1.4
+- [__#840__](https://github.com/couchbase/couchbase-lite-net/issues/840) Couchbase.Lite.dll missing Product Version Info and Others
+- [__#847__](https://github.com/couchbase/couchbase-lite-net/issues/847) Trying to remove encryption from a SQLite DB throws an exception
+- [__#848__](https://github.com/couchbase/couchbase-lite-net/issues/848) Retry loop causes web socket changes feed to stop
+- [__#850__](https://github.com/couchbase/couchbase-lite-net/issues/850) Wrong return code for listener causes problems with puller and deleted items.
+- [__#853__](https://github.com/couchbase/couchbase-lite-net/issues/853) Updating a design doc view map function does not take effect
+- [__#863__](https://github.com/couchbase/couchbase-lite-net/issues/863) PollInterval is not obeyed
+- [__#910__](https://github.com/couchbase/couchbase-lite-net/issues/910) Channel removal potentially disrupts attachments
+- [__#914__](https://github.com/couchbase/couchbase-lite-net/issues/914) Bulk download error not passed to client
+
+## 1.4 release
+
 __API change__
 
 - An `isDeletion` property is now available on the `DatabaseChange` object to identify if a change is tombstone document.
