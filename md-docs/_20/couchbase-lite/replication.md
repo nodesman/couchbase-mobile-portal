@@ -14,7 +14,7 @@ Couchbase Mobile 2.0 uses a [new replication protocol](https://github.com/couchb
 
 ### Compatibility
 
-The new protocol is incompatible with version 1.x, and with CouchDB-based databases including PouchDB and Cloudant. Since Couchbase Lite 2 developer builds support only the new protocol, to test replication you will need to run the corresponding developer build of Sync Gateway, which supports both.
+The new protocol is incompatible with version 1.x, and with CouchDB-based databases including PouchDB and Cloudant. Since Couchbase Lite 2 developer builds support only the new protocol, to test replication you will need to run the corresponding developer build of Sync Gateway.
 
 ### Example
 
@@ -36,10 +36,7 @@ To run an example, create a new file named **sync-gateway-config.json** with the
 }
 ```
 
-There are a few things to note here:
-
-- In this developer build, there is no authentication yet so you're enabling the GUEST account on the Sync Gateway you use for replication testing.
-- Filtering isn't implemented yet.
+In the configuration file above, the **replicator_2** property enables the new replication protocol. To use this protocol with Couchbase Lite 2.0, the replication URL should specify **blip** as the URL scheme (see the [Replication API](index.html#replication-api) section below). Mobile clients using Couchbase Lite 1.x can continue to use **http** as the URL scheme. Sync Gateway 1.5 will automatically use the 1.x replication protocol when a Couchbase Lite 1.x client connects through "http://localhost:4984/db" and the 2.0 replication protocol when a Couchbase Lite 2.0 client connects through "blip://localhost:4984/db".
 
 Download the current Sync Gateway [developer build](../../whatsnew.html) and start it from the command line with the configuration file created above.
 
