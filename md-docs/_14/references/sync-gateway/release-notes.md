@@ -15,7 +15,7 @@ __Bugs__
 - [__#1518__](https://github.com/couchbase/sync_gateway/issues/1518) Data races detected in channel_cache.go
 - [__#2364__](https://github.com/couchbase/sync_gateway/issues/2364) Omit doc during Changes+ logging
 - [__#2365__](https://github.com/couchbase/sync_gateway/issues/2365) Account for unused sequences after CAS retry and subsequent cancel
-- [__#2427__](https://github.com/couchbase/sync_gateway/issues/2427) CBSE: Data race in trimEncodedRevisionsToAncestor
+- [__#2427__](https://github.com/couchbase/sync_gateway/issues/2427) Data race in trimEncodedRevisionsToAncestor
 
 ## 1.4 release
 
