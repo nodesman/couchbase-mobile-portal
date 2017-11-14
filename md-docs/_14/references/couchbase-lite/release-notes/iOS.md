@@ -13,17 +13,23 @@ __Performance Improvements__
 
 __Bugs__
 
+- [__#1354__](https://github.com/couchbase/couchbase-lite-ios/issues/1354) Deferred pulling of attachments problem
+- [__#1572__](https://github.com/couchbase/couchbase-lite-ios/issues/1572) Idle crash [CBLRemoteSession close]
 - [__#1613__](https://github.com/couchbase/couchbase-lite-ios/issues/1613) Crash in askDelegateToValidateServerTrust
 - [__#1622__](https://github.com/couchbase/couchbase-lite-ios/issues/1622) Error opening!: 23 - when trying to load data from iOS to Apple Watch
 - [__#1649__](https://github.com/couchbase/couchbase-lite-ios/issues/1649) Missing role appears to cause continuous push replication to stop [v1.4]
 - [__#1655__](https://github.com/couchbase/couchbase-lite-ios/issues/1655) Fatal Exception: NSInternalInconsistencyException [1.4]
 - [__#1707__](https://github.com/couchbase/couchbase-lite-ios/issues/1707) Replication Stops working after lots of syncing / lots of time - Too much memory used during replication
-- [__#1739__](https://github.com/couchbase/couchbase-lite-ios/issues/1739) Crash on [CBLDatabase(Internal) notifyChanges:]
-- [__#1750__](https://github.com/couchbase/couchbase-lite-ios/issues/1750) Wrong return code for listener causes problems with puller and deleted items
-- [__#1757__](https://github.com/couchbase/couchbase-lite-ios/issues/1757) Test_replication_with_session_cookie_short_ttl test failure
 - [__#1758__](https://github.com/couchbase/couchbase-lite-ios/issues/1758) Updating a design doc view map function does not take effect
+- [__#1770__](https://github.com/couchbase/couchbase-lite-ios/issues/1770) Crash observed while saving documents to DB
+- [__#1779__](https://github.com/couchbase/couchbase-lite-ios/issues/1779) IOS App Extension replication gets suspended "prematurely"
+- [__#1853__](https://github.com/couchbase/couchbase-lite-ios/issues/1853) CBL_BlobStoreWriter appendData assertion failure
 - [__#1887__](https://github.com/couchbase/couchbase-lite-ios/issues/1887) 1.4 Encrypting a new database fails. Existing database encrypt fine.
 - [__#1898__](https://github.com/couchbase/couchbase-lite-ios/issues/1898) One shot sync not pulling data properly in background
+- [__#1912__](https://github.com/couchbase/couchbase-lite-ios/issues/1912) Peer sync between High Sierra and iOS 11 CBLWarnUntrustedCert error
+- [__#1918__](https://github.com/couchbase/couchbase-lite-ios/issues/1918) Channel removal potentially disrupts attachments
+- [__#1921__](https://github.com/couchbase/couchbase-lite-ios/issues/1921) CBLListener retaining CBL_RunLoopServer so both never get freed.
+- [__#1923__](https://github.com/couchbase/couchbase-lite-ios/issues/1923) CBLRemoteSession finishTasksAndInvalidate crash
 
 ## 1.4 release
 
