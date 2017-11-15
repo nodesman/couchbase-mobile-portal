@@ -5,9 +5,7 @@ permalink: whatsnew.html
 
 {% include landing.html %}
 
-## Couchbase Mobile 1.5
-
-> **Note:** The 1.5 release is a Sync Gateway only release. The latest release of Couchbase Lite remains 1.4.
+> **Note:** The 1.5 release is a Sync Gateway only release. The latest release of Couchbase Lite remains 1.4.1.
 
 With Sync Gateway 1.5, you can seamlessly extend an existing Couchbase Server deployment to connect with remote edge devices that are occasionally disconnected or connected.
 
