@@ -1,7 +1,6 @@
 ---
 id: java-release-notes
 title: Java release notes
-permalink: references/couchbase-lite/release-notes/Java/index.html
 ---
 
 ## 1.3.1

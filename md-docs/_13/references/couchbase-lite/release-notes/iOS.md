@@ -1,7 +1,6 @@
 ---
 id: ios-release-notes
 title: iOS release notes
-permalink: references/couchbase-lite/release-notes/iOS/index.html
 ---
 
 ## 1.3.1

@@ -1,7 +1,6 @@
 ---
 id: dot-net-release-notes
 title: .NET release notes
-permalink: references/couchbase-lite/release-notes/Dot-Net/index.html
 ---
 
 ## 1.3.1
