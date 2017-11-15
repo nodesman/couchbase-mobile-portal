@@ -1,54 +1,13 @@
 ---
-title: Convergence
+title: What's New
 permalink: whatsnew.html
 ---
 
 {% include landing.html %}
 
-<!--
+## Couchbase Mobile 1.5
 
-Plan:
-
-- [x] [GA] Update configuration file [reference](https://developer.couchbase.com/documentation/mobile/current/guides/sync-gateway/config-properties/index.html) (Adam)
-	- The backing yaml file must be updated here on the [convergence](https://github.com/couchbaselabs/couchbase-mobile-portal/blob/convergence/configs/20/sg.yaml) branch.
-
-- [x] Provide example config for most common scenario (Adam, *included below*)
-	- Can be inserted on the stub [convergence.md](https://github.com/couchbaselabs/couchbase-mobile-portal/blob/convergence/md-docs/_20/guides/sync-gateway/convergence.md) file.
-- [ ] [DP2/GA] Compatibility matrix
-	- 1.5 will enable convergence if the server is =< 5.0, otherwise will not enable it.
-- [ ] [DP2/GA] Conceptual explanation of a server-only application that starts using mobile
-	- Provide what is expected from an end user point of view (Sachin)
-		1. Pre-deployment planning
-			- User creation for mobile users – why? How are these different from server users?
-			- Choose an authentication option from the ones available – link to the different portions of the SG guide
-			- Choose which documents/buckets would be enabled for convergence (auto-import)
-		2. Deployment
-			- Create a SG cluster
-			- Configuration of SG
-			- Configure docs/buckets for mobile enablement/auto-import
-		3. Add CBL to mobile application
-			- Link to getting started guides on dev portal
-	- Provide implementation notes and details (Adam) 
-- [ ] [DP2/GA] Conceptual explanation of a mobile-only application that starts using server SDKs.
-	- Provide what is expected from an end user point of view (Sachin)
-		1. Pre-deployment planning
-			- Choose the application development strategy for the server application developed using one of our SDKs.
-			- Choose which documents/buckets would be enabled for convergence (auto-import)
-		2. Deployment
-			- Upgrade CB server cluster to Spock and SG to 2.1
-			- Configuration of SG
-			- Configure docs/buckets for mobile enablement/auto-import
-		3. Impact on mobile app
-			- No impact. Call out the compatibility between SG 2.x and CBL 1.x
-	- Provide implementation notes and details (Adam)
-- [ ] [DP2/GA] Migrating from bucket shadowing.
-	- Remove bucket shadowing docs from 1.5 (in 1.4 only)
-	- Explain strategy on migrating from bucket shadowing to 1.5
-- [ ] [DP2/GA] Release notes for convergence.
-	- Improve the process to edit/review release notes. Scope already covered in [#596](https://github.com/couchbaselabs/couchbase-mobile-portal/issues/596) (James)
-	Edit the release notes once the process is improved (Adam)
-
--->
+> **Note:** The 1.5 release is a Sync Gateway only release. The latest release of Couchbase Lite remains 1.4.
 
 With Sync Gateway 1.5, you can seamlessly extend an existing Couchbase Server deployment to connect with remote edge devices that are occasionally disconnected or connected.
 
@@ -88,20 +47,29 @@ This new feature was made opt-in primarily out of consideration for existing cus
 
 The reference to the configuration API changes can be found below.
 
-- [$dbname.enable\_shared\_bucket\_access](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) to enable convergence for a given database.
-- [$dbname.import\_docs](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_docs) to give a particular Sync Gateway node the role of importing the documents.
-- [$dbname.import\_filter](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_filter) to select which document(s) to make aware to mobile clients.
+- [$dbname.enable\_shared\_bucket\_access](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) to enable convergence for a given database.
+- [$dbname.import\_docs](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_docs) to give a particular Sync Gateway node the role of importing the documents.
+- [$dbname.import\_filter](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-import_filter) to select which document(s) to make aware to mobile clients.
 
 When this feature is enabled, the REST API will include the following changes.
 
-- Sync Gateway purging ([/{db}/_purge](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/post__db___purge)) removes the document and its associated extended attributes.
-- Sync Gateway document expiry (PUT [/{db}/{docid}](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/put__db___doc_)) will tombstone the active revision.
+- Sync Gateway purging ([/{db}/_purge](references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/post__db___purge)) removes the document and its associated extended attributes.
+- Sync Gateway document expiry (PUT [/{db}/{docid}](references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/put__db___doc_)) will tombstone the active revision.
 
 ### Tombstones
 
-When this feature is enabled, mobile tombstones are not retained indefinitely. They will be purged based on the server's metadata purge interval. To ensure tombstones are replicated to clients, you should set the server's metadata purge interval based on your expected replication frequency (see the [$dbname.enable\_shared\_bucket\_access](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) reference).
+When this feature is enabled, mobile tombstones are not retained indefinitely. They will be purged based on the server's metadata purge interval. To ensure tombstones are replicated to clients, you should set the server's metadata purge interval based on your expected replication frequency (see the [$dbname.enable\_shared\_bucket\_access](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) reference).
 
 ### Upgrading
+
+This section is an overview of the different options to upgrade a running cluster to the latest version of Sync Gateway and Couchbase Server. For a complete list of instructions, we recommend to follow the [upgrade section](http://docs.couchbase.com/tutorials/travel-sample/deploy/centos#/0/4/0) in the travel sample tutorial. You will learn how to perform a rolling upgrade and enable the shared bucket access introduced in Sync Gateway 1.5 in order to use N1QL, Mobile and Server SDKs on the same bucket.
+
+In each of the scenarios described below, the upgrade process will trigger views in Couchbase Server to be re-indexed. During the re-indexing, operations that are dependent on those views will not be available. The main operations relying on views to be indexed are:
+
+- A user requests data that doesn't reside in the [channel cache](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-cache-channel_cache_max_length).
+- A new channel or role is granted to a user in the [Sync Function](guides/sync-gateway/sync-function-api-guide/index.html).
+
+The unavailability of those operations may result in some requests not being process. The duration of the downtime will depend on the data set and frequency of replications with mobile clients.
 
 #### From 1.4 to 1.5 (xattrs disabled)
 
@@ -115,29 +83,31 @@ When this feature is enabled, mobile tombstones are not retained indefinitely. T
      
 #### From 1.4 to 1.5 (xattrs enabled)
 
-- All nodes must be stopped (resulting in application downtime) during the upgrade.
+- This upgrade, if done directly, will result in application downtime because all the nodes must be taken offline during the upgrade.
 - The first node to be restarted should have the `import_docs=continuous` property enabled.
+
+That being said, it is possible to avoid this downtime by running the 2 upgrade paths mentioned above (first, an upgrade from 1.4 to 1.5, and second, an upgrade from 1.5 to 1.5 with xattrs enabled).
 
 > **Note:** Enabling convergence on your existing deployment (i.e XATTRs) is **not** reversible. It is recommended to test the upgrade on a staging environment before upgrading the production environment.
 
-## Additional Features
+### Additional Features
 
-### SSL and Multi-URL support
+#### SSL and Multi-URL support
 
 In Sync Gateway 1.5 you have the ability to define multiple server URLs in the Sync Gateway configuration, and full support for SSL between Sync Gateway and Couchbase Server.
 
-- Sync Gateway Reference ([$dbname.server](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-server))
-- Sync Gateway Accelerator Reference ([$dbname.server](../1.4/guides/sync-gateway/accelerator.html#1.5/databases-foo_db-server), [cluster_config.server](../1.4/guides/sync-gateway/accelerator.html#1.5/cluster_config-server))
+- Sync Gateway Reference ([$dbname.server](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-server))
+- Sync Gateway Accelerator Reference ([$dbname.server](guides/sync-gateway/accelerator.html#1.5/databases-foo_db-server), [cluster_config.server](guides/sync-gateway/accelerator.html#1.5/cluster_config-server))
 
-### Revs Limit lower limit
+#### Revs Limit lower limit
 
-The [databases.foo\_db.revs\_limit](../1.4/guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-revs_limit) property now has a minimal value. See the API reference for more detail.
+The [databases.foo\_db.revs\_limit](guides/sync-gateway/config-properties/index.html#1.5/databases-foo_db-revs_limit) property now has a minimal value. See the API reference for more detail.
 
-### Rev Tree endpoint
+#### Rev Tree endpoint
 
-The [/{db}/\_revtree/{doc}](../1.4/references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/get__db___revtree__doc_) endpoint returns the revision tree in dot syntax for the specified document. This endpoint is not officially supported and should only be used for troubleshooting and debugging purposes.
+The [/{db}/\_revtree/{doc}](references/sync-gateway/admin-rest-api/index.html?v=1.5#/document/get__db___revtree__doc_) endpoint returns the revision tree in dot syntax for the specified document. This endpoint is not officially supported and should only be used for troubleshooting and debugging purposes.
 
-## Sample App
+### Sample App
 
 The following tutorial demonstrates the extended attributes support introduced in Sync Gateway 1.5.
 
@@ -146,7 +116,7 @@ The following tutorial demonstrates the extended attributes support introduced i
 		<div class="column size-1of2">
 			<div class="box">
 				<div class="container">
-					<a href="http://docs.couchbase.com/tutorials/travel-sample-mobile.html" taget="_blank">
+					<a href="http://docs.couchbase.com/tutorials/travel-sample/">
 						<p style="text-align: center;">Travel Sample Mobile</p>
 					</a>
 				</div>
@@ -157,7 +127,7 @@ The following tutorial demonstrates the extended attributes support introduced i
 <br/>
 <br/>
 
-## Migrating from Bucket Shadowing
+### Migrating from Bucket Shadowing
 
 As of Sync Gateway 1.5, the Bucket Shadowing feature is deprecated and no longer supported. The following steps outline a recommended method for migrating from Bucket Shadowing to the latest version with interoperability between Couchbase Server SDKs and Couchbase Mobile.
 
