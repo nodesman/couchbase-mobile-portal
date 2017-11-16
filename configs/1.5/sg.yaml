@@ -31,7 +31,10 @@ properties:
           type: string
       Headers:
         type: array
-        description: List of allowed HTTP headers.
+        description: |
+          List of HTTP headers that can be used by domains specified in the `Origin` and `LoginOrigin` properties.
+          
+          A common value is `["Content-Type"]` as clients use the `Content-Type: application/json` header when sending data as JSON in the body of POST/PUT requests.
         items:
           type: string
       MaxAge:
