@@ -6,6 +6,12 @@ permalink: references/couchbase-lite/release-notes/index.html
 
 <block class="all" />
 
+### Developer build 20
+
+<block class="objc swift" />
+- New Immutable Document API (Breaking API Changes)
+- Bug fixes and performance improvement from LiteCore.
+
 ### Developer build 19
 
 <block class="objc swift" />
