@@ -12,7 +12,7 @@ __Performance Improvements__
 
 __Enhancements__
 
-- [__#473](https://github.com/couchbase/sync_gateway/issues/473) Implement Mobile Convergence to enable Sync Gateway to directly access Couchbase Server buckets
+- [__#473__](https://github.com/couchbase/sync_gateway/issues/473) Implement Mobile Convergence to enable Sync Gateway to directly access Couchbase Server buckets
 - [__#1462__](https://github.com/couchbase/sync_gateway/issues/1462) Sync Gateway Accelerator is reporting itself as Sync Gateway
 - [__#2151__](https://github.com/couchbase/sync_gateway/issues/2151) The /{db}/\_changes?include_docs=true request shouldn't return _user/user docs
 - [__#2259__](https://github.com/couchbase/sync_gateway/issues/2259) Add support for RHEL in service install scripts
