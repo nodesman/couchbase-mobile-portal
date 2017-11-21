@@ -221,11 +221,11 @@
           path: references/couchbase-lite/release-notes/index.html
           items:
             - title: iOS
-              path: references/couchbase-lite/release-notes/iOS.html
+              path: references/couchbase-lite/release-notes/iOS/index.html
             - title: Java
-              path: references/couchbase-lite/release-notes/Java.html
+              path: references/couchbase-lite/release-notes/Java/index.html
             - title: .NET
-              path: references/couchbase-lite/release-notes/Dot-Net.html
+              path: references/couchbase-lite/release-notes/Dot-Net/index.html
     - title: Sync Gateway
       path: references/sync-gateway/index.html
       items:
@@ -234,4 +234,4 @@
         - title: Admin REST API
           path: references/sync-gateway/admin-rest-api/index.html
         - title: Release notes
-          path: references/sync-gateway/release-notes.html
+          path: references/sync-gateway/release-notes/index.html
