@@ -1,6 +1,4 @@
 ---
-title: What's New
-permalink: whatsnew.html
 ---
 
 {% include landing.html %}
