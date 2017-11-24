@@ -1,0 +1,76 @@
+---
+layout: docs
+---
+
+<style>
+  h2 {
+    font-size: 24px !important;
+  }
+  .box-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .box {
+    width: 47%;
+  }
+</style>
+
+<section class="body">
+  <div class="box-container">
+    {% for feature in page.features %}
+    <div class="box">
+      <h2>{{ feature.title }}</h2>
+      <p>{{ feature.description }}</p>
+      <a href="{{ feature.link }}">Learn more</a>
+    </div>
+    {% endfor %}
+    <div class="box">
+      <h2>Getting Started</h2>
+      <p>Learn how to import Couchbase Lite in a new project, persist documents to the local database and enable synchronization with Sync Gateway in less than 5 minutes.</p>
+      <ul>
+        <li>
+          <a href="installation/ios/index.html#getting-started">iOS</a>
+        </li>
+        <li>
+          <a href="installation/android/index.html#getting-started">Android</a>
+        </li>
+        <li>
+          <a href="installation/net/index.html#getting-started">.NET</a>
+        </li>
+      </ul>
+    </div>
+    <div class="box">
+      <h2>Demo App</h2>
+      <p>
+        {{ page.sample.description }}
+      </p>
+      <a href="{{ page.sample.link }}">Start building</a>
+    </div>
+    <div class="box">
+      <h2>Release Notes</h2>
+      <p>
+        This release contains a number of bug fixes and enhancements for Sync Gateway and Couchbase Lite.
+      </p>
+      <h4>Couchbase Lite - {{ site.cbl_version }}</h4>
+      <ul>
+        <li>
+          <a href="references/couchbase-lite/release-notes/iOS.html">iOS</a>
+        </li>
+        <li>
+          <a href="references/couchbase-lite/release-notes/Java.html">Android</a>
+        </li>
+        <li>
+          <a href="references/couchbase-lite/release-notes/Dot-Net.html">.NET</a>
+        </li>
+      </ul>
+      <h4>Sync Gateway - {{site.sg_version }}</h4>
+      <ul>
+        <li>
+          <a href="references/sync-gateway/release-notes.html">Sync Gateway</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {{ content }}
+</section>
