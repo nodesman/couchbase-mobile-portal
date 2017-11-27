@@ -19,6 +19,7 @@ permalink: references/couchbase-lite/release-notes/index.html
 
 <block class="net" />
 
+- **KNOWN ISSUE** Replication, and possibly other things, are broken by a Fleece deserialization bug.  This has been corrected and will be resolved as of DB021.
 - The biggest change by far is the change to immutability rules.  By default, databases now return read only documents and the naming of these objects has changed.  In general, ReadOnlyXXX has become simply XXX, and XXX has become MutableXXX.  For example, ReadOnlyDocument has become Document, and Document has become MutableDocument.  To create a mutable document from a non-mutable one, use the `ToMutable()` function.  Mutable documents will not have any concurrency guarantees, but non-mutable ones will.  
 - Couchbase.Lite.Support.NetDesktop has been changed so that it is no longer a .NET Standard 1.4 library, but a multi-targeted .NET Core 1.0+ / .NET Framework 4.6.1+ library.  There was a needed API that was not available in the .NET Standard 1.4 API, but moving the .NET Standard version up would have lost 4.6.1 support.  The assembly is still compatible with its intended targets.
 - Fixes bugs: #925, #926, and other issues uncovered during testing
