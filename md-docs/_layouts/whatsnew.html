@@ -38,15 +38,30 @@ layout: docs
       <h2>Getting Started</h2>
       <p>Learn how to import Couchbase Lite in a new project, persist documents to the local database and enable synchronization with Sync Gateway in less than 5 minutes.</p>
       <ul>
-        <li>
-          <a href="installation/ios/index.html#getting-started">iOS</a>
-        </li>
-        <li>
-          <a href="installation/android/index.html#getting-started">Android</a>
-        </li>
-        <li>
-          <a href="installation/net/index.html#getting-started">.NET</a>
-        </li>
+        {% if site.version == '2.0' %}
+          <li>
+            <a href="guides/couchbase-lite/index.html?language=swift">Swift</a>
+          </li>
+          <li>
+            <a href="guides/couchbase-lite/index.html?language=objc">Objective-C</a>
+          </li>
+          <li>
+            <a href="guides/couchbase-lite/index.html?language=java">Android</a>
+          </li>
+          <li>
+            <a href="guides/couchbase-lite/index.html?language=csharp">.NET</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="installation/ios/index.html#getting-started">iOS</a>
+          </li>
+          <li>
+            <a href="installation/android/index.html#getting-started">Android</a>
+          </li>
+          <li>
+            <a href="installation/net/index.html#getting-started">.NET</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
     <div class="box">
@@ -63,15 +78,31 @@ layout: docs
       </p>
       <h4>Couchbase Lite - {{ site.cbl_version }}</h4>
       <ul>
-        <li>
-          <a href="references/couchbase-lite/release-notes/iOS/index.html">iOS</a>
-        </li>
-        <li>
-          <a href="references/couchbase-lite/release-notes/Java/index.html">Android</a>
-        </li>
-        <li>
-          <a href="references/couchbase-lite/release-notes/Dot-Net/index.html">.NET</a>
-        </li>
+        {% if site.version == '2.0' %}
+          <li>
+            <a href="references/couchbase-lite/release-notes/index.html?language=swift">Swift</a>
+          </li>
+          <li>
+            <a href="references/couchbase-lite/release-notes/index.html?language=objc">Objective-C</a>
+          </li>
+          <li>
+            <a href="references/couchbase-lite/release-notes/index.html?language=java">Android</a>
+          </li>
+          <li>
+            <a href="references/couchbase-lite/release-notes/index.html?language=csharp">.NET</a>
+          </li>
+        {% else %}
+          <li>
+            <a href="references/couchbase-lite/release-notes/iOS/index.html">iOS</a>
+          </li>
+          <li>
+            <a href="references/couchbase-lite/release-notes/Java/index.html">Android</a>
+          </li>
+          <li>
+            <a href="references/couchbase-lite/release-notes/Dot-Net/index.html">.NET</a>
+          </li>
+        {% endif %}
+
       </ul>
       <h4>Sync Gateway - {{site.sg_version }}</h4>
       <ul>
