@@ -192,7 +192,12 @@ administrator credentials.
 	}
 	```
 
+{% assign version = site.version | plus: 0 %}
+{% if version < 1.5 %}
+
 > **Note:** Do not add, modify or remove data in the bucket using Couchbase Server SDKs or the Admin Console, or you will confuse Sync Gateway. To modify documents, we recommend you use the Sync Gateway's REST API.
+
+{% endif %}
 
 ### Couchbase Server network configuration
 
