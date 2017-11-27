@@ -192,6 +192,7 @@ administrator credentials.
 	}
 	```
 
+[//]: # (TODO: converting site.version to a number. In future, should consider making site.version a number.)
 {% assign version = site.version | plus: 0 %}
 {% if version < 1.5 %}
 
