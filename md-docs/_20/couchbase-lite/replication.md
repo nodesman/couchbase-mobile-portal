@@ -44,7 +44,7 @@ Download the current Sync Gateway [developer build](../../whatsnew.html) and sta
 ~/Downloads/couchbase-sync-gateway/bin/sync_gateway sync-gateway-config.json
 ```
 
-For platform specific installation instructions, refer to the Sync Gateway [installation guide](../../../current/installation/sync-gateway/index.html).
+For platform specific installation instructions, refer to the Sync Gateway [installation guide](../../../../../current/installation/sync-gateway/index.html).
 
 ### Replication API
 
