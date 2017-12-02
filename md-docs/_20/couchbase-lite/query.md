@@ -42,6 +42,14 @@ database.createIndex(Index.valueIndex().on(
          withName: "TypeNameIndex")
 ```
 
+<block class="net" />
+
+```csharp
+database.CreateIndex("TypeNameIndex", Index.ValueIndex().On(
+	ValueIndexItem.Expression(Expression.Property("type")),
+        ValueIndexItem.Expression(Expression.Property("name"))));
+```
+
 <block class="all" />
 
 If there are multiple expressions, the first one will be the primary key, the second the secondary key, etc.
@@ -108,17 +116,17 @@ for (CBLQueryRow *row in rows) {
 <block class="csharp" />
 
 ```csharp
-var query = Query.Select()
+using(var query = Query.Select(SelectResult.Expression(Expression.Property("name")))
 	.From(DataSource.Database(database))
 	.Where(
 		Expression.Property("type").EqualTo("user")
 		.And(Expression.Property("admin").EqualTo(false))
-	);
-
-var rows = query.Run();
-foreach(var row in rows)
-{
-	Console.WriteLine($"doc ID :: ${row.DocumentID}");
+	))
+using(var rows = query.Run()) {
+    foreach(var row in rows)
+    {
+	Console.WriteLine($"user name :: ${row.GetString(0)}");
+    }
 }
 ```
 
@@ -162,7 +170,11 @@ let query = Query
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query
+    .Select(SelectResult.All())
+    .From(DataSource.Database(database));
+```
 
 <block class="java" />
 
@@ -241,7 +253,18 @@ do {
 
 <block class="csharp" />
 
-
+```csharp
+using(var query = Query.Select(SelectResult.Expression(Expression.Property("name")))
+	.From(DataSource.Database(database))
+	.Where(Expression.Property("type").EqualTo("hotel"))
+	.Limit(10))
+using(var rows = query.Run()) {
+    foreach(var row in rows)
+    {
+        Console.WriteLine($"user name :: ${row.GetString("name")}");
+    }
+}
+```
 
 <block class="java" />
 
@@ -290,7 +313,22 @@ do {
 
 <block class="csharp" />
 
-
+```csharp
+using(var query = Query.Select(
+        SelectResult.Expression(Expression.Meta().ID),
+	SelectResult.Expression(Expression.Property("name")),
+	SelectResult.Expression(Expression.Property("public_likes")))
+	.From(DataSource.Database(database))
+	.Where(Expression.Property("type").EqualTo("hotel")
+	    .And(Function.ArrayContains(Expression.Property("public_likes"), "Armani Langworth"))))
+using(var rows = query.Run()) {
+    foreach(var row in rows)
+    {
+        // Serialize the array first to get meaningful string output
+        Console.WriteLine($"public_likes :: ${row.GetArray("public_likes")}");
+    }
+}
+```
 
 <block class="java" />
 
@@ -333,6 +371,23 @@ do {
 <block class="csharp" />
 
 
+```csharp
+using(var query = Query.Select(
+        SelectResult.Expression(Expression.Meta().ID),
+	SelectResult.Expression(Expression.Property("country")),
+	SelectResult.Expression(Expression.Property("name")))
+	.From(DataSource.Database(database))
+	.Where(Expression.Property("type").EqualTo("landmark")
+	    .And(Expression.Property("name").Like("Royal engineers museum")))
+	.Limit(10))
+using(var rows = query.Run()) {
+    foreach(var row in rows)
+    {
+        // Serialize the array first to get meaningful string output
+        Console.WriteLine($"public_likes :: ${row.GetArray("public_likes")}");
+    }
+}
+```
 
 <block class="java" />
 
@@ -367,7 +422,16 @@ let query = Query
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query.Select(
+    SelectResult.Expression(Expression.Meta().ID)
+    SelectResult.Expression(Expression.Property("country")),
+    SelectResult.Expression(Expression.Property("name")))
+	.From(DataSource.Database(database))
+	.Where(Expression.Property("type").EqualTo("landmark")
+	    .And(Expression.Property("name").Like("eng%e%")))
+	.Limit(limit)
+```
 
 <block class="java" />
 
@@ -401,7 +465,16 @@ let query = Query
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query.Select(
+    SelectResult.Expression(Expression.Meta().ID),
+    SelectResult.Expression(Expression.Property("country")),
+    SelectResult.Expression(Expression.Property("name")))
+    .From(DataSource.Database(database))
+    .Where(Expression.Property("type").EqualTo("landmark")
+        .And(Expression.Property("name").Like("eng____r")))
+    .Limit(limit))
+```
 
 <block class="java" />
 
@@ -436,7 +509,15 @@ let query = Query
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query.Select(
+    SelectResult.Expression(Expression.Meta().ID),
+    SelectResult.Expression(Expression.Property("name")))
+    .From(DataSource.Database(db))
+    .Where(Expression.Property("type").EqualTo("landmark")
+        .And(Expression.Property("name").Regex("\\bEng.*e\\b")))
+    .Limit(limit))
+```
 
 <block class="java" />
 
@@ -483,7 +564,21 @@ let query = Query.select(
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query.Select(
+        SelectResult.Expression(Expression.Property("name").From("airline")),
+        SelectResult.Expression(Expression.Property("callsign").From("airline")),
+        SelectResult.Expression(Expression.Property("destinationairport").From("route")),
+        SelectResult.Expression(Expression.Property("stops").From("route")),
+        SelectResult.Expression(Expression.Property("airline").From("route")))
+    .From(DataSource.Database(database).As("airline"))
+    .Joins(Join.DefaultJoin(DataSource.Database(database).As("route"))
+        .On(Expression.Meta().ID.From("airline").EqualTo(Expression.Property("airlineid").From("route"))))
+    .Where(
+        Expression.Property("type").From("route").EqualTo("route")
+	    .And(Expression.Property("type").From("airline").EqualTo("airline"))
+	    .And(Expression.Property("sourceairport").From("route").EqualTo("RIX")))
+```
 
 <block class="java" />
 
@@ -536,7 +631,25 @@ do {
 
 <block class="csharp" />
 
-
+```csharp
+using(var query = Query.Select(
+        SelectResult.Expression(Function.Count("*")),
+	SelectResult.Expression(Expression.Property("country")),
+	SelectResult.Expression(Expression.Property("tz")))
+    .From(DataSource.Database(database))
+    .Where(
+        Expression.Property("type").EqualTo("airport")
+	    .And(Expression.Property("geo.alt").GreaterThanOrEqualTo(300)))
+    .GroupBy(
+        Expression.Property("country"),
+	Expression.Property("tz")))
+using(var rows = query.Run()) {
+    foreach(var row in rows) {
+        Console.WriteLine($"There are {row.GetInt("$1")} airports on the {row.GetString("tz")} timezone located in " +
+	    $"{row.GetString("country")} and above 300 ft");
+    }
+}
+```
 
 <block class="java" />
 
@@ -577,7 +690,15 @@ let query = Query
 
 <block class="csharp" />
 
-
+```csharp
+var query = Query.Select(
+        SelectResult.Expression(Expression.Meta().ID),
+	SelectResult.Expression(Expression.Property("title")))
+    .From(DataSource.Database(database))
+    .Where(Expression.Property("type").EqualTo("hotel"))
+    .OrderBy(Ordering.Property("title").Ascending())
+    .Limit(limit);
+```
 
 <block class="java" />
 
