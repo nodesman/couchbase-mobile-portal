@@ -3,6 +3,13 @@ id: sg-release-notes
 title: SG release notes
 ---
 
+## 1.5.1
+
+__Bugs__
+
+- [__#3078__](https://github.com/couchbase/sync_gateway/issues/3078) Channel view results not being prepended to channel cache
+- [__#3098__](https://github.com/couchbase/sync_gateway/issues/3098) Error migrating tombstoned documents: `Did not update document "DOC_ID" w/ xattr: invalid arguments`
+
 ## 1.5 release
 
 __Performance Improvements__
