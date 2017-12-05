@@ -536,6 +536,48 @@ paths:
             $ref: '#/definitions/Success'
         409:
           description: Conflict, the document revision wasn't specified or it's not the latest.
+  /_active_tasks:
+    get:
+      tags:
+        - server
+      summary: Monitor replications between Sync Gateway instances
+      description: |
+        Returns the list of active replications.
+      responses:
+        200:
+          description: Information about active replications.
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                replication_id:
+                  type: string
+                  description: The replication Id.
+                continuous:
+                  type: boolean
+                  description: Whether the replication is continuously monitoring for changes on the source database to send them to the target.
+                source:
+                  type: string
+                  description: The URL of the source database (i.e `"http://example.com:4985/source"`).
+                target:
+                  type: string
+                  description: The URL of the target database (i.e `"http://example.com:4985/target"`).
+                docs_read:
+                  type: integer
+                  description: TODO
+                docs_written:
+                  type: integer
+                  description: TODO
+                doc_write_failures:
+                  type: integer
+                  description: TODO
+                start_last_seq:
+                  type: integer
+                  description: TODO
+                end_last_seq:
+                  type: integer
+                  description: TODO
   /{db}/_bulk_docs:
     parameters:
       - $ref: '#/parameters/db'
