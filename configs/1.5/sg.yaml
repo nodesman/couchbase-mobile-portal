@@ -384,7 +384,7 @@ properties:
                     description: The user's password.
                   admin_channels:
                     type: array
-                    description: The list of channels this user is automatically granted access to when Sync Gateway starts. If `"*"` is specified then the user is granted access to the [star channel](channels/index.html#special-channels) which contains all documents.
+                    description: The list of channels this user is automatically granted access to when Sync Gateway starts. If `"*"` is specified then the user is granted access to the [star channel](../channels/index.html#special-channels) which contains all documents.
                     items:
                       type: string
                   admin_roles:
