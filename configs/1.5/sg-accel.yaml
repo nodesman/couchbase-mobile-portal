@@ -110,6 +110,13 @@ properties:
                 bucket:
                   type: string
                   description: Bucket name for channel indexing. A common name is "channel_index".
+            enable_shared_bucket_access:
+              type: boolean
+              description: |
+                This property specifies whether to enable the interoperability between Couchbase Mobile and Couchbase Server. Refer to Sync Gateway's [equivalent property](config-properties/index.html#1.5/databases-foo_db-enable_shared_bucket_access) for full details.
+                
+                The only difference when enabling **shared bucket access** with Sync Gateway Accelerator is that the `import_docs` property doesn't need to be set. Indeed, in a Sync Gateway + Sync Gateway Accelerator deployment, the import process is always shared between Sync Gateway Accelerator nodes.
+              default: 'false'
   log:
     description: |
       Comma-separated list of log keys to enable for diagnostic logging. Use ["*"] to enable logging for all log keys.
