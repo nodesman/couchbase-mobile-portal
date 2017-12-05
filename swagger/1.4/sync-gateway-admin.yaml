@@ -499,6 +499,8 @@ paths:
       summary: Get attachment
       description: |
         This request retrieves a file attachment associated with the document. The raw data of the associated attachment is returned (just as if you were accessing a static file). The Content-Type response header is the same content type set when the document attachment was added to the database.
+        
+        To remove an attachment from a document, simply update the `_attachments` dictionary of the document in the PUT `/{db}/{id}` request. From then on, the attachment will not be replicated but will still reside in the Couchbase Server bucket (see open ticket [#1648](https://github.com/couchbase/sync_gateway/issues/1648)).
       parameters:
         - $ref: '#/parameters/rev'
       responses:
@@ -514,13 +516,15 @@ paths:
     put:
       tags:
         - attachment
-      summary: Add or update document
+      summary: Add or update attachment
       description: |
         This request adds or updates the supplied request content as an attachment to the specified document. The attachment name must be a URL-encoded string (the file name). You must also supply either the rev query parameter or the If-Match HTTP header for validation, and the Content-Type headers (to set the attachment content type).
   
           When uploading an attachment using an existing attachment name, the corresponding stored content of the database will be updated. Because you must supply the revision information to add an attachment to the document, this serves as validation to update the existing attachment.
   
           Uploading an attachment updates the corresponding document revision. Revisions are tracked for the parent document, not individual attachments.
+          
+          To remove an attachment from a document, simply update the `_attachments` dictionary of the document in the PUT `/{db}/{id}` request. From then on, the attachment will not be replicated but will still reside in the Couchbase Server bucket (see open ticket [#1648](https://github.com/couchbase/sync_gateway/issues/1648)).
       parameters:
         - $ref: '#/parameters/rev'
         - $ref: '#/parameters/body'
