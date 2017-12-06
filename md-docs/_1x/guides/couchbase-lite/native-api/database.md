@@ -175,9 +175,7 @@ Manager method `existingDatabaseNamed` instead. It returns null/nil (without an 
 
 ## Database encryption
 
-### Encryption with different storage types
-
-Database encryption is available for both ForestDB and SQLite storage types. It is automatically hooked into ForestDB's filesystem abstraction layer and for SQLite storage, Couchbase Lite uses SQLCipher; an open source extension to SQLite that provides transparent encryption of database files. In both cases, the encryption specification is 256-bit AES.
+Since Couchbase Lite 1.2, databases can be encrypted using SQLCipher; an open source extension to SQLite that provides transparent encryption of database files. The encryption specification is 256-bit AES. The steps below outline how to enable it.
 
 #### Step 1: Installing SQLCipher
 
