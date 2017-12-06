@@ -25,7 +25,7 @@ Here's a table that compares each API in different scenarios:
 
 ## Using Webhooks
 
-Sync Gateway provides a webhook feature that allows Sync Gateway to detect document changes and to post changed documents to URLs that you specify. In more detail, the steps for a single webhook event handler are:
+Since Sync Gateway 1.1, you can configure webhooks to detect document changes and to post changed documents to URLs that you specify. In more detail, the steps for a single webhook event handler are:
 
 1. **Raise and listen for events**: Document changes (creations, updates, and deletions) that are made through Sync Gateway's Public REST API, including document changes that result from Couchbase Lite push replications, raise events that webhook event handlers listen for.
 2. **Filter**: You can define a `filter` function to examine the contents of the changed documents, and to decide which ones to post.
