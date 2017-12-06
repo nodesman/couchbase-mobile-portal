@@ -412,7 +412,7 @@ doc.Update((UnsavedRevision newRevision) =>
 
 ## Document expiration (TTL)
 
-Documents in a local database can have an expiration time. After that time, they are automatically purged from the database - this completely removes them, freeing the space they occupied.
+Documents in a local database can have an expiration time. After that time, they are automatically purged from the database - this completely removes them, freeing the space they occupied. This feature was introduced in Couchbase Lite 1.3.
 
 The following example sets the TTL for a document to 5 seconds from the current time.
 
