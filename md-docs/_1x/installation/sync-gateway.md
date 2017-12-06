@@ -42,126 +42,46 @@ Once you have downloaded Sync Gateway on the distribution of your choice you are
 
 ## Installation
 
-### Ubuntu
+{% capture macos        %}{% include_relative sync-gateway/macos.md          %}{% endcapture %}
+{% capture windows      %}{% include_relative sync-gateway/windows.md        %}{% endcapture %}
+{% capture centos       %}{% include_relative sync-gateway/centos.md         %}{% endcapture %}
+{% capture debian       %}{% include_relative sync-gateway/debian.md         %}{% endcapture %}
+{% capture ubuntu       %}{% include_relative sync-gateway/ubuntu.md         %}{% endcapture %}
 
-Install sync_gateway with the dpkg package manager e.g:
+<div class="tabs">
+  <div class="nav nav-tabs bg-faded text-center">
+    <ul class="nav navbar-nav nav-inline">
+      <a id="mac-tab" class="nav-item nav-link" data-toggle="tab" href="#mac">macOS</a>
+      <a id="windows-tab" class="nav-item nav-link" data-toggle="tab" href="#windows">Windows</a>
+      <a id="centos-tab" class="nav-item nav-link" data-toggle="tab" href="#centos">Red Hat/CentOS</a>
+      <a id="debian-tab" class="nav-item nav-link" data-toggle="tab" href="#debian">Debian</a>
+      <a id="ubuntu-tab" class="nav-item nav-link" data-toggle="tab" href="#ubuntu">Ubuntu</a>
+    </ul>
+  </div>
 
-```bash
-dpkg -i {{ site.sg_package_name }}.deb
-```
-
-When the installation is complete sync_gateway will be running as a service.
-
-```bash
-service sync_gateway start
-service sync_gateway stop
-```
-
-The config file and logs are located in `/home/sync_gateway`.
-
-> **Note:** You can also run the **sync_gateway** binary directly from the command line. The binary is installed at `/opt/couchbase-sync-gateway/bin/sync_gateway`.
-
-### Red Hat/CentOS
-
-Install sync_gateway with the rpm package manager e.g:
-
-```bash
-rpm -i {{ site.sg_package_name }}.rpm
-```
-
-When the installation is complete sync_gateway will be running as a service.
-
-On CentOS 5:
-
-```bash
-service sync_gateway start
-service sync_gateway stop
-```
-
-On CentOS 6:
-
-```bash
-initctl start sync_gateway
-initctl stop sync_gateway
-```
-
-On CentOS 7:
-
-```bash
-systemctl start sync_gateway
-systemctl stop sync_gateway
-```
-
-The config file and logs are located in `/home/sync_gateway`.
-
-### Debian
-
-Install sync_gateway with the dpkg package manager e.g:
-
-```bash
-dpkg -i {{ site.sg_package_name }}.deb
-```
-
-When the installation is complete sync_gateway will be running as a service.
-
-```bash
-systemctl start sync_gateway
-systemctl stop sync_gateway
-```
-
-The config file and logs are located in `/home/sync_gateway`.
-
-### Windows
-
-Install sync_gateway on Windows by running the .exe file from the desktop.
-
-```bash
-{{ site.sg_package_name }}.exe
-```
-
-When the installation is complete sync_gateway will be installed as a service but not running.
-
-Use the **Control Panel --> Admin Tools --> Services** to stop/start the service.
-
-The config file and logs are located in ``.
-
-### macOS
-
-Download the **tar.gz** file using `wget` or `curl`.
-
-```bash
-wget {{ site.sg_download_link }}{{ site.sg_package_name }}.tar.gz
-```
-
-Install sync_gateway by unpacking the tar.gz installer.
-
-```bash
-sudo tar -zxvf {{ site.sg_package_name }}.tar.gz --directory /opt
-```
-
-Create the sync_gateway service.
-
-```bash
-$ sudo mkdir /Users/sync_gateway
-
-$ cd /opt/couchbase-sync-gateway/service
-
-$ sudo ./sync_gateway_service_install.sh
-```
-
-To restart sync_gateway (it will automatically start again).
-
-```bash
-$ sudo launchctl stop sync_gateway
-```
-
-To remove the service.
-
-```bash
-$ sudo launchctl unload /Library/LaunchDaemons/com.couchbase.mobile.sync_gateway.plist
-```
-
-The config file and logs are located in `/Users/sync_gateway`.
+  <div class="tab-content">
+    <div id="select-platform" class="tab-pane bg-faded active">
+      <p class="text-center my-4 text-muted">
+        Select platform:
+      </p>
+    </div>
+    <div class="tab-pane" id="mac">
+    	{{macos | markdownify}}
+    </div>
+    <div class="tab-pane" id="windows">
+    	{{windows | markdownify}}
+    </div>
+    <div class="tab-pane" id="centos">
+    	{{centos | markdownify}}
+    </div>
+    <div class="tab-pane" id="debian">
+    	{{debian | markdownify}}
+    </div>
+    <div class="tab-pane" id="ubuntu">
+    	{{ubuntu | markdownify}}
+    </div>
+  </div>
+</div>
 
 ### Walrus mode
 
