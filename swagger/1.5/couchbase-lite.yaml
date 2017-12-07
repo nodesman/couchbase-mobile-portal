@@ -191,7 +191,7 @@ parameters:
   rev:
     name: rev
     in: query
-    description: Revision identifier of the parent revision the new one should replace. (Not used when creating a new document.)
+    description: Revision identifier of the parent revision the new one should replace. **Required** for document updates.
     type: string
     required: false
   rev_delete:
