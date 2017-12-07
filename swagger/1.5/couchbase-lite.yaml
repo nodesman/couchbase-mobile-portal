@@ -896,6 +896,8 @@ paths:
       summary: Get Views of a design document
       description: |
         Query a design document.
+      parameters:
+        - $ref: '#/parameters/rev'
       responses:
         200:
           description: Views for design document
@@ -909,6 +911,7 @@ paths:
         - query
       summary: Update views of a design document
       parameters:
+        - $ref: '#/parameters/rev'
         - in: body
           name: body
           description: The request body
