@@ -203,7 +203,7 @@ parameters:
   revs:
     in: query
     name: revs
-    description: Default is false. Indicates whether to include a _revisions property for each document in the response, which contains a revision history of the document.
+    description: Default is false. Indicates whether to include a _revisions property for each document in the response, which contains a revision history of the document. The length of the returned revision tree can be specified with the `revs_limit` querystring parameter.
     type: boolean
     default: false
   role:
@@ -536,7 +536,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Success'
+              $ref: '#/definitions/BulkDocsSuccess'
         409:
           description: The operation failed with a forbidden error. Probably because the document already exists in the database but a revision number wasn't specified.
           schema:
@@ -1275,7 +1275,17 @@ definitions:
        description: Passing "*" as an item in the array will remove all the revisions for that document. Removing specific revisions from a document is not supported.
        items:
          type: string
-         description: Revision ID to delete or "*" to delete all the revisions of the document.
+         description: Only possible value is `"*"`. It permanently removes all revisions for that document ID.
+         enum: ["*"]
+  BulkDocsSuccess:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Design document identifier
+      rev:
+        type: string
+        description: Revision identifier
   Success:
     type: object
     properties:

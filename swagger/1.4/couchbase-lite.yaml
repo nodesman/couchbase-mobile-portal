@@ -115,7 +115,7 @@ parameters:
   doc_ids:
     in: query
     name: doc_ids
-    description: A list of document IDs as a valid JSON array. The response will be filtered to only documents with these IDs. This parameter must be used with the `filter=_doc_ids` and `feed=normal` parameters.
+    description: A list of document IDs as a valid JSON array. The response will be filtered to only documents with these IDs. (This parameter must be used with the _doc_ids filter parameter; see below.)
     type: array
     items:
       type: string
@@ -191,7 +191,7 @@ parameters:
   rev:
     name: rev
     in: query
-    description: Revision identifier of the parent revision the new one should replace. (Not used when creating a new document.)
+    description: Revision identifier of the parent revision the new one should replace. **Required** for document updates.
     type: string
     required: false
   rev_delete:
@@ -1272,7 +1272,7 @@ definitions:
     properties:
      a_doc_id:
        type: array
-       description: Only possible value is `["*"]`. It permanently removes all revisions for that document ID.
+       description: Passing "*" as an item in the array will remove all the revisions for that document. Removing specific revisions from a document is not supported.
        items:
          type: string
          description: Only possible value is `"*"`. It permanently removes all revisions for that document ID.
@@ -1382,13 +1382,16 @@ definitions:
     properties:
       id: 
         type: string
-        description: The ID of the document
+        description: The ID of the document.
       key:
         type: object
-        description: The key in the output row
+        description: The key in the output row.
       value:
         type: object
-        description: The value in the output row
+        description: The value in the output row.
+      doc:
+        type: object
+        description: The document body. This is only returned if `include_docs=true` is specified in the URL.
   Design:
     type: object
     properties:
