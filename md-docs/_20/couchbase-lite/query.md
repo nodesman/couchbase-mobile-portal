@@ -73,22 +73,17 @@ foreach(var row in rows)
 <block class="java" />
 
 ```java
-Query query = Query.select(SelectResult.expression(Expression.property("name")))
-		.from(DataSource.database(database))
-		.where(
-			Expression.property("type").equalTo("user")
-			.and(Expression.property("admin").equalTo(false))
-		);
-
-ResultSet rows = null;
+Query query = Query
+        .select(SelectResult.property("name"))
+        .from(DataSource.database(database))
+        .where(Expression.property("type").equalTo("user")
+                .and(Expression.property("admin").equalTo(false)));
 try {
-	rows = query.run();
+    ResultSet rs = query.execute();
+    for (Result result : rs)
+        Log.w("Sample", String.format("user name :: %s", result.getString("name")));
 } catch (CouchbaseLiteException e) {
-	Log.e("app", "Failed to run query", e);
-}
-Result row;
-while ((row = rows.next()) != null) {
-	Log.d("app", String.format("user name :: %s", row.getString("name")));
+    Log.e("Sample", e.getLocalizedMessage());
 }
 ```
 
@@ -110,9 +105,11 @@ There are several parts to specifying a query:
 
 Meta functions retrieve information about the document (`id` or `sequence` number) to be included in the query result.
 
-<block class="swift" />
+<block class="swift java" />
 
 The following example uses the `META().id` function to find all the document of type "airline" and returns the document ID for each one.
+
+<block class="swift" />
 
 ```swift
 let query = Query.select(
@@ -132,6 +129,21 @@ do {
 }
 ```
 
+<block class="java" />
+
+```java
+Query query = Query
+        .select(SelectResult.expression(Meta.id))
+        .from(DataSource.database(database))
+        .where(Expression.property("type").equalTo("airport"))
+        .orderBy(Ordering.expression(Meta.id));
+ResultSet rs = query.execute();
+for (Result result : rs) {
+    Log.w("Sample", String.format("airport id :: %s", result.getString("_id")));
+    Log.w("Sample", String.format("airport id :: %s", result.getString(0)));
+}
+```
+
 The documentID is then retrieved in the query result using the property name getter (`row.string(forKey: "id")`) or projected column getter (`row.string(at: 0)`).
 
 <block class="all" />
@@ -140,9 +152,11 @@ The documentID is then retrieved in the query result using the property name get
 
 The JOIN clause enables you to create new input objects by combining two or more source objects.
 
-<block class="swift" />
+<block class="swift java" />
 
 The following example uses a JOIN clause to find the airline details which have routes that start from RIX. This example JOINS the document of type "route" with documents of type "airline" using the document ID (`_id`) on the "airline" document and  `airlineid` on the "route" document.
+
+<block class="swift" />
 
 ```swift
 let query = Query.select(
@@ -169,17 +183,37 @@ let query = Query.select(
 )
 ```
 
+<block class="java" />
+
+```java
+Query query = Query.select(
+        SelectResult.expression(Expression.property("name").from("airline")),
+        SelectResult.expression(Expression.property("callsign").from("airline")),
+        SelectResult.expression(Expression.property("destinationairport").from("route")),
+        SelectResult.expression(Expression.property("stops").from("route")),
+        SelectResult.expression(Expression.property("airline").from("route")))
+        .from(DataSource.database(database).as("airline"))
+        .join(Join.join(DataSource.database(database).as("route"))
+                .on(Meta.id.from("airline").equalTo(Expression.property("airlineid").from("route"))))
+        .where(Expression.property("type").from("route").equalTo("route")
+                .and(Expression.property("type").from("airline").equalTo("airline"))
+                .and(Expression.property("sourceairport").from("route").equalTo("RIX")));
+ResultSet rs = query.execute();
+for (Result result : rs)
+    Log.w("Sample", String.format("%s", result.toMap().toString()));
+```
+
 <block class="all" />
 
 ## GROUPBY statement
 
 You can perform further processing on the data in your result set before the final projection is generated.
 
-<block class="swift" />
+<block class="swift java" />
 
 The following example looks for the number of airports at an altitude of 300 ft or higher and groups the results by country and timezone.
 
-<block class="swift" />
+<block class="swift java" />
 
 ```swift
 let query = Query.select(
@@ -196,6 +230,25 @@ let query = Query.select(
 	Expression.property("country"),
 	Expression.property("tz")
 )
+```
+
+<block class="java" />
+
+```java
+Query query = Query.select(
+        SelectResult.expression(Function.count("*")).as("count"),
+        SelectResult.property("country"),
+        SelectResult.property("tz"))
+        .from(DataSource.database(database))
+        .where(Expression.property("type").equalTo("airport")
+                .and(Expression.property("geo.alt").greaterThanOrEqualTo(300)))
+        .groupBy(Expression.property("country"),
+                Expression.property("tz"))
+        .orderBy(Ordering.expression(Function.count("*")).descending());
+ResultSet rs = query.execute();
+for (Result result : rs)
+    Log.w("Sample", String.format("%s", result.toMap().toString()));
+
 ```
 
 #### Query methods
@@ -260,7 +313,7 @@ If the return values of a query include calls to aggregate functions like `count
 
 If you set the query's `groupBy` property, all rows that have the same values of the expressions given in that property will be grouped together. In this case, aggregate functions will operate on the rows in a group, not all the rows of the query.
 
-<block class="csharp java" />
+<block class="csharp" />
 
 ### Live Query
 
@@ -276,19 +329,6 @@ liveQuery.Changed += (sender, e) => {
 liveQuery.Run();
 ```
 
-<block class="java" />
-
-```java
-final LiveQuery liveQuery = query.toLive();
-liveQuery.addChangeListener(new LiveQueryChangeListener() {
-	@Override
-	public void changed(LiveQueryChange change) {
-		Log.d("query", String.format("Number of rows :: %s", change.getRows().toString()));
-	}
-});
-liveQuery.run();
-```
-
 <block class="all" />
 
 ## Collection Operators
@@ -299,9 +339,11 @@ Collection operators enable you to evaluate expressions over collections or obje
 
 The `IN` operator evaluates to `TRUE` if the right-side value is an array and directly contains the left-side value.
 
-<block class="swift" />
+<block class="swift java" />
 
 The following example uses the `IN` operator to find the airlines that are based in France or the United States.
+
+<block class="swift" />
 
 ```swift
 let query = Query.select(
@@ -312,6 +354,20 @@ let query = Query.select(
 		Expression.property("country").in(countries)
 		.and(Expression.property("type").equalTo("airline"))
 	)
+```
+
+<block class="java" />
+
+```java
+Query query = Query.select(SelectResult.property("name"))
+        .from(DataSource.database(database))
+        .where(Expression.property("country").in("Latvia","usa")
+                .and(Expression.property("type").equalTo("airport")))
+        .orderBy(Ordering.property("name"));
+ResultSet rs = query.execute();
+for (Result result : rs)
+    Log.w("Sample", String.format("%s", result.toMap().toString()));
+
 ```
 
 Sometimes the conditions you want to filter need to be applied to the arrays nested inside the document. The `SATISFIES` keyword is used to specify the filter condition.
