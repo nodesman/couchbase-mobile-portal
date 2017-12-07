@@ -895,8 +895,6 @@ paths:
       summary: Get Views of a design document
       description: |
         Query a design document.
-      parameters:
-        - $ref: '#/parameters/rev'
       responses:
         200:
           description: Views for design document
@@ -928,6 +926,8 @@ paths:
       summary: Delete design document
       description: |
         Delete a design document.
+      parameters:
+        - $ref: '#/parameters/rev_delete'
       responses:
         200:
           description: The status
