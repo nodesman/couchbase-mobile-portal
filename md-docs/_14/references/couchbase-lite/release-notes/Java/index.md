@@ -29,6 +29,7 @@ __Bugs__
 - [__#1652__](https://github.com/couchbase/couchbase-lite-java-core/issues/1652) 1.x - LiveQuery: row.getDocument().getProperties() return null if document is deleted during indexing
 - [__#1660__](https://github.com/couchbase/couchbase-lite-java-core/issues/1660) 1.x: Peer to Peer: InvocationTargetException in Router.java with PhotoDrop sample app
 - [__#1663__](https://github.com/couchbase/couchbase-lite-java-core/issues/1663) 1.x: Channel removal potentially disrupts attachments
+- [__#1617__](https://github.com/couchbase/couchbase-lite-java-core/issues/1617) The specified SyncGatewaySession value with in POST /\_replicate is not used.
 
 ## 1.4 release
 
