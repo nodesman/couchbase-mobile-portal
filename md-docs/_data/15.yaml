@@ -1,6 +1,9 @@
 - title: What's new
   open: true
   path: whatsnew.html
+- title: CSharp mananger
+  ishidden: true
+  path: guides/couchbase-lite/native-api/manager/csharp.html
 - title: Getting Started
   path: installation/index.html
   items:
