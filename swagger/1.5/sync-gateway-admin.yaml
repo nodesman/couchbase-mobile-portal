@@ -565,19 +565,16 @@ paths:
                   description: The URL of the target database (i.e `"http://example.com:4985/target"`).
                 docs_read:
                   type: integer
-                  description: TODO
+                  description: The number of docs that have been read (fetched) from the source database.
                 docs_written:
                   type: integer
-                  description: TODO
+                  description: The number of docs that have been written (pushed) to the target database.
                 doc_write_failures:
                   type: integer
-                  description: TODO
-                start_last_seq:
-                  type: integer
-                  description: TODO
+                  description: The number of docs that have failed to be written (pushed) to the target database.  These docs will not be retried.
                 end_last_seq:
                   type: integer
-                  description: TODO
+                  description: The most recent `last_seq` value received from the source database during replication.
   /{db}/_bulk_docs:
     parameters:
       - $ref: '#/parameters/db'
