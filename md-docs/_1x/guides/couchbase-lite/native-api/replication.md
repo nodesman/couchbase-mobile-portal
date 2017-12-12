@@ -360,7 +360,7 @@ NSNotificationCenter.defaultCenter().addObserver(self,
     selector: "replicationChanged:",
     name: kCBLReplicationChangeNotification,
     object: pull)
-func replicationProgress(n: NSNotification) {
+func replicationChanged(n: NSNotification) {
     // The replication reporting the notification is n.object , but we
     // want to look at the aggregate of both the push and pull.
     
