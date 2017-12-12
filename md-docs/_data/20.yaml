@@ -1,5 +1,8 @@
 - title: Developer Builds
   path: whatsnew.html
+- title: Cert Pinning
+  path: couchbase-lite/cert-pinning.html
+  ishidden: true
 - title: Couchbase Lite
   path: installation/index.html
   open: true
